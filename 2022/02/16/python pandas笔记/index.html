@@ -1,0 +1,421 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>python pandas笔记 | AndrewLee</title><meta name="keywords" content="python,pandas"><meta name="author" content="AndrewLee"><meta name="copyright" content="AndrewLee"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="数据读取可以读取excel，csv等： df &#x3D; pd.read_excel(&quot;Name.xlsx&quot;) df &#x3D; pd.read_csv(&quot;Name.csv&quot;)  Dataframe 的创建使用字典创建dic &#x3D; &amp;#123;&#39;name1&#39;:[1,2,3],&#39;name2&#39;:[4,5,6]&amp;#125; df &#x3D; pd.DataFrame(dic) &gt;&gt;&gt;     name1  name2 0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python pandas笔记">
+<meta property="og:url" content="http://example.com/2022/02/16/python%20pandas%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="AndrewLee">
+<meta property="og:description" content="数据读取可以读取excel，csv等： df &#x3D; pd.read_excel(&quot;Name.xlsx&quot;) df &#x3D; pd.read_csv(&quot;Name.csv&quot;)  Dataframe 的创建使用字典创建dic &#x3D; &amp;#123;&#39;name1&#39;:[1,2,3],&#39;name2&#39;:[4,5,6]&amp;#125; df &#x3D; pd.DataFrame(dic) &gt;&gt;&gt;     name1  name2 0">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/kaggle2.jpg">
+<meta property="article:published_time" content="2022-02-16T05:11:35.000Z">
+<meta property="article:modified_time" content="2022-02-16T05:18:06.944Z">
+<meta property="article:author" content="AndrewLee">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="pandas">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/kaggle2.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/02/16/python%20pandas%E7%AC%94%E8%AE%B0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'python pandas笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-02-16 13:18:06'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/tit.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">32</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> others</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/kaggle2.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">AndrewLee</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> others</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">python pandas笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-02-16T05:11:35.000Z" title="发表于 2022-02-16 13:11:35">2022-02-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-02-16T05:18:06.944Z" title="更新于 2022-02-16 13:18:06">2022-02-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/IT/">IT</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="python pandas笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="数据读取"><a href="#数据读取" class="headerlink" title="数据读取"></a>数据读取</h1><p>可以读取excel，csv等：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">df <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_excel<span class="token punctuation">(</span><span class="token string">"Name.xlsx"</span><span class="token punctuation">)</span>
+df <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">"Name.csv"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h1 id="Dataframe-的创建"><a href="#Dataframe-的创建" class="headerlink" title="Dataframe 的创建"></a>Dataframe 的创建</h1><h2 id="使用字典创建"><a href="#使用字典创建" class="headerlink" title="使用字典创建"></a>使用字典创建</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">dic <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">'name1'</span><span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token string">'name2'</span><span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span>
+df <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>dic<span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span>
+    name1  name2
+<span class="token number">0</span>    <span class="token number">1</span>      <span class="token number">4</span>
+<span class="token number">1</span>    <span class="token number">2</span>      <span class="token number">5</span>
+<span class="token number">2</span>    <span class="token number">3</span>      <span class="token number">6</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="指定行列和数据来创建"><a href="#指定行列和数据来创建" class="headerlink" title="指定行列和数据来创建"></a>指定行列和数据来创建</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">df <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>columns<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"name2"</span><span class="token punctuation">,</span><span class="token string">"name1"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>index<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'A'</span><span class="token punctuation">,</span><span class="token string">'B'</span><span class="token punctuation">,</span><span class="token string">'C'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                  data<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">'name1'</span><span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token string">'name2'</span><span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span>
+  name2  name1
+A   <span class="token number">4</span>     <span class="token number">1</span>
+B   <span class="token number">5</span>     <span class="token number">2</span>
+C   <span class="token number">6</span>     <span class="token number">3</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h1><p><code>df = df.astype(str)</code></p>
+<h1 id="取得dataframe其中的数据"><a href="#取得dataframe其中的数据" class="headerlink" title="取得dataframe其中的数据"></a>取得dataframe其中的数据</h1><p>假设有如下dataframe</p>
+<pre class="line-numbers language-py" data-language="py"><code class="language-py">df  <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'Info.csv'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span>
+   name   Age     Sex
+<span class="token number">0</span>   A      <span class="token number">40</span>    <span class="token string">"male"</span>
+<span class="token number">2</span>   B      <span class="token number">23</span>    <span class="token string">"male"</span>
+<span class="token number">1</span>   C      <span class="token number">61</span>    <span class="token string">"female"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>注意，这里的索引是0，2，1不是0，1，2。这对我们后面讲解iloc和loc有作用</p>
+<h2 id="条件获取"><a href="#条件获取" class="headerlink" title="条件获取"></a>条件获取</h2><pre class="line-numbers language-py" data-language="py"><code class="language-py"><span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">[</span>df<span class="token punctuation">[</span><span class="token string">'Sex'</span><span class="token punctuation">]</span><span class="token operator">==</span><span class="token string">'male'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span>
+   name   Age     Sex
+<span class="token number">0</span>   A      <span class="token number">40</span>    <span class="token string">"male"</span>
+<span class="token number">2</span>   B      <span class="token number">23</span>    <span class="token string">"male"</span>
+<span class="token comment"># 多条件获取用&amp;连接条件，条件记得用括号括起来</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="loc，iloc"><a href="#loc，iloc" class="headerlink" title="loc，iloc"></a>loc，iloc</h2><p>loc：<code>pd.loc[name_of_index,name_of_column]</code>:也就是根据行和列的名字来定位<br>iloc: <code>pd.iloc[rank_of_index,rank_of_column]</code>：也就是更加行和列的次序（第几行第几列）来定位</p>
+<pre class="line-numbers language-py" data-language="py"><code class="language-py"><span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string">'name'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">#列索引为1的人的名字</span>
+<span class="token operator">>></span><span class="token operator">></span> C<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-py" data-language="py"><code class="language-py"><span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">#第一列的人的第0个数据（python从0开始计数）</span>
+<span class="token operator">>></span><span class="token operator">></span> B<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="切片-只能获取行"><a href="#切片-只能获取行" class="headerlink" title="切片(只能获取行)"></a>切片(只能获取行)</h2><p>格式：<code>df[start:end:step]</code></p>
+<pre class="line-numbers language-py" data-language="py"><code class="language-py"><span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token number">3</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span> 
+<span class="token operator">>></span><span class="token operator">></span>
+  name  Age     Sex
+<span class="token number">0</span>    A   <span class="token number">40</span>    male
+<span class="token number">1</span>    C   <span class="token number">61</span>  female<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="dataframe中数据的删除"><a href="#dataframe中数据的删除" class="headerlink" title="dataframe中数据的删除"></a>dataframe中数据的删除</h1><p>假设有如下dataframe</p>
+<pre class="line-numbers language-py" data-language="py"><code class="language-py">df  <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'Info.csv'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span>
+   name   Age     Sex
+<span class="token number">0</span>   A      <span class="token number">40</span>    <span class="token string">"male"</span>
+<span class="token number">2</span>   B      <span class="token number">23</span>    <span class="token string">"male"</span>
+<span class="token number">1</span>   C      <span class="token number">61</span>    <span class="token string">"female"</span>
+<span class="token comment">## drop函数</span>
+
+<span class="token comment">### 删除列</span>
+```py
+df<span class="token punctuation">.</span>drop<span class="token punctuation">(</span>columns<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'Sex'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> inplace<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span>
+  name  Age
+<span class="token number">0</span>    A   <span class="token number">40</span>
+<span class="token number">2</span>    B   <span class="token number">23</span>
+<span class="token number">1</span>    C   <span class="token number">61</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="删除行"><a href="#删除行" class="headerlink" title="删除行"></a>删除行</h3><pre class="line-numbers language-py" data-language="py"><code class="language-py">df<span class="token punctuation">.</span>drop<span class="token punctuation">(</span>index<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> inplace<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span> <span class="token comment"># 如果没有传入inplace参数的话，df就不会被修改</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span>
+  name  Age   Sex
+<span class="token number">0</span>    A   <span class="token number">40</span>  male
+<span class="token number">2</span>    B   <span class="token number">23</span>  male<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>由于传入index和column的参数是一个列表，因此可以批量删除</p>
+<h1 id="Dataframe的合并"><a href="#Dataframe的合并" class="headerlink" title="Dataframe的合并"></a>Dataframe的合并</h1><p>假设有如下dataframe</p>
+<pre class="line-numbers language-py" data-language="py"><code class="language-py">df  <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'Info.csv'</span><span class="token punctuation">)</span>
+df2  <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'Info2.csv'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>df2<span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span>
+   name   Age     Sex
+<span class="token number">0</span>   A      <span class="token number">40</span>    <span class="token string">"male"</span>
+<span class="token number">2</span>   B      <span class="token number">23</span>    <span class="token string">"male"</span>
+<span class="token number">1</span>   C      <span class="token number">61</span>    <span class="token string">"female"</span>
+<span class="token operator">>></span><span class="token operator">></span>
+   name   Age     Sex
+<span class="token number">0</span>   AA      <span class="token number">44</span>    <span class="token string">"female"</span>
+<span class="token number">1</span>   BB      <span class="token number">31</span>    <span class="token string">"female"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="concat函数"><a href="#concat函数" class="headerlink" title="concat函数"></a>concat函数</h2><ul>
+<li><p>简单的增加行数（df2就是df后面要增加的行）：</p>
+<pre class="line-numbers language-py" data-language="py"><code class="language-py"><span class="token keyword">print</span><span class="token punctuation">(</span>pd<span class="token punctuation">.</span>concat<span class="token punctuation">(</span><span class="token punctuation">[</span>df2<span class="token punctuation">,</span>df<span class="token punctuation">]</span><span class="token punctuation">,</span>ignore_index<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span>
+  name  Age     Sex
+<span class="token number">0</span>   AA   <span class="token number">44</span>  female
+<span class="token number">1</span>   BB   <span class="token number">31</span>  female
+<span class="token number">2</span>    A   <span class="token number">40</span>    male
+<span class="token number">3</span>    B   <span class="token number">23</span>    male
+<span class="token number">4</span>    C   <span class="token number">61</span>  female<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>(这里如果不ignore_index的话，索引就会变成0,1,0,2,1)</p>
+</li>
+<li><p>简单的增加列数（把df2放在df1右边然后拼上）：</p>
+</li>
+</ul>
+<pre class="line-numbers language-py" data-language="py"><code class="language-py"><span class="token keyword">print</span><span class="token punctuation">(</span>pd<span class="token punctuation">.</span>concat<span class="token punctuation">(</span><span class="token punctuation">[</span>df<span class="token punctuation">,</span>df2<span class="token punctuation">]</span><span class="token punctuation">,</span>axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span>
+  name  Age     Sex name   Age     Sex
+<span class="token number">0</span>    A   <span class="token number">40</span>    male   AA  <span class="token number">44.0</span>  female
+<span class="token number">1</span>    C   <span class="token number">61</span>  female   BB  <span class="token number">31.0</span>  female
+<span class="token number">2</span>    B   <span class="token number">23</span>    male  NaN   NaN     NaN<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>其中如果发现拼上不能凑成一个长方形，就把空出来的地方补上NaN，就像上面一样</p>
+<ul>
+<li>dataframe可以直接添加列，不需要使用函数</li>
+</ul>
+<pre class="line-numbers language-py" data-language="py"><code class="language-py">df<span class="token punctuation">[</span><span class="token string">'Location'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'Asia'</span><span class="token punctuation">,</span> <span class="token string">'Asia'</span><span class="token punctuation">,</span> <span class="token string">'Asia'</span><span class="token punctuation">]</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span>
+  name  Age     Sex Location
+<span class="token number">0</span>    A   <span class="token number">40</span>    male     Asia
+<span class="token number">2</span>    B   <span class="token number">23</span>    male     Asia
+<span class="token number">1</span>    C   <span class="token number">61</span>  female     Asia<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="merge函数"><a href="#merge函数" class="headerlink" title="merge函数"></a>merge函数</h2><ul>
+<li>按照某列的值来合并（比如按照身份证号码整合一群人的信息）</li>
+</ul>
+<p>假设有如下dataframe：</p>
+<pre class="line-numbers language-py" data-language="py"><code class="language-py"><span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>df2<span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span>
+  name  Age     Sex
+<span class="token number">0</span>    A   <span class="token number">40</span>    male
+<span class="token number">2</span>    B   <span class="token number">23</span>    male
+<span class="token number">1</span>    C   <span class="token number">61</span>  female
+  Name       Hobby       Talent
+<span class="token number">0</span>    A  literature      writing
+<span class="token number">1</span>    B   chemistry    energetic
+<span class="token number">2</span>    C      sports  strong will<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>按照名字合并：</p>
+<pre class="line-numbers language-py" data-language="py"><code class="language-py"><span class="token keyword">print</span><span class="token punctuation">(</span>pd<span class="token punctuation">.</span>merge<span class="token punctuation">(</span>df<span class="token punctuation">,</span> df2<span class="token punctuation">,</span> left_on<span class="token operator">=</span><span class="token string">'name'</span><span class="token punctuation">,</span> right_on<span class="token operator">=</span><span class="token string">'Name'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span>
+  name  Age     Sex Name       Hobby       Talent
+<span class="token number">0</span>    A   <span class="token number">40</span>    male    A  literature      writing
+<span class="token number">1</span>    B   <span class="token number">23</span>    male    B   chemistry    energetic
+<span class="token number">2</span>    C   <span class="token number">61</span>  female    C      sports  strong will<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>如果需要可以将多出来的Name行删掉</p>
+<p>merge详解:</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39639919/article/details/110970746?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-0.pc_relevant_paycolumn_v3&amp;spm=1001.2101.3001.4242.1&amp;utm_relevant_index=3">https://blog.csdn.net/weixin_39639919/article/details/110970746?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-0.pc_relevant_paycolumn_v3&amp;spm=1001.2101.3001.4242.1&amp;utm_relevant_index=3</a></p>
+<h1 id="Dataframe缺失值的填充"><a href="#Dataframe缺失值的填充" class="headerlink" title="Dataframe缺失值的填充"></a>Dataframe缺失值的填充</h1><p><img src="https://img-blog.csdnimg.cn/7c487e0b2c7c4ca5a23586401517ebe3.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQW5kcmV3TWU4MjEx,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h1 id="Dataframe排序"><a href="#Dataframe排序" class="headerlink" title="Dataframe排序"></a>Dataframe排序</h1><p>假设有如下dataframe</p>
+<pre class="line-numbers language-py" data-language="py"><code class="language-py">df  <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'Info.csv'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span>
+   name   Age     Sex
+<span class="token number">0</span>   A      <span class="token number">40</span>    <span class="token string">"male"</span>
+<span class="token number">2</span>   B      <span class="token number">23</span>    <span class="token string">"male"</span>
+<span class="token number">1</span>   C      <span class="token number">61</span>    <span class="token string">"female"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>依照年龄排序</p>
+<pre class="line-numbers language-py" data-language="py"><code class="language-py">df<span class="token punctuation">.</span>sort_values<span class="token punctuation">(</span>by<span class="token operator">=</span><span class="token string">'Age'</span><span class="token punctuation">,</span> ascending<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> inplace<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span>
+  name  Age     Sex
+<span class="token number">2</span>    B   <span class="token number">23</span>    male
+<span class="token number">0</span>    A   <span class="token number">40</span>    male
+<span class="token number">1</span>    C   <span class="token number">61</span>  female<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>其中，<code>ascending=True</code>是升序，否则是降序</p>
+<h1 id="查看dataframe的大致情况"><a href="#查看dataframe的大致情况" class="headerlink" title="查看dataframe的大致情况"></a>查看dataframe的大致情况</h1><p><img src="https://img-blog.csdnimg.cn/7efe0643b18b43009fd6176f9f312f02.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQW5kcmV3TWU4MjEx,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h1 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h1><h2 id="matplotlib库"><a href="#matplotlib库" class="headerlink" title="matplotlib库"></a>matplotlib库</h2><p>导入模块：<code>import matplotlib.pyplot as plt</code></p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/matplotlib/matplotlib-tutorial.html">一个matplotlib更加全面的教程</a></p>
+<h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><p>创建画布：<code>fig = plt.figure()</code></p>
+<p>添加子图：<code>axes = fig.add_subplot(a, b, c)</code>:定义fig中一共有a行b列个子图，axes是这些图中的第c个。画统计图需要在子图里面进行。如果只想画一个图，就可以让a，b，c都等于1</p>
+<p>给子图添加横纵坐标标题：<code>axes.set_xlabel(&#39;x&#39;),axes.set_ylabel(&#39;y&#39;)</code></p>
+<p>给子图添加标题：<code>axes.set_title(&#39;title)</code></p>
+<p>显示画布（必须要加，不然显示不出来）：<code>plt.show()</code></p>
+<h3 id="使用条件判定"><a href="#使用条件判定" class="headerlink" title="使用条件判定"></a>使用条件判定</h3><p>单变量：直方图，散点图，饼图：x为变量，y为值的分布</p>
+<p>双变量：箱线图，散点图：x为变量，y为变量</p>
+<p>多变量：散点图，堆叠图：x为变量，y为变量，颜色，大小等也可以表示变量</p>
+<h3 id="添加线图"><a href="#添加线图" class="headerlink" title="添加线图"></a>添加线图</h3><p><code>axes.plot(X_data, Y_data)</code></p>
+<h3 id="添加直方图"><a href="#添加直方图" class="headerlink" title="添加直方图"></a>添加直方图</h3><p><code>axes.hist(data,bins=a)</code>,也就是将data分成a段</p>
+<h3 id="散点图"><a href="#散点图" class="headerlink" title="散点图"></a>散点图</h3><p><code>axes.scatter(x=data1,y=data2,s=size,c=color,alpha=0.5)</code>:以data1为横轴，data2为纵轴，点的大小为size，颜色为color，透明度为0.5画散点图</p>
+<h3 id="箱线图"><a href="#箱线图" class="headerlink" title="箱线图"></a>箱线图</h3><p><code>axes.boxplot([data1,data2],labels=[&#39;label1&#39;,&#39;label2&#39;])</code>:将数据分成data1和data2两组，分别赋予label1和label2这两个标签名</p>
+<h3 id="饼图"><a href="#饼图" class="headerlink" title="饼图"></a>饼图</h3><p><code>pies.pie(x=, labels=, autopct=,counterclock=)</code></p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+
+tips <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">"seaborndata/tips.csv"</span><span class="token punctuation">)</span>
+fig <span class="token operator">=</span> plt<span class="token punctuation">.</span>figure<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">14</span><span class="token punctuation">,</span> <span class="token number">14</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+axes1 <span class="token operator">=</span> fig<span class="token punctuation">.</span>add_subplot<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+axes1<span class="token punctuation">.</span>hist<span class="token punctuation">(</span>tips<span class="token punctuation">[</span><span class="token string">'total_bill'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> bins<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">)</span>
+axes1<span class="token punctuation">.</span>set_title<span class="token punctuation">(</span><span class="token string">"Histogram of Total Bill"</span><span class="token punctuation">)</span>
+axes1<span class="token punctuation">.</span>set_xlabel<span class="token punctuation">(</span><span class="token string">"Total Bill"</span><span class="token punctuation">)</span>
+axes1<span class="token punctuation">.</span>set_ylabel<span class="token punctuation">(</span><span class="token string">"Frequency"</span><span class="token punctuation">)</span>
+
+scatter_plot <span class="token operator">=</span> fig<span class="token punctuation">.</span>add_subplot<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+scatter_plot<span class="token punctuation">.</span>scatter<span class="token punctuation">(</span>tips<span class="token punctuation">[</span><span class="token string">'total_bill'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> tips<span class="token punctuation">[</span><span class="token string">'tip'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+scatter_plot<span class="token punctuation">.</span>set_title<span class="token punctuation">(</span><span class="token string">"Scatterplot of Total Bill VS Tip"</span><span class="token punctuation">)</span>
+scatter_plot<span class="token punctuation">.</span>set_xlabel<span class="token punctuation">(</span><span class="token string">"Total Bill"</span><span class="token punctuation">)</span>
+scatter_plot<span class="token punctuation">.</span>set_ylabel<span class="token punctuation">(</span><span class="token string">"Tip"</span><span class="token punctuation">)</span>
+
+box_plot <span class="token operator">=</span> fig<span class="token punctuation">.</span>add_subplot<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+box_plot<span class="token punctuation">.</span>boxplot<span class="token punctuation">(</span><span class="token punctuation">[</span>tips<span class="token punctuation">[</span>tips<span class="token punctuation">[</span><span class="token string">'sex'</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'Female'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'tip'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> tips<span class="token punctuation">[</span>tips<span class="token punctuation">[</span><span class="token string">'sex'</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'Male'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'tip'</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span> labels<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'Female'</span><span class="token punctuation">,</span> <span class="token string">'Male'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+box_plot<span class="token punctuation">.</span>set_xlabel<span class="token punctuation">(</span><span class="token string">'Sex'</span><span class="token punctuation">)</span>
+box_plot<span class="token punctuation">.</span>set_ylabel<span class="token punctuation">(</span><span class="token string">'Tip'</span><span class="token punctuation">)</span>
+box_plot<span class="token punctuation">.</span>set_title<span class="token punctuation">(</span><span class="token string">"Boxplot of Tips by Sex"</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">sexcode</span><span class="token punctuation">(</span>sex<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> sex <span class="token operator">==</span> <span class="token string">'Female'</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">2</span>
+    <span class="token keyword">return</span> <span class="token number">1</span>
+
+
+tips<span class="token punctuation">[</span><span class="token string">'sex_color'</span><span class="token punctuation">]</span> <span class="token operator">=</span> tips<span class="token punctuation">[</span><span class="token string">'sex'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span>sexcode<span class="token punctuation">)</span>
+scatter_plot_color <span class="token operator">=</span> fig<span class="token punctuation">.</span>add_subplot<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
+scatter_plot_color<span class="token punctuation">.</span>scatter<span class="token punctuation">(</span>x<span class="token operator">=</span>tips<span class="token punctuation">[</span><span class="token string">'total_bill'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token operator">=</span>tips<span class="token punctuation">[</span><span class="token string">'tip'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> s<span class="token operator">=</span>tips<span class="token punctuation">[</span><span class="token string">'size'</span><span class="token punctuation">]</span><span class="token operator">*</span><span class="token number">10</span><span class="token punctuation">,</span> c<span class="token operator">=</span>tips<span class="token punctuation">[</span><span class="token string">'sex_color'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> alpha<span class="token operator">=</span><span class="token number">0.5</span><span class="token punctuation">)</span>
+scatter_plot_color<span class="token punctuation">.</span>set_title<span class="token punctuation">(</span><span class="token string">'Total Bill with color'</span><span class="token punctuation">)</span>
+scatter_plot_color<span class="token punctuation">.</span>set_xlabel<span class="token punctuation">(</span><span class="token string">"Total Bill"</span><span class="token punctuation">)</span>
+scatter_plot_color<span class="token punctuation">.</span>set_ylabel<span class="token punctuation">(</span><span class="token string">"Tip"</span><span class="token punctuation">)</span>
+
+pies <span class="token operator">=</span> fig<span class="token punctuation">.</span>add_subplot<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>
+pies<span class="token punctuation">.</span>pie<span class="token punctuation">(</span>x<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">,</span> <span class="token number">3.4</span><span class="token punctuation">,</span> <span class="token number">14.4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> labels<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'sampleA'</span><span class="token punctuation">,</span> <span class="token string">'sampleB'</span><span class="token punctuation">,</span> <span class="token string">'sampleC'</span><span class="token punctuation">,</span> <span class="token string">'sampleD'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> autopct<span class="token operator">=</span><span class="token string">'%1.1f%%'</span><span class="token punctuation">,</span>counterclock<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+
+fig<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://img-blog.csdnimg.cn/421280af783046b8965ab5f1c162b48a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQW5kcmV3TWU4MjEx,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">AndrewLee</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/02/16/python%20pandas%E7%AC%94%E8%AE%B0/">http://example.com/2022/02/16/python%20pandas%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">AndrewLee</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/python/">python</a><a class="post-meta__tags" href="/tags/pandas/">pandas</a></div><div class="post_share"><div class="social-share" data-image="/img/kaggle2.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/02/16/python%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><img class="prev-cover" src="/img/sw.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">python 机器学习笔记</div></div></a></div><div class="next-post pull-right"><a href="/2022/02/16/Kaggle%E5%AE%9E%E6%88%98%EF%BC%9AStore%20Sales%20-%20Time%20Series%20Forecasting/"><img class="next-cover" src="/img/kaggle.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Kaggle实战：Store Sales - Time Series Forecasting</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/02/16/python 机器学习笔记/" title="python 机器学习笔记"><img class="cover" src="/img/sw.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-16</div><div class="title">python 机器学习笔记</div></div></a></div><div><a href="/2021/08/08/重拾python-进阶篇/" title="重拾python(进阶篇)"><img class="cover" src="/img/python2.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-08</div><div class="title">重拾python(进阶篇)</div></div></a></div><div><a href="/2021/07/14/重拾python-基础篇/" title="重拾python(基础篇)"><img class="cover" src="/img/python.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-14</div><div class="title">重拾python(基础篇)</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/tit.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">AndrewLee</div><div class="author-info__description">Gubba nub nub doo rahkah</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">32</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Andrew82106" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin=281512383&amp;website=www.oicqzone.com" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%8F%96"><span class="toc-number">1.</span> <span class="toc-text">数据读取</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Dataframe-%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-number">2.</span> <span class="toc-text">Dataframe 的创建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%AD%97%E5%85%B8%E5%88%9B%E5%BB%BA"><span class="toc-number">2.1.</span> <span class="toc-text">使用字典创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E8%A1%8C%E5%88%97%E5%92%8C%E6%95%B0%E6%8D%AE%E6%9D%A5%E5%88%9B%E5%BB%BA"><span class="toc-number">2.2.</span> <span class="toc-text">指定行列和数据来创建</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-number">3.</span> <span class="toc-text">数据类型转换</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%96%E5%BE%97dataframe%E5%85%B6%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="toc-number">4.</span> <span class="toc-text">取得dataframe其中的数据</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E8%8E%B7%E5%8F%96"><span class="toc-number">4.1.</span> <span class="toc-text">条件获取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#loc%EF%BC%8Ciloc"><span class="toc-number">4.2.</span> <span class="toc-text">loc，iloc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%87%E7%89%87-%E5%8F%AA%E8%83%BD%E8%8E%B7%E5%8F%96%E8%A1%8C"><span class="toc-number">4.3.</span> <span class="toc-text">切片(只能获取行)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#dataframe%E4%B8%AD%E6%95%B0%E6%8D%AE%E7%9A%84%E5%88%A0%E9%99%A4"><span class="toc-number">5.</span> <span class="toc-text">dataframe中数据的删除</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E8%A1%8C"><span class="toc-number">5.0.1.</span> <span class="toc-text">删除行</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Dataframe%E7%9A%84%E5%90%88%E5%B9%B6"><span class="toc-number">6.</span> <span class="toc-text">Dataframe的合并</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#concat%E5%87%BD%E6%95%B0"><span class="toc-number">6.1.</span> <span class="toc-text">concat函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#merge%E5%87%BD%E6%95%B0"><span class="toc-number">6.2.</span> <span class="toc-text">merge函数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Dataframe%E7%BC%BA%E5%A4%B1%E5%80%BC%E7%9A%84%E5%A1%AB%E5%85%85"><span class="toc-number">7.</span> <span class="toc-text">Dataframe缺失值的填充</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Dataframe%E6%8E%92%E5%BA%8F"><span class="toc-number">8.</span> <span class="toc-text">Dataframe排序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8Bdataframe%E7%9A%84%E5%A4%A7%E8%87%B4%E6%83%85%E5%86%B5"><span class="toc-number">9.</span> <span class="toc-text">查看dataframe的大致情况</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-number">10.</span> <span class="toc-text">可视化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#matplotlib%E5%BA%93"><span class="toc-number">10.1.</span> <span class="toc-text">matplotlib库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">10.1.1.</span> <span class="toc-text">基本操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%9D%A1%E4%BB%B6%E5%88%A4%E5%AE%9A"><span class="toc-number">10.1.2.</span> <span class="toc-text">使用条件判定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E7%BA%BF%E5%9B%BE"><span class="toc-number">10.1.3.</span> <span class="toc-text">添加线图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E7%9B%B4%E6%96%B9%E5%9B%BE"><span class="toc-number">10.1.4.</span> <span class="toc-text">添加直方图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%A3%E7%82%B9%E5%9B%BE"><span class="toc-number">10.1.5.</span> <span class="toc-text">散点图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%B1%E7%BA%BF%E5%9B%BE"><span class="toc-number">10.1.6.</span> <span class="toc-text">箱线图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A5%BC%E5%9B%BE"><span class="toc-number">10.1.7.</span> <span class="toc-text">饼图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-number">10.1.8.</span> <span class="toc-text">例子</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/02/16/python%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="python 机器学习笔记"><img src="/img/sw.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="python 机器学习笔记"/></a><div class="content"><a class="title" href="/2022/02/16/python%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="python 机器学习笔记">python 机器学习笔记</a><time datetime="2022-02-16T05:16:35.000Z" title="发表于 2022-02-16 13:16:35">2022-02-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/02/16/python%20pandas%E7%AC%94%E8%AE%B0/" title="python pandas笔记"><img src="/img/kaggle2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="python pandas笔记"/></a><div class="content"><a class="title" href="/2022/02/16/python%20pandas%E7%AC%94%E8%AE%B0/" title="python pandas笔记">python pandas笔记</a><time datetime="2022-02-16T05:11:35.000Z" title="发表于 2022-02-16 13:11:35">2022-02-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/02/16/Kaggle%E5%AE%9E%E6%88%98%EF%BC%9AStore%20Sales%20-%20Time%20Series%20Forecasting/" title="Kaggle实战：Store Sales - Time Series Forecasting"><img src="/img/kaggle.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Kaggle实战：Store Sales - Time Series Forecasting"/></a><div class="content"><a class="title" href="/2022/02/16/Kaggle%E5%AE%9E%E6%88%98%EF%BC%9AStore%20Sales%20-%20Time%20Series%20Forecasting/" title="Kaggle实战：Store Sales - Time Series Forecasting">Kaggle实战：Store Sales - Time Series Forecasting</a><time datetime="2022-02-16T04:43:35.000Z" title="发表于 2022-02-16 12:43:35">2022-02-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/14/CTF%E5%88%B7%E9%A2%98%E8%AE%B0/" title="CTF刷题记"><img src="/img/ctf.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CTF刷题记"/></a><div class="content"><a class="title" href="/2021/11/14/CTF%E5%88%B7%E9%A2%98%E8%AE%B0/" title="CTF刷题记">CTF刷题记</a><time datetime="2021-11-14T04:43:35.000Z" title="发表于 2021-11-14 12:43:35">2021-11-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/10/16/BLOG%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/" title="Blog搭建指南"><img src="/img/hexo.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Blog搭建指南"/></a><div class="content"><a class="title" href="/2021/10/16/BLOG%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/" title="Blog搭建指南">Blog搭建指南</a><time datetime="2021-10-16T11:39:08.000Z" title="发表于 2021-10-16 19:39:08">2021-10-16</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By AndrewLee</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    loader: {
+      source: {
+        '[tex]/amsCd': '[tex]/amscd'
+      }
+    },
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        addClass: [200,() => {
+          document.querySelectorAll('mjx-container:not([display=\'true\']').forEach( node => {
+            const target = node.parentNode
+            if (!target.classList.contains('has-jax')) {
+              target.classList.add('mathjax-overflow')
+            }
+          })
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script src="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/js/mouse_snow.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
