@@ -140,66 +140,66 @@
           document.documentElement.classList.remove('hide-aside')
         }
       }
-    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/tit.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">33</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> others</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/ctf.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">AndrewLee</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> others</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">CTF刷题记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-11-14T04:43:35.000Z" title="发表于 2021-11-14 12:43:35">2021-11-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-11-14T04:49:50.000Z" title="更新于 2021-11-14 12:49:50">2021-11-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/IT/">IT</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="CTF刷题记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="密码学"><a href="#密码学" class="headerlink" title="密码学"></a>密码学</h1><h2 id="BUUCTF-MD5"><a href="#BUUCTF-MD5" class="headerlink" title="BUUCTF MD5"></a>BUUCTF MD5</h2><p>给一段MD5加密后的32位码,使用<a target="_blank" rel="noopener" href="https://www.cmd5.com/%E5%B7%A5%E5%85%B7%E5%AF%B9%E8%BF%99%E6%AE%B5%E7%A0%81%E8%BF%9B%E8%A1%8C%E7%A0%B4%E8%A7%A3%E5%BE%97%E5%88%B0flag">https://www.cmd5.com/工具对这段码进行破解得到flag</a></p>
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/tit.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">33</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> others</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/ctf.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">AndrewLee</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> others</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">CTF刷题记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-11-14T04:43:35.000Z" title="发表于 2021-11-14 12:43:35">2021-11-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-11-14T04:49:50.000Z" title="更新于 2021-11-14 12:49:50">2021-11-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/IT/">IT</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="CTF刷题记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="密码学"><a href="#密码学" class="headerlink" title="密码学"></a>密码学</h1><h2 id="BUUCTF-MD5"><a href="#BUUCTF-MD5" class="headerlink" title="BUUCTF MD5"></a>BUUCTF MD5</h2><p>给一段MD5加密后的32位码,使用<a target="_blank" rel="noopener" href="https://www.cmd5.com/%E5%B7%A5%E5%85%B7%E5%AF%B9%E8%BF%99%E6%AE%B5%E7%A0%81%E8%BF%9B%E8%A1%8C%E7%A0%B4%E8%A7%A3%E5%BE%97%E5%88%B0flag">https://www.cmd5.com/工具对这段码进行破解得到flag</a></p>
 <blockquote>
 <p>md5加密后是16位或者32位的字符，由字母和数字组成，字母大小写统一；<br>理论上无法解密，除非暴力破解</p>
 </blockquote>
 <p>这里的这个网站就是一个使用暴力破解来解码的网站</p>
 <h2 id="BUUCTF-丢失的MD5-1"><a href="#BUUCTF-丢失的MD5-1" class="headerlink" title="BUUCTF 丢失的MD5 1"></a>BUUCTF 丢失的MD5 1</h2><p>给一段python源码如下:</p>
-<pre class="line-numbers language-py" data-language="py"><code class="language-py"><span class="token keyword">import</span> hashlib   
-<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">,</span><span class="token number">127</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">,</span><span class="token number">127</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">,</span><span class="token number">127</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            m<span class="token operator">=</span>hashlib<span class="token punctuation">.</span>md5<span class="token punctuation">(</span><span class="token punctuation">)</span>
-            m<span class="token punctuation">.</span>update<span class="token punctuation">(</span><span class="token string">'TASC'</span><span class="token operator">+</span><span class="token builtin">chr</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">'O3RJMV'</span><span class="token operator">+</span><span class="token builtin">chr</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">'WDJKX'</span><span class="token operator">+</span><span class="token builtin">chr</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">'ZM'</span><span class="token punctuation">)</span>
-            des<span class="token operator">=</span>m<span class="token punctuation">.</span>hexdigest<span class="token punctuation">(</span><span class="token punctuation">)</span>
-            <span class="token keyword">if</span> <span class="token string">'e9032'</span> <span class="token keyword">in</span> des <span class="token keyword">and</span> <span class="token string">'da'</span> <span class="token keyword">in</span> des <span class="token keyword">and</span> <span class="token string">'911513'</span> <span class="token keyword">in</span> des<span class="token punctuation">:</span>
-                <span class="token keyword">print</span> des<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-py" data-language="py"><code class="language-py">import hashlib   
+for i in range(32,127):
+    for j in range(32,127):
+        for k in range(32,127):
+            m&#x3D;hashlib.md5()
+            m.update(&#39;TASC&#39;+chr(i)+&#39;O3RJMV&#39;+chr(j)+&#39;WDJKX&#39;+chr(k)+&#39;ZM&#39;)
+            des&#x3D;m.hexdigest()
+            if &#39;e9032&#39; in des and &#39;da&#39; in des and &#39;911513&#39; in des:
+                print des<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>我这里显示update函数里面的参数需要加密,修改后是这样的:</p>
-<pre class="line-numbers language-py" data-language="py"><code class="language-py"><span class="token comment"># Andrew82106</span>
-<span class="token comment"># time: 2021/10/2 21:02</span>
-<span class="token keyword">import</span> hashlib
-<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">,</span><span class="token number">127</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">,</span><span class="token number">127</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">,</span><span class="token number">127</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            m<span class="token operator">=</span>hashlib<span class="token punctuation">.</span>md5<span class="token punctuation">(</span><span class="token punctuation">)</span>
-            m<span class="token punctuation">.</span>update<span class="token punctuation">(</span><span class="token string">'TASC'</span><span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'UTF-8'</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token builtin">chr</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'UTF-8'</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">'O3RJMV'</span><span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'UTF-8'</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token builtin">chr</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'UTF-8'</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">'WDJKX'</span><span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'UTF-8'</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token builtin">chr</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'UTF-8'</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">'ZM'</span><span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'UTF-8'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            des<span class="token operator">=</span>m<span class="token punctuation">.</span>hexdigest<span class="token punctuation">(</span><span class="token punctuation">)</span>
-            <span class="token keyword">if</span> <span class="token string">'e9032'</span> <span class="token keyword">in</span> des <span class="token keyword">and</span> <span class="token string">'da'</span> <span class="token keyword">in</span> des <span class="token keyword">and</span> <span class="token string">'911513'</span> <span class="token keyword">in</span> des<span class="token punctuation">:</span>
-                <span class="token keyword">print</span><span class="token punctuation">(</span>des<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-py" data-language="py"><code class="language-py"># Andrew82106
+# time: 2021&#x2F;10&#x2F;2 21:02
+import hashlib
+for i in range(32,127):
+    for j in range(32,127):
+        for k in range(32,127):
+            m&#x3D;hashlib.md5()
+            m.update(&#39;TASC&#39;.encode(&#39;UTF-8&#39;)+chr(i).encode(&#39;UTF-8&#39;)+&#39;O3RJMV&#39;.encode(&#39;UTF-8&#39;)+chr(j).encode(&#39;UTF-8&#39;)+&#39;WDJKX&#39;.encode(&#39;UTF-8&#39;)+chr(k).encode(&#39;UTF-8&#39;)+&#39;ZM&#39;.encode(&#39;UTF-8&#39;))
+            des&#x3D;m.hexdigest()
+            if &#39;e9032&#39; in des and &#39;da&#39; in des and &#39;911513&#39; in des:
+                print(des)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>运行后得到flag</p>
 <blockquote>
 <p>hashlib补充</p>
 </blockquote>
-<pre class="line-numbers language-py" data-language="py"><code class="language-py"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">import</span> hashlib
-<span class="token operator">>></span><span class="token operator">></span> m <span class="token operator">=</span> hashlib<span class="token punctuation">.</span>sha256<span class="token punctuation">(</span><span class="token punctuation">)</span>                <span class="token comment"># 通过构造函数获得一个hash对象</span>
-<span class="token operator">>></span><span class="token operator">></span> m<span class="token punctuation">.</span>update<span class="token punctuation">(</span><span class="token string">b'Nobody inspects'</span><span class="token punctuation">)</span>        <span class="token comment"># 使用hash对象的update方法添加消息</span>
-<span class="token operator">>></span><span class="token operator">></span> m<span class="token punctuation">.</span>update<span class="token punctuation">(</span><span class="token string">b' the spammish repetition'</span><span class="token punctuation">)</span>   <span class="token comment"># 同上</span>
-<span class="token operator">>></span><span class="token operator">></span> m<span class="token punctuation">.</span>digest<span class="token punctuation">(</span><span class="token punctuation">)</span>                  <span class="token comment"># 获得bytes类型的消息摘要</span>
-b'\x03\x1e\xdd<span class="token punctuation">&#125;</span>Ae\x15\x93\xc5\xfe\\\x00o\xa5u<span class="token operator">+</span><span class="token number">7</span>\xfd\xdf\xf7\xbcN\x84<span class="token punctuation">:</span>\xa6\xaf\x0c\x95\x0fK\x94\x06‘
-<span class="token operator">>></span><span class="token operator">></span> m<span class="token punctuation">.</span>hexdigest<span class="token punctuation">(</span><span class="token punctuation">)</span>                   <span class="token comment"># 获得16进制str类型的消息摘要</span>
-<span class="token string">'031edd7d41651593c5fe5c006fa5752b37fddff7bc4e843aa6af0c950f4b9406'</span>
-<span class="token operator">>></span><span class="token operator">></span> m<span class="token punctuation">.</span>digest_size                   <span class="token comment"># 查看消息摘要的位长</span>
-<span class="token number">32</span>  
-<span class="token operator">>></span><span class="token operator">></span> m<span class="token punctuation">.</span>block_size                    <span class="token comment"># 查看消息摘要的内部块大小</span>
-<span class="token number">64</span>
+<pre class="line-numbers language-py" data-language="py"><code class="language-py">&gt;&gt;&gt; import hashlib
+&gt;&gt;&gt; m &#x3D; hashlib.sha256()                # 通过构造函数获得一个hash对象
+&gt;&gt;&gt; m.update(b&#39;Nobody inspects&#39;)        # 使用hash对象的update方法添加消息
+&gt;&gt;&gt; m.update(b&#39; the spammish repetition&#39;)   # 同上
+&gt;&gt;&gt; m.digest()                  # 获得bytes类型的消息摘要
+b&#39;\x03\x1e\xdd&#125;Ae\x15\x93\xc5\xfe\\\x00o\xa5u+7\xfd\xdf\xf7\xbcN\x84:\xa6\xaf\x0c\x95\x0fK\x94\x06‘
+&gt;&gt;&gt; m.hexdigest()                   # 获得16进制str类型的消息摘要
+&#39;031edd7d41651593c5fe5c006fa5752b37fddff7bc4e843aa6af0c950f4b9406&#39;
+&gt;&gt;&gt; m.digest_size                   # 查看消息摘要的位长
+32  
+&gt;&gt;&gt; m.block_size                    # 查看消息摘要的内部块大小
+64
 更简洁的用法：
-<span class="token operator">>></span><span class="token operator">></span> hashlib<span class="token punctuation">.</span>sha224<span class="token punctuation">(</span><span class="token string">b"Nobody inspects the spammish repetition"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>hexdigest<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token string">'a4337bc45a8fc544c03f52dc550cd6e1e87021bc896588bd79e901e2'</span>
+&gt;&gt;&gt; hashlib.sha224(b&quot;Nobody inspects the spammish repetition&quot;).hexdigest()
+&#39;a4337bc45a8fc544c03f52dc550cd6e1e87021bc896588bd79e901e2&#39;
 
-<span class="token builtin">hash</span><span class="token punctuation">.</span>update<span class="token punctuation">(</span>arg<span class="token punctuation">)</span>
-更新<span class="token builtin">hash</span>对象。连续的调用该方法相当于连续的追加更新。例如m<span class="token punctuation">.</span>update<span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> m<span class="token punctuation">.</span>update<span class="token punctuation">(</span>b<span class="token punctuation">)</span>相当于m<span class="token punctuation">.</span>update<span class="token punctuation">(</span>a<span class="token operator">+</span>b<span class="token punctuation">)</span>。注意，当数据规模较大的时候，Python的GIL在此时会解锁，用于提高计算速度。
-一定要理解update<span class="token punctuation">(</span><span class="token punctuation">)</span>的作用，由于消息摘要是只针对当前状态产生的，所以每一次update后，再次计算hexdigest<span class="token punctuation">(</span><span class="token punctuation">)</span>的值都会不一样。
+hash.update(arg)
+更新hash对象。连续的调用该方法相当于连续的追加更新。例如m.update(a); m.update(b)相当于m.update(a+b)。注意，当数据规模较大的时候，Python的GIL在此时会解锁，用于提高计算速度。
+一定要理解update()的作用，由于消息摘要是只针对当前状态产生的，所以每一次update后，再次计算hexdigest()的值都会不一样。
  
-<span class="token builtin">hash</span><span class="token punctuation">.</span>digest<span class="token punctuation">(</span><span class="token punctuation">)</span>
-返回<span class="token builtin">bytes</span>格式的消息摘要
+hash.digest()
+返回bytes格式的消息摘要
  
-<span class="token builtin">hash</span><span class="token punctuation">.</span>hexdigest<span class="token punctuation">(</span><span class="token punctuation">)</span>
+hash.hexdigest()
 与digest方法类似，不过返回的是两倍长度的字符串对象，所有的字符都是十六进制的数字。通常用于邮件传输或非二进制环境中。通常我们比较摘要时，比较的就是这个值！
  
-<span class="token builtin">hash</span><span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span>
-返回一个<span class="token builtin">hash</span>对象的拷贝<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+hash.copy()
+返回一个hash对象的拷贝<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="BUUCTF-一眼就解密"><a href="#BUUCTF-一眼就解密" class="headerlink" title="BUUCTF 一眼就解密"></a>BUUCTF 一眼就解密</h2><p>出来的密码看到后面有个等号，想到是不是base64编码。一搞，果然是，就出来了。</p>
 <p>base64原理：<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/luguo3000/p/3940197.html">https://www.cnblogs.com/luguo3000/p/3940197.html</a></p>
@@ -215,96 +215,96 @@ b'\x03\x1e\xdd<span class="token punctuation">&#125;</span>Ae\x15\x93\xc5\xfe\\\
 <p>至于rabbit是个啥。。。不是很懂</p>
 <h2 id="BUUCTF篱笆墙的影子"><a href="#BUUCTF篱笆墙的影子" class="headerlink" title="BUUCTF篱笆墙的影子"></a>BUUCTF篱笆墙的影子</h2><p>题名就提示了是栅栏密码，那就对应的解密工具解密就ok了 </p>
 <h2 id="BUUCTF-RSA"><a href="#BUUCTF-RSA" class="headerlink" title="BUUCTF RSA"></a>BUUCTF RSA</h2><p>就是RSA加密的过程，写个脚本就ok（我一开始居然还把欧拉函数写错了。。。）</p>
-<pre class="line-numbers language-py" data-language="py"><code class="language-py"><span class="token keyword">def</span> <span class="token function">gcdInverse</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> gcd <span class="token operator">=</span> Math<span class="token punctuation">.</span>myExtGCD<span class="token punctuation">(</span>a<span class="token punctuation">,</span> n<span class="token punctuation">)</span>
-    t <span class="token operator">=</span> <span class="token number">0</span>
-    <span class="token keyword">while</span> x<span class="token operator">&lt;</span><span class="token number">0</span><span class="token punctuation">:</span>
-        t <span class="token operator">=</span> t <span class="token operator">+</span> <span class="token number">1</span>
-        x <span class="token operator">=</span> x <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span>n<span class="token operator">/</span>gcd<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">*</span>t
-        y <span class="token operator">=</span> y <span class="token operator">-</span> <span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span>a<span class="token operator">/</span>gcd<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">*</span>t
-    <span class="token keyword">return</span> x
+<pre class="line-numbers language-py" data-language="py"><code class="language-py">def gcdInverse(a, n):
+    x, y, gcd &#x3D; Math.myExtGCD(a, n)
+    t &#x3D; 0
+    while x&lt;0:
+        t &#x3D; t + 1
+        x &#x3D; x + (int(n&#x2F;gcd))*t
+        y &#x3D; y - (int(a&#x2F;gcd))*t
+    return x
 
-p <span class="token operator">=</span> <span class="token number">473398607161</span>
-q <span class="token operator">=</span> <span class="token number">4511491</span>
-phi <span class="token operator">=</span> <span class="token punctuation">(</span>p<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>q<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
-e <span class="token operator">=</span> <span class="token number">17</span>
-d <span class="token operator">=</span> gcdInverse<span class="token punctuation">(</span>e<span class="token punctuation">,</span> phi<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+p &#x3D; 473398607161
+q &#x3D; 4511491
+phi &#x3D; (p-1)*(q-1)
+e &#x3D; 17
+d &#x3D; gcdInverse(e, phi)
+print(d)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <h2 id="BUUCTF-Alice与Bob"><a href="#BUUCTF-Alice与Bob" class="headerlink" title="BUUCTF Alice与Bob"></a>BUUCTF Alice与Bob</h2><p> 大数分解，自己写了个脚本，然后发现 $O（n),n=98554799767$数太大了，就尝试用n=800000来碰运气，估计它的质因子中小的那个是不会超过800000的（其实是在$\sqrt n$内的），果然碰到了,然后网上找加密工具加密md5就OK</p>
-<pre class="line-numbers language-py" data-language="py"><code class="language-py"><span class="token keyword">def</span> <span class="token function">shai</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        isprime<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token boolean">True</span><span class="token punctuation">)</span>
-        <span class="token keyword">if</span> i <span class="token operator">%</span> <span class="token number">10000</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
-            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"cleaning&#123;0&#125;/&#123;1&#125;"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> n<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> i <span class="token operator">%</span> <span class="token number">10000</span><span class="token punctuation">:</span>
-           <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"shaiing&#123;0&#125;/&#123;1&#125;"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token keyword">if</span> isprime<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">:</span>
-            prime<span class="token punctuation">.</span>append<span class="token punctuation">(</span>i<span class="token punctuation">)</span>
-        <span class="token keyword">for</span> j <span class="token keyword">in</span> prime<span class="token punctuation">:</span>
-            <span class="token keyword">if</span> j <span class="token operator">*</span> i <span class="token operator">></span> n <span class="token keyword">or</span> j <span class="token operator">></span> i<span class="token punctuation">:</span>
-                <span class="token keyword">break</span>
-            isprime<span class="token punctuation">[</span>i <span class="token operator">*</span> j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span>
-x <span class="token operator">=</span> <span class="token number">98554799767</span>
-Math<span class="token punctuation">.</span>shai<span class="token punctuation">(</span><span class="token number">800000</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"finish shai"</span><span class="token punctuation">)</span>
-<span class="token keyword">for</span> i <span class="token keyword">in</span> prime<span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">">>>>>>prime:&#123;0&#125;"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">if</span> x <span class="token operator">%</span> i <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span>x<span class="token operator">/</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token keyword">break</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-py" data-language="py"><code class="language-py">def shai(n):
+    for i in range(1, n + 10, 1):
+        isprime.append(True)
+        if i % 10000 &#x3D;&#x3D; 0:
+            print(&quot;cleaning&#123;0&#125;&#x2F;&#123;1&#125;&quot;.format(i,n))
+    for i in range(2, n, 1):
+        if i % 10000:
+           print(&quot;shaiing&#123;0&#125;&#x2F;&#123;1&#125;&quot;.format(i,n))
+        if isprime[i]:
+            prime.append(i)
+        for j in prime:
+            if j * i &gt; n or j &gt; i:
+                break
+            isprime[i * j] &#x3D; False
+x &#x3D; 98554799767
+Math.shai(800000)
+print(&quot;finish shai&quot;)
+for i in prime:
+    print(&quot;&gt;&gt;&gt;&gt;&gt;&gt;prime:&#123;0&#125;&quot;.format(i))
+    if x % i &#x3D;&#x3D; 0:
+        print(i)
+        print(int(x&#x2F;i))
+        break<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="BUUCTF-rsarsa"><a href="#BUUCTF-rsarsa" class="headerlink" title="BUUCTF rsarsa"></a>BUUCTF rsarsa</h2><p>很基本的rsa题，对rsa的几个参数(p,q,n,phi(n),e,d)熟悉就可以做出来。根据p,q解出密钥d就可以加密了</p>
-<h2 id="ppsucctf-Ez-RSA"><a href="#ppsucctf-Ez-RSA" class="headerlink" title="ppsucctf Ez_RSA"></a>ppsucctf Ez_RSA</h2><pre class="line-numbers language-py" data-language="py"><code class="language-py"><span class="token keyword">from</span> secret <span class="token keyword">import</span> flag
-<span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Util<span class="token punctuation">.</span>number <span class="token keyword">import</span> <span class="token operator">*</span>
+<h2 id="ppsucctf-Ez-RSA"><a href="#ppsucctf-Ez-RSA" class="headerlink" title="ppsucctf Ez_RSA"></a>ppsucctf Ez_RSA</h2><pre class="line-numbers language-py" data-language="py"><code class="language-py">from secret import flag
+from Crypto.Util.number import *
 
-N <span class="token operator">=</span> <span class="token number">256</span>
-e <span class="token operator">=</span> <span class="token number">0x10001</span>
-m <span class="token operator">=</span> bytes_to_long<span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
-p <span class="token operator">=</span> getPrime<span class="token punctuation">(</span>N<span class="token punctuation">)</span>
-q <span class="token operator">=</span> getPrime<span class="token punctuation">(</span>N<span class="token punctuation">)</span>
-n <span class="token operator">=</span> p<span class="token operator">*</span>q
-c<span class="token operator">=</span><span class="token builtin">pow</span><span class="token punctuation">(</span>m<span class="token punctuation">,</span>e<span class="token punctuation">,</span>n<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"c ="</span><span class="token punctuation">,</span>c<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"n ="</span><span class="token punctuation">,</span>n<span class="token punctuation">)</span>
-<span class="token comment"># c = 3618024754787832879542402954935336544965695963410957633567630750730786939446769264496599427155251046600603185418150833996277337099069341533669469565571611</span>
-<span class="token comment"># n = 9383276537608078349535621522991738128187383466558445196747484046721007434310900666285073167852908643341834658220819934949482623747778117119750134628904301</span>
+N &#x3D; 256
+e &#x3D; 0x10001
+m &#x3D; bytes_to_long(flag)
+p &#x3D; getPrime(N)
+q &#x3D; getPrime(N)
+n &#x3D; p*q
+c&#x3D;pow(m,e,n)
+print(&quot;c &#x3D;&quot;,c)
+print(&quot;n &#x3D;&quot;,n)
+# c &#x3D; 3618024754787832879542402954935336544965695963410957633567630750730786939446769264496599427155251046600603185418150833996277337099069341533669469565571611
+# n &#x3D; 9383276537608078349535621522991738128187383466558445196747484046721007434310900666285073167852908643341834658220819934949482623747778117119750134628904301
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>需要大质数分解：<a target="_blank" rel="noopener" href="https://www.alpertron.com.ar/ECM.HTM">https://www.alpertron.com.ar/ECM.HTM</a></p>
 <p>分解后得到p和q，然后就是最基本的模版题了</p>
-<h2 id="ppsucctf-baby-RSA"><a href="#ppsucctf-baby-RSA" class="headerlink" title="ppsucctf baby_RSA"></a>ppsucctf baby_RSA</h2><pre class="line-numbers language-py" data-language="py"><code class="language-py">e<span class="token operator">=</span><span class="token number">0x10001</span>
-m<span class="token operator">=</span>bytes_to_long<span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
-c<span class="token operator">=</span><span class="token builtin">pow</span><span class="token punctuation">(</span>m<span class="token punctuation">,</span>e<span class="token punctuation">,</span>n<span class="token punctuation">)</span>
+<h2 id="ppsucctf-baby-RSA"><a href="#ppsucctf-baby-RSA" class="headerlink" title="ppsucctf baby_RSA"></a>ppsucctf baby_RSA</h2><pre class="line-numbers language-py" data-language="py"><code class="language-py">e&#x3D;0x10001
+m&#x3D;bytes_to_long(flag)
+c&#x3D;pow(m,e,n)
 
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"c ="</span><span class="token punctuation">,</span>c<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"n ="</span><span class="token punctuation">,</span>n<span class="token punctuation">)</span>
+print(&quot;c &#x3D;&quot;,c)
+print(&quot;n &#x3D;&quot;,n)
 
-<span class="token comment">#c = 3503555533881684856570031484769524680665517452904890440380565341537817578824459577068250072204182945458907027431274552419287247174636601487755606335172398103543874403919273506393972459591151327824496303370938563387294059</span>
-<span class="token comment">#n = 4711930799906184953162487834760260422020574773409675520188634839616415335845034221205289256705544681972439104097777157991804380284218315038719444943990492579030720635990538452312528339864352999310398481791730017201031090</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+#c &#x3D; 3503555533881684856570031484769524680665517452904890440380565341537817578824459577068250072204182945458907027431274552419287247174636601487755606335172398103543874403919273506393972459591151327824496303370938563387294059
+#n &#x3D; 4711930799906184953162487834760260422020574773409675520188634839616415335845034221205289256705544681972439104097777157991804380284218315038719444943990492579030720635990538452312528339864352999310398481791730017201031090<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <p>分解n，得到n是由小于等于541的质数相乘得到的，因此可以有计算欧拉函数的式子：</p>
 <p>$\phi(n)=\prod_{i=1}^t （prime(i)-1）$</p>
 <p>然后就可以根据题目条件算出d来解密了 </p>
 <h2 id="BUUCTF-RSA1"><a href="#BUUCTF-RSA1" class="headerlink" title="BUUCTF RSA1"></a>BUUCTF RSA1</h2><p>出现了dp，dq这两个东西，不知道什么意思。先跑个脚本：</p>
-<pre class="line-numbers language-py" data-language="py"><code class="language-py"><span class="token keyword">def</span> <span class="token function">dpdq</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">,</span> dq<span class="token punctuation">,</span> dp<span class="token punctuation">,</span> c<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    i_ <span class="token operator">=</span> invert<span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">)</span>  <span class="token comment"># I为p(mod q)的逆元，即p*I = 1(mod q)</span>
-    mp <span class="token operator">=</span> <span class="token builtin">pow</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> dp<span class="token punctuation">,</span> p<span class="token punctuation">)</span>  <span class="token comment"># 计算mp = c^dp % p</span>
-    mq <span class="token operator">=</span> <span class="token builtin">pow</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> dq<span class="token punctuation">,</span> q<span class="token punctuation">)</span>  <span class="token comment"># 计算mq = c^dq % q</span>
+<pre class="line-numbers language-py" data-language="py"><code class="language-py">def dpdq(p, q, dq, dp, c, n):
+    i_ &#x3D; invert(p, q)  # I为p(mod q)的逆元，即p*I &#x3D; 1(mod q)
+    mp &#x3D; pow(c, dp, p)  # 计算mp &#x3D; c^dp % p
+    mq &#x3D; pow(c, dq, q)  # 计算mq &#x3D; c^dq % q
 
-    m <span class="token operator">=</span> <span class="token punctuation">(</span>mp <span class="token operator">+</span> <span class="token punctuation">(</span>i_ <span class="token operator">*</span> <span class="token punctuation">(</span>mq <span class="token operator">-</span> mp<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> p<span class="token punctuation">)</span> <span class="token operator">%</span> n  <span class="token comment"># 明文求解公式</span>
-    m <span class="token operator">=</span> <span class="token builtin">hex</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span>  <span class="token comment"># 转十六进制数据</span>
+    m &#x3D; (mp + (i_ * (mq - mp)) * p) % n  # 明文求解公式
+    m &#x3D; hex(m)[2:]  # 转十六进制数据
 
-    flags <span class="token operator">=</span> <span class="token string">''</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span> <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        flags <span class="token operator">+=</span> <span class="token builtin">chr</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span>m<span class="token punctuation">[</span>i <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    flags &#x3D; &#39;&#39;
+    for i in range(len(m) &#x2F;&#x2F; 2):
+        flags +&#x3D; chr(int(m[i * 2:(i + 1) * 2], 16))
 
-    <span class="token keyword">return</span> flags
-flag <span class="token operator">=</span> dpdq<span class="token punctuation">(</span>p<span class="token punctuation">,</span>q<span class="token punctuation">,</span>dq<span class="token punctuation">,</span>dp<span class="token punctuation">,</span>c<span class="token punctuation">,</span>p<span class="token operator">*</span>q<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    return flags
+flag &#x3D; dpdq(p,q,dq,dp,c,p*q)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p> 然后出flag。<br>原理：</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xiao_han_a/article/details/118516038?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_title~default-0.no_search_link&amp;spm=1001.2101.3001.4242.1">https://blog.csdn.net/xiao_han_a/article/details/118516038?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_title~default-0.no_search_link&amp;spm=1001.2101.3001.4242.1</a></p>
