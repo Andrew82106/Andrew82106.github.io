@@ -202,27 +202,27 @@
 </li>
 </ul>
 <h1 id="数据清洗和特征工程"><a href="#数据清洗和特征工程" class="headerlink" title="数据清洗和特征工程"></a>数据清洗和特征工程</h1><p>先读入数据：</p>
-<pre class="line-numbers language-py" data-language="py"><code class="language-py"><span class="token keyword">def</span> <span class="token function">ReadInData</span><span class="token punctuation">(</span><span class="token builtin">file</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    path <span class="token operator">=</span> <span class="token string">'store-sales-time-series-forecasting/'</span>
-    <span class="token keyword">return</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span>path <span class="token operator">+</span> <span class="token builtin">file</span><span class="token punctuation">)</span>
+<pre class="line-numbers language-py" data-language="py"><code class="language-py">def ReadInData(file):
+    path &#x3D; &#39;store-sales-time-series-forecasting&#x2F;&#39;
+    return pd.read_csv(path + file)
 
-df_holidays_events <span class="token operator">=</span> ReadInData<span class="token punctuation">(</span><span class="token string">'holidays_events.csv'</span><span class="token punctuation">)</span>
-df_oil <span class="token operator">=</span> ReadInData<span class="token punctuation">(</span><span class="token string">'oil.csv'</span><span class="token punctuation">)</span>
-df_stores <span class="token operator">=</span> ReadInData<span class="token punctuation">(</span><span class="token string">'stores.csv'</span><span class="token punctuation">)</span>
-df_train <span class="token operator">=</span> ReadInData<span class="token punctuation">(</span><span class="token string">'train.csv'</span><span class="token punctuation">)</span>
-df_test <span class="token operator">=</span> ReadInData<span class="token punctuation">(</span><span class="token string">"test.csv"</span><span class="token punctuation">)</span>
-df_transactions <span class="token operator">=</span> ReadInData<span class="token punctuation">(</span><span class="token string">'transactions.csv'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+df_holidays_events &#x3D; ReadInData(&#39;holidays_events.csv&#39;)
+df_oil &#x3D; ReadInData(&#39;oil.csv&#39;)
+df_stores &#x3D; ReadInData(&#39;stores.csv&#39;)
+df_train &#x3D; ReadInData(&#39;train.csv&#39;)
+df_test &#x3D; ReadInData(&quot;test.csv&quot;)
+df_transactions &#x3D; ReadInData(&#39;transactions.csv&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="缺失值处理"><a href="#缺失值处理" class="headerlink" title="缺失值处理"></a>缺失值处理</h2><p>oil.csv中dcoilwtico属性下有一部分缺失值，观察油价图形:</p>
-<pre class="line-numbers language-py" data-language="py"><code class="language-py"><span class="token keyword">def</span> <span class="token function">DrawLine</span><span class="token punctuation">(</span>X_data<span class="token punctuation">,</span> Y_data<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    fig <span class="token operator">=</span> plt<span class="token punctuation">.</span>figure<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    axes <span class="token operator">=</span> fig<span class="token punctuation">.</span>add_subplot<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
-    axes<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>X_data<span class="token punctuation">,</span> Y_data<span class="token punctuation">)</span>
-    plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
-DrawLine<span class="token punctuation">(</span>df_oil<span class="token punctuation">[</span><span class="token string">'date'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> df_oil<span class="token punctuation">[</span><span class="token string">'dcoilwtico'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-py" data-language="py"><code class="language-py">def DrawLine(X_data, Y_data):
+    fig &#x3D; plt.figure()
+    axes &#x3D; fig.add_subplot(1, 1, 1)
+    axes.plot(X_data, Y_data)
+    plt.show()
+DrawLine(df_oil[&#39;date&#39;], df_oil[&#39;dcoilwtico&#39;])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>发现油价变动较大<br><img src="https://img-blog.csdnimg.cn/9d8a1029a99c44ffbfe3110b5201b217.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQW5kcmV3TWU4MjEx,size_16,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>因此使用平均值来填充意义不大，因此使用前一个数据填充:</p>
-<pre class="line-numbers language-py" data-language="py"><code class="language-py">df_oil_withoutNA <span class="token operator">=</span> df_oil<span class="token punctuation">.</span>fillna<span class="token punctuation">(</span>method<span class="token operator">=</span><span class="token string">"pad"</span><span class="token punctuation">)</span>
-DrawLine<span class="token punctuation">(</span>df_oil_withoutNA<span class="token punctuation">[</span><span class="token string">'date'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> df_oil_withoutNA<span class="token punctuation">[</span><span class="token string">'dcoilwtico'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-py" data-language="py"><code class="language-py">df_oil_withoutNA &#x3D; df_oil.fillna(method&#x3D;&quot;pad&quot;)
+DrawLine(df_oil_withoutNA[&#39;date&#39;], df_oil_withoutNA[&#39;dcoilwtico&#39;])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p><img src="https://img-blog.csdnimg.cn/84134744ba7d4af6943cbd0f80195d19.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQW5kcmV3TWU4MjEx,size_17,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
 <h2 id="特征整合"><a href="#特征整合" class="headerlink" title="特征整合"></a>特征整合</h2><p>观察发现在其他的文件里面有一些可以整合到训练集(train.csv)和测试集(test.csv)里面的特征:</p>
