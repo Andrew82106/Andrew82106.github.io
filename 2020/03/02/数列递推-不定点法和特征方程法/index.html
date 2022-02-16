@@ -1,0 +1,322 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>数列递推:不定点法和特征方程法 | AndrewLee</title><meta name="keywords" content="数学"><meta name="author" content="AndrewLee"><meta name="copyright" content="AndrewLee"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="数列递推形式不动点法使用条件分式线性:$a_{n+1}&#x3D;\frac{pa_n+q}{ra_n+s}$ 内容 不动点:对于如上这个没有初值的数列,当数列中任意一个数取到某一个值$\lambda$的时候,这个数列的每一项都相等,也就是$a_{n+1}&#x3D;a_n$,这个时候我们把这个$\lambda$叫做不动点  当不动点$\lambda_1!&#x3D;\lambda_2$时,数列$\frac{a_{n}-\la">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数列递推:不定点法和特征方程法">
+<meta property="og:url" content="http://example.com/2020/03/02/%E6%95%B0%E5%88%97%E9%80%92%E6%8E%A8-%E4%B8%8D%E5%AE%9A%E7%82%B9%E6%B3%95%E5%92%8C%E7%89%B9%E5%BE%81%E6%96%B9%E7%A8%8B%E6%B3%95/index.html">
+<meta property="og:site_name" content="AndrewLee">
+<meta property="og:description" content="数列递推形式不动点法使用条件分式线性:$a_{n+1}&#x3D;\frac{pa_n+q}{ra_n+s}$ 内容 不动点:对于如上这个没有初值的数列,当数列中任意一个数取到某一个值$\lambda$的时候,这个数列的每一项都相等,也就是$a_{n+1}&#x3D;a_n$,这个时候我们把这个$\lambda$叫做不动点  当不动点$\lambda_1!&#x3D;\lambda_2$时,数列$\frac{a_{n}-\la">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic_source%2F1f%2F78%2Fce%2F1f78cee1a949eb88f2880f0def761734.jpg&refer=http%3A%2F%2Fup.enterdesk.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638695731&t=d11724b849951ab98f2460997a237878">
+<meta property="article:published_time" content="2020-03-02T12:21:06.000Z">
+<meta property="article:modified_time" content="2021-07-04T09:22:16.000Z">
+<meta property="article:author" content="AndrewLee">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic_source%2F1f%2F78%2Fce%2F1f78cee1a949eb88f2880f0def761734.jpg&refer=http%3A%2F%2Fup.enterdesk.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638695731&t=d11724b849951ab98f2460997a237878"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2020/03/02/%E6%95%B0%E5%88%97%E9%80%92%E6%8E%A8-%E4%B8%8D%E5%AE%9A%E7%82%B9%E6%B3%95%E5%92%8C%E7%89%B9%E5%BE%81%E6%96%B9%E7%A8%8B%E6%B3%95/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '数列递推:不定点法和特征方程法',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-07-04 17:22:16'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/tit.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">29</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> others</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic_source%2F1f%2F78%2Fce%2F1f78cee1a949eb88f2880f0def761734.jpg&amp;refer=http%3A%2F%2Fup.enterdesk.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638695731&amp;t=d11724b849951ab98f2460997a237878')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">AndrewLee</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> others</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">数列递推:不定点法和特征方程法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-03-02T12:21:06.000Z" title="发表于 2020-03-02 20:21:06">2020-03-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-07-04T09:22:16.000Z" title="更新于 2021-07-04 17:22:16">2021-07-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%A6/">数学</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%A6/%E6%95%B0%E5%88%97/">数列</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="数列递推:不定点法和特征方程法"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="数列递推形式"><a href="#数列递推形式" class="headerlink" title="数列递推形式"></a>数列递推形式</h1><h2 id="不动点法"><a href="#不动点法" class="headerlink" title="不动点法"></a>不动点法</h2><h3 id="使用条件"><a href="#使用条件" class="headerlink" title="使用条件"></a>使用条件</h3><p>分式线性:$a_{n+1}=\frac{pa_n+q}{ra_n+s}$</p>
+<h3 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h3><ul>
+<li><p>不动点:对于如上这个没有初值的数列,当数列中任意一个数取到某一个值$\lambda$的时候,这个数列的每一项都相等,也就是$a_{n+1}=a_n$,这个时候我们把这个$\lambda$叫做不动点</p>
+</li>
+<li><p>当不动点$\lambda_1!=\lambda_2$时,数列$\frac{a_{n}-\lambda_1}{a_{n}-\lambda_2}$是等比数列</p>
+</li>
+<li><p>当$\lambda_1=\lambda_2$时,数列$b_n=\frac{1}{a_n-\lambda}$是等差数列</p>
+</li>
+</ul>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><ul>
+<li>核心思想:利用不动点的特殊性质将上式转为等比或等差数列</li>
+</ul>
+<ul>
+<li>推导过程</li>
+</ul>
+<p>假设出我们的参数$\lambda$,接下来我们会证明这样一个性质:</p>
+<blockquote>
+<p>$\lambda$满足<br>$$a_{n+1}-\lambda=\frac{(p-\lambda r)(a_n-\lambda)}{ra_n+s}$$</p>
+</blockquote>
+<p><strong>证明:</strong></p>
+<p>将上式左右两边都减去这个参数得到:</p>
+<p>$$a_{n+1}-\lambda=\frac{pa_n+q}{ra_n+s}-\lambda=\frac{pa_n+q-\lambda ra_n-\lambda s}{ra_n+s}=\frac{(p-\lambda r)a_n+q-\lambda s}{ra_n+s}$$</p>
+<p>如果想要上式的等号左边和等号右边的分子成</p>
+<p>$$a_{n+1}-\lambda=\frac{(p-\lambda r)(a_n-\lambda)}{ra_n+s}$$</p>
+<p>的形式,那么就有关系:</p>
+<p>$$(q-\lambda s)=(p-\lambda r)(-\lambda)$$</p>
+<p>(这个式子的含义是$(q-\lambda s)$是$(-\lambda)$的$(p-\lambda r)$倍,带回式子中发现,如果有$\lambda$满足这个条件,一定可以化成上面我们想象的那种形式)</p>
+<p>也就是</p>
+<p>$$q-\lambda s=\lambda ^2 r-p\lambda$$</p>
+<p>$$r\lambda^2+(s-p)\lambda-q=0$$</p>
+<p>而根据不动点的定义有:</p>
+<p>$$\lambda=\frac{p\lambda+q}{r\lambda+s}$$</p>
+<p>$$\lambda(\lambda+s)=p\lambda+q$$</p>
+<p>$$r\lambda ^2+s\lambda-p\lambda-q=0$$</p>
+<p>我们发现上面的两个方程是一样的,因此不动点$\lambda$就有</p>
+<p>$$\lambda=\frac{p\lambda+q}{r\lambda +s}&lt;=&gt;(q-\lambda s)=(p-\lambda r)(-\lambda)$$</p>
+<p>所以向$a_{n+1}-\lambda=\frac{(p-\lambda r)a_n+q-\lambda s}{ra_n+s}$代入$(q-\lambda s)=(p-\lambda r)(-\lambda)$得</p>
+<p>$$a_{n+1}-\lambda=\frac{(p-\lambda r)(a_n-\lambda)}{ra_n+s}$$</p>
+<p><strong>证毕</strong></p>
+<p>从上面的证明我们可以看出,不动点$\lambda$可能有两种情况:有两个解/一个解(在复数范围内),那么我们接下来就会证明如下结论:</p>
+<blockquote>
+<p>$\lambda_1!=\lambda_2$时,数列$\frac{a_{n}-\lambda_1}{a_{n}-\lambda_2}$是等比数列<br>$\lambda_1=\lambda_2$时,数列$b_n=\frac{1}{a_n-\lambda}$是等差数列</p>
+</blockquote>
+<ol>
+<li>当$\lambda_1!=\lambda_2$</li>
+</ol>
+<p>我们将他们分别带回我们开始的$a_{n+1}-\lambda=\frac{(p-\lambda r)(a_n-\lambda)}{ra_n+s}$中有:</p>
+<p>$$a_{n+1}-\lambda_1=\frac{(p-\lambda_1 r)(a_n-\lambda_1)}{ra_n+s}\a_{n+1}-\lambda_2=\frac{(p-\lambda_2 r)(a_n-\lambda_2)}{ra_n+s}$$</p>
+<p>两式相除得到:</p>
+<p>$$\frac{a_{n+1}-\lambda_1}{a_{n+1}-\lambda_2}=\frac{(p-\lambda_1 r)(a_n-\lambda_1)}{(p-\lambda_2 r)(a_n-\lambda_2)}$$</p>
+<p>$$\frac{a_{n+1}-\lambda_1}{a_{n+1}-\lambda_2}=\frac{(p-\lambda_1 r)}{(p-\lambda_2 r)}\times \frac{(a_n-\lambda_1)}{(a_n-\lambda_2)}$$</p>
+<p>因此:</p>
+<p>$$\frac{a_{n}-\lambda_1}{a_{n}-\lambda_2}=[\frac{(p-\lambda_1 r)}{(p-\lambda_2 r)}]^{n-1}\frac{(a_1-\lambda_1)}{(a_1-\lambda_2)}$$</p>
+<p>于是就可以反过来解出原来的通项公式:</p>
+<p>令$t=[\frac{(p-\lambda_1 r)}{(p-\lambda_2 r)}]^{n-1}\frac{(a_1-\lambda_1)}{(a_1-\lambda_2)}$</p>
+<p>$$a_n=\frac{\lambda_1-t\lambda_2}{1-t}$$</p>
+<ol start="2">
+<li>当$\lambda_1=\lambda_2=\lambda$</li>
+</ol>
+<p>则有:</p>
+<p>$$a_{n+1}-\lambda=\frac{(p-\lambda r)(a_n-\lambda)}{ra_n+s}$$</p>
+<p>$$\frac{1}{a_{n+1}-\lambda}=\frac{ra_n+s}{(p-\lambda r)(a_n-\lambda)}$$</p>
+<p>令$b_n=\frac{1}{a_n-\lambda}$,则$a_n=\frac{1}{b_n}+\lambda$</p>
+<p>$$b_{n+1}=\frac{ra_n+s}{(p-\lambda r)}b_n=\frac{r(\frac{1}{b_n}+\lambda)+s}{(p-\lambda r)}b_n=\frac{r+r\lambda b_n+sb_n}{(p-\lambda r)}\=\frac{r}{(p-\lambda r)}+\frac{r\lambda +s}{p-\lambda r}b_n$$</p>
+<p>因为$\lambda$是方程$r\lambda^2+(s-p)\lambda-q=0$的唯一根,那么$2\lambda=\frac{(p-s)}{r},\lambda=\frac{p-s}{2r}$</p>
+<p>代入$b_{n+1}$中得到</p>
+<p>$$b_{n+1}=\frac{r}{p-\frac{p-s}{2}}+b_n=\frac{2r}{p+s}+b_n$$</p>
+<p>因此$b_n$是等差数列</p>
+<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><blockquote>
+<p>设无穷项数列 $a_n$ 满足 $a_{n+1}a_n+3a_{n+1}+a_n+4=0$,若$a_{2016}$是$a_n$的最小项,则$a_1$的取值范围是?</p>
+</blockquote>
+<p>转化为分式形式:$a_{n+1}=-\frac{a_n+4}{a_n+3}$</p>
+<p>求出不动点$\lambda=-2$</p>
+<p>构造等差数列:</p>
+<p>$$a_{n+1}+2=-\frac{a_n+4}{a_n+3}+2=\frac{a_n+2}{a_n+3}$$</p>
+<p>$$\frac{1}{a_{n+1}+2}=\frac{a_n+3}{a_n+2}=\frac{1}{a_n+2}+1$$</p>
+<p>于是就有</p>
+<p>$$\frac{1}{a_n+2}=\frac{1}{a_1+2}+n-1$$</p>
+<p>观察此式,其中如果$a_1+2&gt;0$,那么$a_n$将是一个恒大于零的递减数列,不存在某一项为最小值.但如果$a_1+2&lt;0$,那么$\frac{1}{a_n+2}$是一个递增数列.如果用反比例函数来解释这个东西就是这样:</p>
+<p><img src="https://img-blog.csdnimg.cn/20200302144614540.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkwNzgwMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>(图稍微画的有点问题,但影响不大)</p>
+<p>其中$\frac{1}{a_1+2}&lt;\frac{1}{a_2+2}&lt;…&lt;\frac{1}{a_k+2}&lt;0&lt;\frac{1}{a_{k+1}+2}&lt;\frac{1}{a_{k+2}+2}…$</p>
+<p>那么我们不难发现,此时数列$a_n$的最小值就对应着$\frac{1}{a_n+2}$的最后一个负数值</p>
+<p>因此:</p>
+<p>$$\begin{cases}\frac{1}{a_{2016}+2}&lt;0\\frac{1}{a_{2017}+2}&gt;0\end{cases}$$</p>
+<p>解得$a_1\in(-\frac{4031}{2015},-\frac{4033}{2016})$</p>
+<blockquote>
+<p>数列$x_n$满足$x_1=1,x_{n+1}=\frac{3+3x_n}{3+x_n}$,则数列的极限是?</p>
+</blockquote>
+<p><strong>方法一:无脑暴算</strong></p>
+<p>首先一波暴算得到不动点为$\lambda_1=-\sqrt 3,\lambda_2=\sqrt 3$,然后求得通项公式为$x_n=\sqrt 3[1-\frac{2}{(2-\sqrt 3)^n+1}]$,显然,$\lim_{n\to\infty}\sqrt 3[1-\frac{2}{(2-\sqrt 3)^n+1}]=\sqrt3$,得到答案</p>
+<p><strong>方法二:利用数列极限的性质</strong></p>
+<p>对于一个一阶递推数列$a_{n+1}=f(a_n)$,如果有$\lim_{n\to\infty}a_{n}=L$</p>
+<p>则$\lim_{n\to\infty}f(a_n)=a_{n+1}=f(L)$</p>
+<p>而$\lim_{n\to\infty}a_{n+1}=L$</p>
+<p>所以$f(L)=L$,也就是说,如果数列有极限,那么极限的值一定是不动点</p>
+<p>因此上面的方法中,解出了不动点为$±\sqrt3$的时候,因为$x_1=1$,那么数列恒为正,因此极限一定是大于0的,也就是$\sqrt3$</p>
+<h2 id="特征方程"><a href="#特征方程" class="headerlink" title="特征方程"></a>特征方程</h2><h3 id="使用条件-1"><a href="#使用条件-1" class="headerlink" title="使用条件"></a>使用条件</h3><p>二阶线性递推式:$a_{n+2}=pa_{n+1}+qa_n,p,q\in R$</p>
+<h3 id="内容-1"><a href="#内容-1" class="headerlink" title="内容"></a>内容</h3><p>将$a_{n+2}$换成$x^2$,$a_{n+1}$换成$x$,$a_n$换成1,得到方程$x^2=px+q$,这个方程就是递推式的特征方程,其解就是特征根.</p>
+<ul>
+<li>如果有两个特征根$x_1,x_2$,那么就有$\frac{a_{n+1}-x_1a_n}{a_{n+1}-x_2a_n}$是等比数列</li>
+</ul>
+<ul>
+<li>如果是两个重根,那么$a_{n+1}-xa_{n}$是等比数列</li>
+</ul>
+<p>可以利用此方法将二阶递推数列$a_{n}=f(a_{n-1},a_{n-2})$化为一阶递推数列$a_n=f(a_{n-1})$,达到降阶从而简化问题的目的</p>
+<h3 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h3><p>$a_{n+2}=pa_{n+1}+qa_n$中左右两边同时减去$xa_{n+1}$得到</p>
+<p>$$a_{n+2}-xa_{n+1}=pa_{n+1}+qa_n-xa_{n+1}$$</p>
+<p>$$a_{n+2}-xa_{n+1}=(p-x)a_{n+1}+qa_n$$</p>
+<p>这里操作的指导思想和前面的不动点类似,也就是如果可以化成</p>
+<p>$$a_{n+2}-xa_{n+1}=(p-x)(a_{n+1}-xa_n)$$</p>
+<p>的话会有利于研究</p>
+<p>于是有关系式</p>
+<p>$$1:-x=p-x:q$$</p>
+<p>$$q=x^2-px$$</p>
+<p>$$x^2-px-q=0$$</p>
+<p>说来也怪,这个式子就是刚刚替换掉$a_{n+2},a_{n+1},a_n$的结果,因此我们把这个式子叫做特征方程</p>
+<p>接下来对x的个数分类讨论:</p>
+<p>首先,由于韦达定理,$x_1+x_2=p$</p>
+<ol>
+<li>$x_1!=x_2$</li>
+</ol>
+<p>$$a_{n+2}-x_1a_{n+1}=x_2(a_{n+1}-x_1a_n)$$</p>
+<p>$$a_{n+2}-x_2a_{n+1}=x_1(a_{n+1}-x_2a_n)$$</p>
+<p>两式相除得到</p>
+<p>$$\frac{a_{n+1}-x_1a_{n}}{a_{n+1}-x_2a_{n}}=\frac{x_2}{x_1}\frac{a_n-x_1a_{n-1}}{a_n-x_2a_{n-1}}$$</p>
+<p>于是$\frac{a_{n+1}-x_1a_n}{a_{n+1}-x_2a_n}$是等比数列</p>
+<ol start="2">
+<li>$x_1=x_2=x$</li>
+</ol>
+<p>$$a_{n+2}-xa_{n+1}=x(a_{n+1}-xa_n)$$</p>
+<p>因此$a_{n+1}-xa_{n}$是等比数列</p>
+<h3 id="例题-1"><a href="#例题-1" class="headerlink" title="例题"></a>例题</h3><p>(<del>偷个懒</del>)</p>
+<p><img src="https://img-blog.csdnimg.cn/20200302202015310.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkwNzgwMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">AndrewLee</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2020/03/02/%E6%95%B0%E5%88%97%E9%80%92%E6%8E%A8-%E4%B8%8D%E5%AE%9A%E7%82%B9%E6%B3%95%E5%92%8C%E7%89%B9%E5%BE%81%E6%96%B9%E7%A8%8B%E6%B3%95/">http://example.com/2020/03/02/%E6%95%B0%E5%88%97%E9%80%92%E6%8E%A8-%E4%B8%8D%E5%AE%9A%E7%82%B9%E6%B3%95%E5%92%8C%E7%89%B9%E5%BE%81%E6%96%B9%E7%A8%8B%E6%B3%95/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">AndrewLee</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%B0%E5%AD%A6/">数学</a></div><div class="post_share"><div class="social-share" data-image="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic_source%2F1f%2F78%2Fce%2F1f78cee1a949eb88f2880f0def761734.jpg&amp;refer=http%3A%2F%2Fup.enterdesk.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638695731&amp;t=d11724b849951ab98f2460997a237878" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/03/02/%E5%A4%8D%E6%95%B0/"><img class="prev-cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2017-10-19%2F59e85568dcb46.jpg%3Fdown&amp;refer=http%3A%2F%2Fpic1.win4000.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638695731&amp;t=751aef03ff04665aafa66556eb677f73" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">复数</div></div></a></div><div class="next-post pull-right"><a href="/2020/02/23/%E6%99%AE%E6%9E%97%E6%96%AF%E9%A1%BF%E5%BE%AE%E7%A7%AF%E5%88%86%E8%AF%BB%E6%9C%AC%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0-%E7%BB%AD2/"><img class="next-cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201707%2F04%2F20170704184913_GNYCE.thumb.700_0.jpeg&amp;refer=http%3A%2F%2Fb-ssl.duitang.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638696115&amp;t=a486b1dc327c953b973545deccf5835a" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">普林斯顿微积分读本阅读笔记-续2</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/03/02/复数/" title="复数"><img class="cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2017-10-19%2F59e85568dcb46.jpg%3Fdown&refer=http%3A%2F%2Fpic1.win4000.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638695731&t=751aef03ff04665aafa66556eb677f73" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-02</div><div class="title">复数</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/tit.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">AndrewLee</div><div class="author-info__description">Gubba nub nub doo rahkah</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">29</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Andrew82106" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin=281512383&amp;website=www.oicqzone.com" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E5%88%97%E9%80%92%E6%8E%A8%E5%BD%A2%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text">数列递推形式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%8A%A8%E7%82%B9%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text">不动点法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%9D%A1%E4%BB%B6"><span class="toc-number">1.1.1.</span> <span class="toc-text">使用条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AE%B9"><span class="toc-number">1.1.2.</span> <span class="toc-text">内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.3.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-number">1.1.4.</span> <span class="toc-text">例题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E6%96%B9%E7%A8%8B"><span class="toc-number">1.2.</span> <span class="toc-text">特征方程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%9D%A1%E4%BB%B6-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">使用条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AE%B9-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E7%90%86-1"><span class="toc-number">1.2.3.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98-1"><span class="toc-number">1.2.4.</span> <span class="toc-text">例题</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/11/14/CTF%E5%88%B7%E9%A2%98%E8%AE%B0/" title="CTF刷题记"><img src="/img/ctf.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CTF刷题记"/></a><div class="content"><a class="title" href="/2021/11/14/CTF%E5%88%B7%E9%A2%98%E8%AE%B0/" title="CTF刷题记">CTF刷题记</a><time datetime="2021-11-14T04:43:35.000Z" title="发表于 2021-11-14 12:43:35">2021-11-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/10/16/BLOG%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/" title="Blog搭建指南"><img src="/img/hexo.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Blog搭建指南"/></a><div class="content"><a class="title" href="/2021/10/16/BLOG%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/" title="Blog搭建指南">Blog搭建指南</a><time datetime="2021-10-16T11:39:08.000Z" title="发表于 2021-10-16 19:39:08">2021-10-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/20/%E6%95%B0%E8%AE%BA%E7%AC%94%E8%AE%B0/" title="数论...这一波令人窒息的操作"><img src="/img/shulun.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数论...这一波令人窒息的操作"/></a><div class="content"><a class="title" href="/2021/08/20/%E6%95%B0%E8%AE%BA%E7%AC%94%E8%AE%B0/" title="数论...这一波令人窒息的操作">数论...这一波令人窒息的操作</a><time datetime="2021-08-20T01:09:09.000Z" title="发表于 2021-08-20 09:09:09">2021-08-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/19/CTF%E5%88%9D%E6%8E%A2-%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AC%94%E8%AE%B0/" title="CTF初探_密码学笔记"><img src="/img/ctf.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CTF初探_密码学笔记"/></a><div class="content"><a class="title" href="/2021/08/19/CTF%E5%88%9D%E6%8E%A2-%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AC%94%E8%AE%B0/" title="CTF初探_密码学笔记">CTF初探_密码学笔记</a><time datetime="2021-08-19T06:08:13.000Z" title="发表于 2021-08-19 14:08:13">2021-08-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/08/%E9%87%8D%E6%8B%BEpython-%E8%BF%9B%E9%98%B6%E7%AF%87/" title="重拾python(进阶篇)"><img src="/img/python2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="重拾python(进阶篇)"/></a><div class="content"><a class="title" href="/2021/08/08/%E9%87%8D%E6%8B%BEpython-%E8%BF%9B%E9%98%B6%E7%AF%87/" title="重拾python(进阶篇)">重拾python(进阶篇)</a><time datetime="2021-08-08T01:47:52.000Z" title="发表于 2021-08-08 09:47:52">2021-08-08</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By AndrewLee</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    loader: {
+      source: {
+        '[tex]/amsCd': '[tex]/amscd'
+      }
+    },
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        addClass: [200,() => {
+          document.querySelectorAll('mjx-container:not([display=\'true\']').forEach( node => {
+            const target = node.parentNode
+            if (!target.classList.contains('has-jax')) {
+              target.classList.add('mathjax-overflow')
+            }
+          })
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script src="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/js/mouse_snow.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

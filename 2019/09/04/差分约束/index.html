@@ -1,0 +1,620 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>差分约束 | AndrewLee</title><meta name="keywords" content="国家集训队论文集"><meta name="author" content="AndrewLee"><meta name="copyright" content="AndrewLee"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="数与图的完美结合——-浅析差分约束系统华中师大一附中  冯威   [摘要]在面对多种多样的问题时，我们经常会碰到这样的情况：往往我们能够根据题目题面意思来建立一些简单的模型，但却面对这些模型无从下手。这时我们应该意识到，也许能够将这种模型与其他的模型之间搭起一座桥梁，使我们能够用更简单直接的方式解决它。这里我们介绍一种方法，它很好地将某些特殊的不等式组与图相联结，让复杂的问题简单化，将难处理的问">
+<meta property="og:type" content="article">
+<meta property="og:title" content="差分约束">
+<meta property="og:url" content="http://example.com/2019/09/04/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F/index.html">
+<meta property="og:site_name" content="AndrewLee">
+<meta property="og:description" content="数与图的完美结合——-浅析差分约束系统华中师大一附中  冯威   [摘要]在面对多种多样的问题时，我们经常会碰到这样的情况：往往我们能够根据题目题面意思来建立一些简单的模型，但却面对这些模型无从下手。这时我们应该意识到，也许能够将这种模型与其他的模型之间搭起一座桥梁，使我们能够用更简单直接的方式解决它。这里我们介绍一种方法，它很好地将某些特殊的不等式组与图相联结，让复杂的问题简单化，将难处理的问">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fqqpublic.qpic.cn%2Fqq_public%2F0%2F0-2562029079-DAAA7EA6B13C980368EBFBD0691250C4%2F0%3Ffmt%3Djpg%26size%3D96%26h%3D601%26w%3D900%26ppv%3D1.jpg&refer=http%3A%2F%2Fqqpublic.qpic.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638695731&t=0d9613c991c0b38956ea94cc1aef2a2d">
+<meta property="article:published_time" content="2019-09-04T11:34:28.000Z">
+<meta property="article:modified_time" content="2021-07-16T01:55:38.000Z">
+<meta property="article:author" content="AndrewLee">
+<meta property="article:tag" content="国家集训队论文集">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fqqpublic.qpic.cn%2Fqq_public%2F0%2F0-2562029079-DAAA7EA6B13C980368EBFBD0691250C4%2F0%3Ffmt%3Djpg%26size%3D96%26h%3D601%26w%3D900%26ppv%3D1.jpg&refer=http%3A%2F%2Fqqpublic.qpic.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638695731&t=0d9613c991c0b38956ea94cc1aef2a2d"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2019/09/04/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '差分约束',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-07-16 09:55:38'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/tit.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">29</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> others</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fqqpublic.qpic.cn%2Fqq_public%2F0%2F0-2562029079-DAAA7EA6B13C980368EBFBD0691250C4%2F0%3Ffmt%3Djpg%26size%3D96%26h%3D601%26w%3D900%26ppv%3D1.jpg&amp;refer=http%3A%2F%2Fqqpublic.qpic.cn&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638695731&amp;t=0d9613c991c0b38956ea94cc1aef2a2d')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">AndrewLee</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> others</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">差分约束</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-09-04T11:34:28.000Z" title="发表于 2019-09-04 19:34:28">2019-09-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-07-16T01:55:38.000Z" title="更新于 2021-07-16 09:55:38">2021-07-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/IT/">IT</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/IT/%E5%9B%BD%E5%AE%B6%E9%9B%86%E8%AE%AD%E9%98%9F%E8%AE%BA%E6%96%87%E9%9B%86/">国家集训队论文集</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">6.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>28分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="差分约束"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>数与图的完美结合——-浅析差分约束系统<br>华中师大一附中  冯威 </p>
+</blockquote>
+<h1 id="摘要"><a href="#摘要" class="headerlink" title="[摘要]"></a>[摘要]</h1><p>在面对多种多样的问题时，我们经常会碰到这样的情况：往往我们能够根据题目题面意思来建立一些简单的模型，但却面对这些模型无从下手。这时我们应该意识到，也许能够将这种模型与其他的模型之间搭起一座桥梁，使我们能够用更简单直接的方式解决它。这里我们介绍一种方法，它很好地将某些特殊的不等式组与图相联结，让复杂的问题简单化，将难处理的问题用我们所熟知的方法去解决，它便是差分约束系统。这里我们着重介绍差分约束系统的原理和其需要掌握的bellman-ford算法。然后通过zju1508和zju1420两道题目解析差分约束系统在信息学题目中的应用，并逐渐归纳解决这类问题的思考方向。</p>
+<h1 id="关键字-差分约束系统、不等式、单元最短路径、转化"><a href="#关键字-差分约束系统、不等式、单元最短路径、转化" class="headerlink" title="[关键字] 差分约束系统、不等式、单元最短路径、转化"></a>[关键字] 差分约束系统、不等式、单元最短路径、转化</h1><h1 id="正文"><a href="#正文" class="headerlink" title="[正文]"></a>[正文]</h1><h2 id="Bellman-Ford-spfa"><a href="#Bellman-Ford-spfa" class="headerlink" title="Bellman Ford(spfa)"></a>Bellman Ford(spfa)</h2><p>   在分析差分约束系统之前，我们首先介绍一个解决单元最短路径问题的Bellman Ford算法，它的应用十分广泛，在差分约束系统中更充当着重要的角色。</p>
+<p>Bellman-ford 算法</p>
+<p>算法简单介绍<br>这个算法能在更一般的情况下解决最短路的问题。何谓一般，一般在该算法下边的权值可以为负，可以运用该算法求有向图的单元最长路径或者最短路径。我们这里仅以最短路径为例。<br>Bellman ford 类似于Dijkstra算法，对每一个节点v V，逐步减小从起点s到终点v最短路的估计量dist[v]直到其达到真正的最短路径值mindist[v]。Bellman-ford算法同时返回一个布尔值，如果不存在从源结点可达的负权回路，算法返回布尔值TRUE，反之返回FALSE。</p>
+<p>算法具体流程</p>
+<ol>
+<li>枚举每条边(u,v) E（G）。</li>
+<li>对枚举到的边进行一次更新操作。<br>3．回到步骤1，此过程重复n-1次，以确定没有更可以优化的情况。<br>4．枚举每条边（u，v）若仍然存在可以更新的边，则说明有向图中出现了负权回路，于是返回布尔值FALSE。<br>5．返回布尔值TRUE。</li>
+</ol>
+<p>注：这里的更新操作是一种松弛技术，以单元最短路径为例这个操作就是保证<br>dist[v]&lt;=dist[u]+w[u,v]，即if dist[v]&gt;dist[u]+w[u,v] then dist[v]=dist[u]+w[u,v]，如果是最长路径则是保证dist[v]&gt;=dist[u]+w[u,v]。</p>
+<p>定义一个有向图G=（V，E），w（u，v）表示由结点u到v的边的权值。<br>伪代码如下：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">For i<span class="token operator">=</span><span class="token number">1</span> to <span class="token operator">|</span>V<span class="token operator">|</span>G<span class="token operator">||</span><span class="token operator">-</span><span class="token number">1</span> 
+  Do <span class="token keyword">for</span> 每条边<span class="token punctuation">(</span>u，v<span class="token punctuation">)</span> E<span class="token operator">|</span>G<span class="token operator">|</span>
+        Do 更新操作（u，v，w（u，v））
+For 每条边（u，v） E<span class="token operator">|</span>G<span class="token operator">|</span>
+  Do <span class="token keyword">if</span> 仍然有可更新内容 then <span class="token keyword">return</span> False
+Return True<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>我们发现与Dijkstra不同，Bellman ford更多的是对边进行操作，在稀疏图，即点多边少的图中，用Bellman Ford更能高效的解决单元最短路径问题。下面一道例题来进一步熟悉Bellman Ford并与Dijkstra作一下简单的时间上的比较。</p>
+<h3 id="例题一：ZJU2008-Invitation-Cards"><a href="#例题一：ZJU2008-Invitation-Cards" class="headerlink" title="例题一：ZJU2008 Invitation Cards"></a>例题一：ZJU2008 Invitation Cards</h3><p>[题目大意]在有向加权图中G（V，E），邮局要从起点S向其他n个节点发送邮件，于是派出n个邮递员，分别到达其他n个地点发送，然后回到起点S，求出所有邮递员所经过的总路程的最小值。</p>
+<p>[数据范围] 1 &lt;= P,Q &lt;= 1000000。P表示节点数目，Q表示边的个数。</p>
+<p>[题目分析]这道题算法很简单，即求出从s到任意点的最短路径，求其和ANS1，再将所有有向边反向（这个过程将求从另外n个结点到s的最短路径转化为从s到其他n个点的最短路径），再求一次s到任意点的最短路径，求其和ANS2，Ans=Ans1+Ans2即为所求。<br>但是，此题难在数据量上，无论是Dijkstra的O( ) 的算法，还是Bellmanford的O(VE)的算法都无法在数据规模最大的情况下在5s的时间内得出结果，于是需要做出一点优化。<br>关于Dijkstra的优化：用堆维护使寻找需要扩展的点的过程复杂度降低为1。复杂度大幅降低。<br>关于Bellman ford的优化：可以将Bellman ford需要扩展的点放进队列中，扩展顺序有了新的变化。用一个队列queue表示需要更新的点，每次取队列头指针fp所指的点u，搜索所有的边(u,v)属于E，如果dist[u]+w[u,v] 比dist[v]更优则更新dist[v]，尾指针rp后挪一位，将v点加入队列queue。这样的优化避免了很多重复的操作，事实证明它的效率仅次于Dijkstra+heap的效率。下面用3种不同的方法来解这道题目，看看结果如何。</p>
+<p>我们用以下三种方法求最短路径:<br>1．    Dijkstra<br>2．    Bellman Ford<br>3．    Dijkstra&amp;Heap<br>在ZJU Online Judge中进行评测结果如下：<br>算法    运行所有数据所用时间<br>Dijkstra    〉5s  （TLE）<br>Bellman Ford       1.46s<br>Dijkstra&amp;Heap       1.24s</p>
+<h2 id="差分约束系统"><a href="#差分约束系统" class="headerlink" title="差分约束系统"></a>差分约束系统</h2><p>对于解决差分约束系统问题的操作过程和使用原理，我们通过下面一道简单的题目进行了解。</p>
+<h3 id="引例：-例题二-Zju1508-Interval"><a href="#引例：-例题二-Zju1508-Interval" class="headerlink" title="引例：[例题二] Zju1508 Interval"></a>引例：[例题二] Zju1508 Interval</h3><p>题目大意：<br>有一个序列，题目用n个整数组合 [ai,bi,ci]来描述它，[ai，bi，ci]表示在该序列中处于[ai，bi]这个区间的整数至少有ci个。如果存在这样的序列，请求出满足题目要求的最短的序列长度是多少。如果不存在则输出 -1。<br>输入：第一行包括一个整数n，表示区间个数，以下n行每行描述这些区间，第i+1行三个整数ai，bi，ci，由空格隔开，其中0&lt;=ai&lt;=bi&lt;=50000 而且 1&lt;=ci&lt;=bi-ai+1。<br>输出：一行，输出满足要求的序列的长度的最小值。</p>
+<p>[浅析]初看此题感觉无从下手，我们将范围和个数进行量化，让问题看起来更加简单些。</p>
+<p>将问题数字化：<br>若记，<br>那么本题约束条件即为   </p>
+<p>建立不等式模型：<br>这样的描述使一个约束条件所牵涉的变量太多，不妨设   (i=1,2,…,n)<br>约束条件即可用以下不等式表示：</p>
+<p>值得注意的是，这样定义的S若仅仅满足约束条件的要求是不能完整体现它的意义的，S中的各个组成之间并不是相对独立的，他们存在着联系。<br>由于 ，且t要么为1，要么为0，则 一定比 大 ，且至多大1。于是有：</p>
+<p>那么如何找到满足要求的这样一组S，且使其个数最少呢？<br>这里我们看到最少就会联想到贪心，确实这道题目用贪心可行，且不失为一种很好的做法，但在这里我们不作多的介绍。我们将针对这个不等式组进行联想，迁移。注意到不等式中只涉及到了2个未知数，用减号相连接。这样的式子是否与过去曾经学过的Bellmanford中的松弛操作所达到的效果相类似呢？</p>
+<p>联想：<br>我们需要寻找一个满足以下要求的S数组</p>
+<p>而Bellman-Ford 每次的更新操作为</p>
+<p>即在经过若干次更新操作将要保证 d[v]&lt;=d[u]+w[u,v]<br>这里我们也有一个已知量—–边的权值，即w[u,v]，于是整理一下得<br>d[u]-d[v]&gt;=w[u,v]<br>经过这样的变形，不难看出，两个式子有着极为惊人的相似！<br>于是做出如下的转化：<br>1．    我们将 ，看作n+1个点 。<br>2．    若 和 之间有着约束关系，例如Si-1-Si&gt;= -1,那么我们从结点  向结点 连上一条有向边，边的权值为-1。<br>这样如果我们从 出发，求出结点 到 的最短路径，则 为满足要求情况下的最小值。相反如果我们发现在Bellmanford算法执行的过程中存在有负权回路，则说明不存在满足要求的式子。</p>
+<p>于是通过合理地建立数学模型，将不等式图形化，用Bellmanford作为武器，最终此题得到了圆满的解决！</p>
+<p>思考：<br>本题只要求输出最少的个数，那么能否通过上述方法构造出相应的数列呢？答案是肯定的。其实在Bellmanford的过程中，我们已经得到了所有结点上S的值，那么由 求出所有T，当 为1则输出i，即可输出满足题目要求的序列。</p>
+<p>总结：<br>对于ZJU1508的问题，最终可以化为一类线性不等式定义的线性函数。而这类问题其实是可以转化为单元最短路径问题，从而用刚才所准备到的Bellman Ford算法来解决它。</p>
+<h3 id="线性程序设计："><a href="#线性程序设计：" class="headerlink" title="线性程序设计："></a>线性程序设计：</h3><p>我们为线性程序设计问题制定一个严格的数学描述：<br>给定一个m*n矩阵A，维向量b和维向量c，我们希望找出由n个元素组成的向量x，在由Ax&lt;=b所给出的m个约束条件下，使目标函数 达到最大值。<br>其实很多问题都可以通过这样一个线性程序设计框架来进行描述。在实际的问题中，也经常要对其进行分析和解决。上述例题使我们对这一类线性程序设计问题提供了一个多项式时间的算法。它将一类特殊的线性不等式与图论紧密联系在了一起。这类特殊的线性不等式，我们称它为差分约束系统，它是可以用单元最短路径来求解的。</p>
+<p>差分约束系统：<br>差分约束系统是一个线性程序设计中特殊的一种，线性程序设计中矩阵A的每一行包含一个1和一个-1，A的所有其他元素均为0。由Ax&lt;=b给出的约束条件形成m个差分约束的集合，其中包含n个未知单元。每个约束条件均可够成简单的不等式如下：<br>（1&lt;=I,j&lt;=n,1&lt;=k&lt;=m）</p>
+<p>简单举例：</p>
+<p>找出未知量 ,并且满足以下差分约束条件：</p>
+<p>需要注意的是，用Bellmanford求出的具体答案只是众多答案中的一种，答案并不唯一，但答案之间却也有着联系。这里我们并不对其进行专门的探讨。<br>了解了差分约束系统的整个过程，下面再看另外一道题目，让我们对差分约束系统的应用能够有更加深刻的认识。</p>
+<h4 id="例题三-zju1420-Cashier-Employment-出纳员问题"><a href="#例题三-zju1420-Cashier-Employment-出纳员问题" class="headerlink" title="[例题三] zju1420 Cashier Employment 出纳员问题"></a>[例题三] zju1420 Cashier Employment 出纳员问题</h4><p>题目中文翻译： </p>
+<p>我们按刚才所讲到的方法对此题进行处理。<br>这题很容易想到如下的不等式模型： </p>
+<p>设num[ i ]为i时刻能够开始工作的人数，x[ i ]为实际雇佣的人数，那么x[ I ]&lt;=num[ I ]。<br>设r[ i ]为i时刻至少需要工作的人数，于是有如下关系：<br>    x[ I-7 ]+x[ I-6 ]+x[ I-5 ]+x[ I-4 ]+x[ I-3 ]+x[ I-2 ]+x[ I-1 ]+x[ I ]&gt;=r[ I ]<br>设s[ I ]=x[ 1 ]+x[ 2 ]…+x[ I ]，得到<br>    0&lt;=s[ I ]-s[ I-1 ]&lt;=num[ I ]， 0&lt;=I&lt;=23<br>    s[ I ]-s[ I-8 ]&gt;=r[ I ]， 8&lt;=I&lt;=23<br>    s[ 23 ]+s[ I ]-s[ I+16 ]&gt;=r[ I ]， 0&lt;=I&lt;=7 </p>
+<pre><code>对于以上的几组不等式，我们采用一种非常笨拙的办法处理这一系列的不等式(其实也是让零乱的式子变得更加整齐，易于处理)。首先我们要明白差分约束系统的应用对象（它通常针对多个二项相减的不等式的）于是我们将上面的所有式子都转化成两项未知项在左边，另外的常数项在右边，且中间用&gt;=连接的式子，即: 
+s[ I ]-s[ I-1 ]&gt;=0            (0&lt;=I&lt;=23) 
+s[ I-1 ]-s[ I ]&gt;=-num[ I ]       (0&lt;=I&lt;=23) 
+s[ I ]-s[ I-8 ]&gt;=r[ I ]         (8&lt;=I&lt;=23) 
+s[ I ]-s[ I+16 ]&gt;=r[ I ]-s[ 23 ]  (0&lt;=I&lt;= 7) 
+
+这里出现了小的困难，我们发现以上式子并不是标准的差分约束系统，因为在最后一个式子中出现了三个未知单位。但是注意到其中跟随 I变化的只有两个，于是s[23]就变得特殊起来，看来是需要我们单独处理，于是我们把 s[ 23 ]当作已知量放在右边。
+</code></pre>
+<p>经过这样的整理，整个图就很容易创建了，将所有形如 A-B&gt;=C 的式子 我们从节点B 引出一条有向边指向 A  边的权值为C  （这里注意由于左右确定，式子又是统一的&gt;=的不等式，所以A和B是相对确定的，边是一定是指向A的） ，图就建成了 。<br>    最后枚举所有s[ 23 ]的可能值，对于每一个s[23]，我们都进行一次常规差分约束系统问题的求解，判断这种情况是否可行，如果可行求出需要的最优值，记录到Ans中，最后的Ans的值即为所求。<br>程序见附录。</p>
+<h1 id="结语："><a href="#结语：" class="headerlink" title="结语："></a>结语：</h1><p>对于许多复杂的问题，我们通常选择将不够清晰、难以处理的模型转化为容易理解、易于处理的模型。就像用已知的知识作为工具去探索未知领域一样，联想、发散、转化将成为相当有用的武器。本文选择了差分约束系统这样一个平台，通过介绍差分约束系统的相关知识和其在信息学问题中的应用以小见大，为读者提供一个解题的思路和技巧。</p>
+<h1 id="附录："><a href="#附录：" class="headerlink" title="附录："></a>附录：</h1><p>参考文献：《金牌之路竞赛解题指导—高中计算机》 [王建德，周咏基]<br>         《Introduction to Algorithms》 [H.Cormen]</p>
+<p>例题信息<br>    <a target="_blank" rel="noopener" href="http://acm.zju.edu.cn/">http://acm.zju.edu.cn/</a><br>    <a target="_blank" rel="noopener" href="http://acm.zju.edu.cn/show_problem.php?pid=2008">http://acm.zju.edu.cn/show_problem.php?pid=2008</a><br><a target="_blank" rel="noopener" href="http://acm.zju.edu.cn/show_problem.php?pid=1508">http://acm.zju.edu.cn/show_problem.php?pid=1508</a><br><a target="_blank" rel="noopener" href="http://acm.zju.edu.cn/show_problem.php?pid=1420">http://acm.zju.edu.cn/show_problem.php?pid=1420</a></p>
+<p>例一：ZJU2008<br>Invitation Cards</p>
+<hr>
+<p>Time limit: 5 Seconds   Memory limit: 32768K<br>Total Submit: 70   Accepted Submit: 20   </p>
+<hr>
+<p>In the age of television, not many people attend theater performances. Antique Comedians of Malidinesia are aware of this fact. They want to propagate theater and, most of all, Antique Comedies. They have printed invitation cards with all the necessary information and with the programme. A lot of students were hired to distribute these invitations among the people. Each student volunteer has assigned exactly one bus stop and he or she stays there the whole day and gives invitation to people travelling by bus. A special course was taken where students learned how to influence people and what is the difference between influencing and robbery.<br>The transport system is very special: all lines are unidirectional and connect exactly two stops. Buses leave the originating stop with passangers each half an hour. After reaching the destination stop they return empty to the originating stop, where they wait until the next full half an hour, e.g. X:00 or X:30, where ‘X’ denotes the hour. The fee for transport between two stops is given by special tables and is payable on the spot. The lines are planned in such a way, that each round trip (i.e. a journey starting and finishing at the same stop) passes through a Central Checkpoint Stop (CCS) where each passenger has to pass a thorough check including body scan.<br>All the ACM student members leave the CCS each morning. Each volunteer is to move to one predetermined stop to invite passengers. There are as many volunteers as stops. At the end of the day, all students travel back to CCS. You are to write a computer program that helps ACM to minimize the amount of money to pay every day for the transport of their employees. </p>
+<p>Input</p>
+<p>The input consists of N cases. The first line of the input contains only positive integer N. Then follow the cases. Each case begins with a line containing exactly two integers P and Q, 1 &lt;= P,Q &lt;= 1000000. P is the number of stops including CCS and Q the number of bus lines. Then there are Q lines, each describing one bus line. Each of the lines contains exactly three numbers - the originating stop, the destination stop and the price. The CCS is designated by number 1. Prices are positive integers the sum of which is smaller than 1000000000. You can also assume it is always possible to get from any stop to any other stop. </p>
+<p>Output</p>
+<p>For each case, print one line containing the minimum amount of money to be paid each day by ACM for the travel costs of its volunteers. </p>
+<p>Sample Input</p>
+<p>2<br>2 2<br>1 2 13<br>2 1 33<br>4 6<br>1 2 10<br>2 1 60<br>1 3 20<br>3 4 10<br>2 4 5<br>4 1 50</p>
+<p>Sample Output</p>
+<p>46<br>210</p>
+<hr>
+<p>Problem Source: Central Europe 1998 </p>
+<hr>
+<p>[参考程序]：</p>
+<pre class="line-numbers language-none"><code class="language-none">const
+  maxn&#x3D;1000000;
+  maxm&#x3D;1000000;
+
+type
+  Tedge    &#x3D;  record
+                x,y,long:longint;
+              end;
+  waytype  &#x3D;  array[1..maxn]of longint;
+  Tdijkstra &#x3D; object
+                h,p:array[1..maxn]of longint;
+                tot:longint;
+                procedure work(var f:waytype);
+              end;
+  TBellman &#x3D;  object
+                state:array[1..maxn*2]of longint;
+                procedure bellman_ford(var f:waytype);
+              end;
+
+var
+  index     :  array[0..maxn]of longint;
+  edge      :  array[1..maxm]of Tedge;
+  BellMan   :  Tbellman;
+ &#x2F;&#x2F; dijkstra  :  Tdijkstra;
+  way1,way2 :  waytype;
+  n,m,i,ans,
+  long,x,y,
+  o,casen   :  longint;
+
+procedure qsort(fp,rp:longint);
+  var i,j:longint;
+      x,t:Tedge;
+  begin
+    i:&#x3D;fp;j:&#x3D;rp;x:&#x3D;edge[(i+j)div 2];
+    repeat
+      while (edge[j].x&gt;x.x) do dec(j);
+      while (edge[i].x&lt;x.x) do inc(i);
+      if i&lt;&#x3D;j then begin
+        t:&#x3D;edge[i];edge[i]:&#x3D;edge[j];edge[j]:&#x3D;t;
+        inc(i);dec(j);
+      end;
+    until i&gt;j;
+    if i&lt;rp then qsort(i,rp);
+    if fp&lt;j then qsort(fp,j);
+  end;
+
+procedure makeindex;
+  var i,j:longint;
+  begin
+    index[0]:&#x3D;0;j:&#x3D;1;
+    for i:&#x3D;1 to n do begin
+      while ((j&lt;&#x3D;m)and(edge[j].x&#x3D;i))do inc(j);
+      index[i]:&#x3D;j-1;
+    end;
+  end;
+
+procedure change;
+  var
+      i,t : longint;
+  begin
+    for i:&#x3D;1 to m do begin
+      t:&#x3D;edge[i].x;edge[i].x:&#x3D;edge[i].y;edge[i].y:&#x3D;t;
+    end;
+    qsort(1,m);
+    makeindex;
+  end;
+
+
+procedure Tbellman.bellman_ford(var f:waytype);
+  var fp,rp,temp : longint;
+  begin
+    fp:&#x3D;1;rp:&#x3D;1;
+    fillchar(f,sizeof(f),$FF);
+    qsort(1,m);
+    state[fp]:&#x3D;1;f[1]:&#x3D;0;
+    while fp&lt;&#x3D;rp do begin
+      for i:&#x3D;index[state[fp]-1]+1 to index[state[fp]] do begin
+        temp:&#x3D;f[state[fp]]+edge[i].long;
+        if (temp&lt;f[edge[i].y]) or (f[edge[i].y]&lt;0) then begin
+          inc(rp);
+          state[rp]:&#x3D;edge[i].y;
+          f[edge[i].y]:&#x3D;temp;
+        end;
+      end;
+      inc(fp);
+    end;
+  end;
+
+procedure Tdijkstra.work(var f:waytype);
+  var u,v,i,temp:longint;
+
+  procedure swap(var x:longint;y:longint);
+  var t:longint;
+  begin
+    p[h[x]]:&#x3D;y;p[h[y]]:&#x3D;x;
+    t:&#x3D;h[x];h[x]:&#x3D;h[y];h[y]:&#x3D;t;
+    x:&#x3D;y;
+  end;
+
+  procedure up(x:longint);
+  begin
+    while x&gt;1 do
+      if f[h[x]]&lt;f[h[x shr 1]] then swap(x,x shr 1) else exit;
+  end;
+
+  procedure down(x:longint);
+  var l,r:longint;
+  begin
+    while true do begin
+      l:&#x3D;x*2;r:&#x3D;l+1;
+      if l&gt;tot then exit;
+      if (l&#x3D;tot)then if (f[h[l]]&lt;f[h[x]]) then swap(x,l) else exit;
+      if (f[h[x]]&gt;f[h[l]])and(f[h[l]]&lt;f[h[r]]) then swap(x,l) else
+      if (f[h[x]]&gt;f[h[r]])then swap(x,r) else exit;
+    end;
+  end;
+
+  begin
+    fillchar(f,sizeof(f),$FF);
+    fillchar(p,sizeof(p),0);
+    f[1]:&#x3D;0;tot:&#x3D;1;h[1]:&#x3D;1;
+    while true do begin
+      if tot&#x3D;0 then break;
+      v:&#x3D;h[1];p[h[1]]:&#x3D;0;h[1]:&#x3D;h[tot];p[h[tot]]:&#x3D;1;
+      h[tot]:&#x3D;0;dec(tot);
+      if tot&gt;1 then down(1);
+
+      for i:&#x3D;index[v-1]+1 to index[v] do begin
+        temp:&#x3D;f[v]+edge[i].long;u:&#x3D;edge[i].y;
+        if (f[u]&gt;temp)or(f[u]&lt;0) then begin
+          f[u]:&#x3D;temp;
+          if p[u]&#x3D;0 then begin
+            inc(tot);
+            h[tot]:&#x3D;u;
+            p[u]:&#x3D;tot;
+            up(tot);
+          end else up(p[u]);
+        end;
+      end;
+    end;
+  end;
+
+begin
+  readln(casen);
+  for o:&#x3D;1 to casen do begin
+    readln(n,m);
+    fillchar(edge,sizeof(edge),0);
+    for i:&#x3D;1 to m do
+      with edge[i] do
+        readln(x,y,long);
+
+    qsort(1,m);makeindex;ans:&#x3D;0;
+    bellman.bellman_ford(way1);
+&#x2F;&#x2F;    dijkstra.work(way1);
+    for i:&#x3D;1 to n do inc(ans,way1[i]);
+    change;
+    bellman.bellman_ford(way2);
+&#x2F;&#x2F;    dijkstra.work(way2);
+    for i:&#x3D;1 to n do inc(ans,way2[i]);
+    writeln(ans);
+  end;
+end.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>例二：ZJU1508<br>Intervals</p>
+<hr>
+<p>Time limit: 10 Seconds   Memory limit: 32768K<br>Total Submit: 150   Accepted Submit: 49   </p>
+<hr>
+<p>You are given n closed, integer intervals [ai, bi] and n integers c1, …, cn.</p>
+<p>Write a program that:</p>
+<blockquote>
+<p>reads the number of intervals, their endpoints and integers c1, …, cn from the standard input,</p>
+</blockquote>
+<blockquote>
+<p>computes the minimal size of a set Z of integers which has at least ci common elements with interval [ai, bi], for each i = 1, 2, …, n,</p>
+</blockquote>
+<blockquote>
+<p>writes the answer to the standard output.</p>
+</blockquote>
+<p>Input</p>
+<p>The first line of the input contains an integer n (1 &lt;= n &lt;= 50 000) - the number of intervals. The following n lines describe the intervals. The i+1-th line of the input contains three integers ai, bi and ci separated by single spaces and such that 0 &lt;= ai &lt;= bi &lt;= 50 000 and 1 &lt;= ci &lt;= bi - ai + 1.<br>Process to the end of file.</p>
+<p>Output</p>
+<p>The output contains exactly one integer equal to the minimal size of set Z sharing at least ci elements with interval [ai, bi], for each i = 1, 2, …, n.</p>
+<p>Sample Input</p>
+<p>5<br>3 7 3<br>8 10 3<br>6 8 1<br>1 3 1<br>10 11 1</p>
+<p>Sample Output</p>
+<p>6</p>
+<hr>
+<p>Problem Source: Southwestern Europe 2002 </p>
+<hr>
+<p>[参考程序]：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#123;$MODE FPC&#125; 
+&#123;$M 0,1025&#125; 
+&#123;$R-,Q-,S-,I-&#125; 
+
+Program T_1508; 
+Type 
+ TEdge &#x3D; Record 
+           s, t, w : LongInt; 
+         End; 
+
+Var 
+ edge : Array [ 1..50000 ] Of TEdge; 
+ d : Array [ 0..50000 ] Of LongInt; 
+ n, i, a, b, c, max : LongInt; 
+
+Procedure Bellman_Ford; 
+Var 
+ i : LongInt; 
+ flag : Boolean; 
+
+Begin 
+ For i :&#x3D; 0 To max Do 
+   d[ i ] :&#x3D; 0; 
+
+ Repeat 
+   Flag :&#x3D; True; 
+
+   For i :&#x3D; 1 To n Do 
+   With edge[ i ] Do 
+     If (d[ s ] + w &lt; d[ t ]) Then 
+     Begin 
+       d[ t ] :&#x3D; d[ s ] + w; 
+       Flag :&#x3D; False; 
+     End; 
+
+   For i :&#x3D; 1 To max Do 
+     If (d[ i-1 ] + 1 &lt; d[ i ]) Then 
+     Begin 
+       d[ i ] :&#x3D; d[ i-1 ] + 1; 
+       Flag :&#x3D; False; 
+     End; 
+
+   For i :&#x3D; max DownTo 1 Do 
+     If (d[ i ] &lt; d[ i-1 ]) Then 
+     Begin 
+       d[ i-1 ] :&#x3D; d[ i ]; 
+       Flag :&#x3D; False; 
+     End; 
+ Until Flag; 
+End; 
+
+Begin 
+ While NOT EOF Do 
+ Begin 
+   Readln(n); 
+   max :&#x3D; 0; 
+   For i :&#x3D; 1 To n Do 
+   Begin 
+     Readln(a, b, c); 
+     If (b &gt; max) Then max :&#x3D; b; 
+     edge[ i ].s :&#x3D; b; edge[ i ].t :&#x3D; a - 1; edge[ i ].w :&#x3D; -c; 
+   End; 
+   Bellman_Ford; 
+
+   Writeln(d[ max ] - d[ 0 ]); 
+ End; 
+End.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>例三：ZJU1420<br>Cashier Employment</p>
+<hr>
+<p>Time limit: 10 Seconds   Memory limit: 32768K<br>Total Submit: 34   Accepted Submit: 10   </p>
+<hr>
+<p>A supermarket in Tehran is open 24 hours a day every day and needs a number of cashiers to fit its need. The supermarket manager has hired you to help him, solve his problem. The problem is that the supermarket needs different number of cashiers at different times of each day (for example, a few cashiers after midnight, and many in the afternoon) to provide good service to its customers, and he wants to hire the least number of cashiers for this job.<br>The manager has provided you with the least number of cashiers needed for every one-hour slot of the day. This data is given as R(0), R(1), …, R(23): R(0) represents the least number of cashiers needed from midnight to 1:00 A.M., R(1) shows this number for duration of 1:00 A.M. to 2:00 A.M., and so on. Note that these numbers are the same every day. There are N qualified applicants for this job. Each applicant i works non-stop once each 24 hours in a shift of exactly 8 hours starting from a specified hour, say ti (0 &lt;= ti &lt;= 23), exactly from the start of the hour mentioned. That is, if the ith applicant is hired, he/she will work starting from ti o’clock sharp for 8 hours. Cashiers do not replace one another and work exactly as scheduled, and there are enough cash registers and counters for those who are hired.<br>You are to write a program to read the R(i) ‘s for i=0…23 and ti ‘s for i=1…N that are all, non-negative integer numbers and compute the least number of cashiers needed to be employed to meet the mentioned constraints. Note that there can be more cashiers than the least number needed for a specific slot.</p>
+<p>Input</p>
+<p>The first line of input is the number of test cases for this problem (at most 20). Each test case starts with 24 integer numbers representing the R(0), R(1), …, R(23) in one line (R(i) can be at most 1000). Then there is N, number of applicants in another line (0 &lt;= N &lt;= 1000), after which come N lines each containing one ti (0 &lt;= ti &lt;= 23). There are no blank lines between test cases.</p>
+<p>Output</p>
+<p>For each test case, the output should be written in one line, which is the least number of cashiers needed.</p>
+<p>If there is no solution for the test case, you should write No Solution for that case.</p>
+<p>Sample Input</p>
+<p>1<br>1 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1<br>5<br>0<br>23<br>22<br>1<br>10</p>
+<p>Sample Output</p>
+<p>1</p>
+<hr>
+<p>Problem Source: Asia 2000, Tehran (Iran) </p>
+<hr>
+<p>[参考程序]：</p>
+<pre class="line-numbers language-none"><code class="language-none">const
+  maxn&#x3D;230;
+
+var
+  g:array[-1..maxn,1..4]of record
+      n,v:integer;
+    end;
+  d,xu,num,a:array[-1..maxn]of integer;
+  ans:integer;
+  x,n,casen,o,i:integer;
+  flag:boolean;
+
+procedure add(a,b,c:integer);
+  begin
+    inc(num[a]);
+    g[a,num[a]].n:&#x3D;b;
+    g[a,num[a]].v:&#x3D;c;
+  end;
+
+procedure init;
+  var i:integer;
+  begin
+    fillchar(g,sizeof(g),0);
+    for i:&#x3D;0 to 23 do begin
+      if i&lt;&#x3D;7  then add(i+16,i,xu[i]-ans)
+               else add(i-8,i,xu[i]);
+      add(i-1,i,0);
+      add(i,i-1,-a[i]);
+    end;
+  end;
+
+function bellman_ford:boolean;
+  var i,j,k:integer;
+      ff:boolean;
+  begin
+    bellman_ford:&#x3D;false;
+    fillchar(d,sizeof(d),0);
+    for i:&#x3D;1 to 23 do begin
+      ff:&#x3D;true;
+      for j:&#x3D;-1 to 23 do
+        for k:&#x3D;1 to num[j] do
+          if d[j]+g[j,k].v&gt;d[g[j,k].n] then begin
+            d[g[j,k].n]:&#x3D;d[j]+g[j,k].v;ff:&#x3D;false;
+          end;
+      if ff then break;
+    end;
+    for j:&#x3D;0 to 23 do if d[j]-d[j-1]&gt;a[j] then exit;
+    for j:&#x3D;-1 to 23 do
+      for k:&#x3D;1 to num[j] do
+        if d[j]+g[j,k].v&gt;d[g[j,k].n] then exit;
+  &#123;  for i:&#x3D;0 to 23 do begin
+      if (i&lt;&#x3D;7)and (d[i]-d[i+16]&lt;xu[i]-d[23]) or
+         (i&gt;&#x3D;8)and (d[i]-d[i-8]&lt;xu[i]) then exit
+    end;&#125;
+    bellman_ford:&#x3D;n&lt;&gt;4&#x2F;&#x2F;d[23]&#x3D;ans;
+  end;
+
+begin
+&#x2F;&#x2F;  assign(input,&#39;e:\input.txt&#39;);reset(input);assign(output,&#39;e:\output.txt&#39;);rewrite(output);
+  readln(casen);
+  for o:&#x3D;1 to casen do begin
+    for i:&#x3D;0 to 23 do read(xu[i]);readln;readln(n);
+    for i:&#x3D;1 to n do begin read(x);inc(a[x]);end;
+    flag:&#x3D;false;
+    for ans:&#x3D;0 to n do begin
+      fillchar(d,sizeof(d),0);
+      fillchar(num,sizeof(num),0);
+      init;
+      if bellman_ford then begin
+        flag:&#x3D;true;
+        break;
+      end;
+    end;
+    if flag then writeln(ans) else writeln(&#39;No Solution&#39;);
+  end;
+&#x2F;&#x2F;  close(output);close(input);
+end.
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">AndrewLee</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2019/09/04/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F/">http://example.com/2019/09/04/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">AndrewLee</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%9B%BD%E5%AE%B6%E9%9B%86%E8%AE%AD%E9%98%9F%E8%AE%BA%E6%96%87%E9%9B%86/">国家集训队论文集</a></div><div class="post_share"><div class="social-share" data-image="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fqqpublic.qpic.cn%2Fqq_public%2F0%2F0-2562029079-DAAA7EA6B13C980368EBFBD0691250C4%2F0%3Ffmt%3Djpg%26size%3D96%26h%3D601%26w%3D900%26ppv%3D1.jpg&amp;refer=http%3A%2F%2Fqqpublic.qpic.cn&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638695731&amp;t=0d9613c991c0b38956ea94cc1aef2a2d" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2019/09/04/spfa%E7%9A%84%E6%AD%A3%E7%A1%AE%E6%80%A7%E8%AF%81%E6%98%8E/"><img class="prev-cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201707%2F04%2F20170704184913_GNYCE.thumb.700_0.jpeg&amp;refer=http%3A%2F%2Fb-ssl.duitang.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638696115&amp;t=a486b1dc327c953b973545deccf5835a" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">spfa的正确性证明</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/tit.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">AndrewLee</div><div class="author-info__description">Gubba nub nub doo rahkah</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">29</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Andrew82106" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin=281512383&amp;website=www.oicqzone.com" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">1.</span> <span class="toc-text">[摘要]</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97-%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F%E7%B3%BB%E7%BB%9F%E3%80%81%E4%B8%8D%E7%AD%89%E5%BC%8F%E3%80%81%E5%8D%95%E5%85%83%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E3%80%81%E8%BD%AC%E5%8C%96"><span class="toc-number">2.</span> <span class="toc-text">[关键字] 差分约束系统、不等式、单元最短路径、转化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-number">3.</span> <span class="toc-text">[正文]</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Bellman-Ford-spfa"><span class="toc-number">3.1.</span> <span class="toc-text">Bellman Ford(spfa)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98%E4%B8%80%EF%BC%9AZJU2008-Invitation-Cards"><span class="toc-number">3.1.1.</span> <span class="toc-text">例题一：ZJU2008 Invitation Cards</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.2.</span> <span class="toc-text">差分约束系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E4%BE%8B%EF%BC%9A-%E4%BE%8B%E9%A2%98%E4%BA%8C-Zju1508-Interval"><span class="toc-number">3.2.1.</span> <span class="toc-text">引例：[例题二] Zju1508 Interval</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%9A"><span class="toc-number">3.2.2.</span> <span class="toc-text">线性程序设计：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98%E4%B8%89-zju1420-Cashier-Employment-%E5%87%BA%E7%BA%B3%E5%91%98%E9%97%AE%E9%A2%98"><span class="toc-number">3.2.2.1.</span> <span class="toc-text">[例题三] zju1420 Cashier Employment 出纳员问题</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD%EF%BC%9A"><span class="toc-number">4.</span> <span class="toc-text">结语：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%99%84%E5%BD%95%EF%BC%9A"><span class="toc-number">5.</span> <span class="toc-text">附录：</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/11/14/CTF%E5%88%B7%E9%A2%98%E8%AE%B0/" title="CTF刷题记"><img src="/img/ctf.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CTF刷题记"/></a><div class="content"><a class="title" href="/2021/11/14/CTF%E5%88%B7%E9%A2%98%E8%AE%B0/" title="CTF刷题记">CTF刷题记</a><time datetime="2021-11-14T04:43:35.000Z" title="发表于 2021-11-14 12:43:35">2021-11-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/10/16/BLOG%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/" title="Blog搭建指南"><img src="/img/hexo.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Blog搭建指南"/></a><div class="content"><a class="title" href="/2021/10/16/BLOG%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/" title="Blog搭建指南">Blog搭建指南</a><time datetime="2021-10-16T11:39:08.000Z" title="发表于 2021-10-16 19:39:08">2021-10-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/20/%E6%95%B0%E8%AE%BA%E7%AC%94%E8%AE%B0/" title="数论...这一波令人窒息的操作"><img src="/img/shulun.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数论...这一波令人窒息的操作"/></a><div class="content"><a class="title" href="/2021/08/20/%E6%95%B0%E8%AE%BA%E7%AC%94%E8%AE%B0/" title="数论...这一波令人窒息的操作">数论...这一波令人窒息的操作</a><time datetime="2021-08-20T01:09:09.000Z" title="发表于 2021-08-20 09:09:09">2021-08-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/19/CTF%E5%88%9D%E6%8E%A2-%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AC%94%E8%AE%B0/" title="CTF初探_密码学笔记"><img src="/img/ctf.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CTF初探_密码学笔记"/></a><div class="content"><a class="title" href="/2021/08/19/CTF%E5%88%9D%E6%8E%A2-%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AC%94%E8%AE%B0/" title="CTF初探_密码学笔记">CTF初探_密码学笔记</a><time datetime="2021-08-19T06:08:13.000Z" title="发表于 2021-08-19 14:08:13">2021-08-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/08/%E9%87%8D%E6%8B%BEpython-%E8%BF%9B%E9%98%B6%E7%AF%87/" title="重拾python(进阶篇)"><img src="/img/python2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="重拾python(进阶篇)"/></a><div class="content"><a class="title" href="/2021/08/08/%E9%87%8D%E6%8B%BEpython-%E8%BF%9B%E9%98%B6%E7%AF%87/" title="重拾python(进阶篇)">重拾python(进阶篇)</a><time datetime="2021-08-08T01:47:52.000Z" title="发表于 2021-08-08 09:47:52">2021-08-08</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By AndrewLee</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    loader: {
+      source: {
+        '[tex]/amsCd': '[tex]/amscd'
+      }
+    },
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        addClass: [200,() => {
+          document.querySelectorAll('mjx-container:not([display=\'true\']').forEach( node => {
+            const target = node.parentNode
+            if (!target.classList.contains('has-jax')) {
+              target.classList.add('mathjax-overflow')
+            }
+          })
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script src="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/js/mouse_snow.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

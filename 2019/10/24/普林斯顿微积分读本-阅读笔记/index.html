@@ -1,0 +1,977 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>普林斯顿微积分读本-阅读笔记 | AndrewLee</title><meta name="keywords" content="微积分"><meta name="author" content="AndrewLee"><meta name="copyright" content="AndrewLee"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="《普林斯顿微积分读本》特点：是任何单变量微积分教科书的好伙伴：洋溢着非正式的、娱乐性的但非强求的对话语境风格；丰富的在线视频；大量精选例题（从简单到复杂）提供了一步一步的推理过程；定理和方法的证明以及相关应用的说明实现理论应用于实践的目标；详细探讨了诸如无穷级数这样的难点问题。这样的一本经典著作将易用性与可读性以及内容的深度与数学的严谨完美地结合在一起。对于每一个想要掌握微积分的学生来说，《">
+<meta property="og:type" content="article">
+<meta property="og:title" content="普林斯顿微积分读本-阅读笔记">
+<meta property="og:url" content="http://example.com/2019/10/24/%E6%99%AE%E6%9E%97%E6%96%AF%E9%A1%BF%E5%BE%AE%E7%A7%AF%E5%88%86%E8%AF%BB%E6%9C%AC-%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="AndrewLee">
+<meta property="og:description" content="《普林斯顿微积分读本》特点：是任何单变量微积分教科书的好伙伴：洋溢着非正式的、娱乐性的但非强求的对话语境风格；丰富的在线视频；大量精选例题（从简单到复杂）提供了一步一步的推理过程；定理和方法的证明以及相关应用的说明实现理论应用于实践的目标；详细探讨了诸如无穷级数这样的难点问题。这样的一本经典著作将易用性与可读性以及内容的深度与数学的严谨完美地结合在一起。对于每一个想要掌握微积分的学生来说，《">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2017-10-19%2F59e85568dcb46.jpg%3Fdown&refer=http%3A%2F%2Fpic1.win4000.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638695731&t=751aef03ff04665aafa66556eb677f73">
+<meta property="article:published_time" content="2019-10-24T13:32:22.000Z">
+<meta property="article:modified_time" content="2021-08-20T01:10:26.000Z">
+<meta property="article:author" content="AndrewLee">
+<meta property="article:tag" content="微积分">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2017-10-19%2F59e85568dcb46.jpg%3Fdown&refer=http%3A%2F%2Fpic1.win4000.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638695731&t=751aef03ff04665aafa66556eb677f73"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2019/10/24/%E6%99%AE%E6%9E%97%E6%96%AF%E9%A1%BF%E5%BE%AE%E7%A7%AF%E5%88%86%E8%AF%BB%E6%9C%AC-%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '普林斯顿微积分读本-阅读笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-08-20 09:10:26'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/tit.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">29</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> others</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2017-10-19%2F59e85568dcb46.jpg%3Fdown&amp;refer=http%3A%2F%2Fpic1.win4000.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638695731&amp;t=751aef03ff04665aafa66556eb677f73')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">AndrewLee</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> others</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">普林斯顿微积分读本-阅读笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-10-24T13:32:22.000Z" title="发表于 2019-10-24 21:32:22">2019-10-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-08-20T01:10:26.000Z" title="更新于 2021-08-20 09:10:26">2021-08-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%A6/">数学</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%A6/%E5%BE%AE%E7%A7%AF%E5%88%86/">微积分</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%A6/%E5%BE%AE%E7%A7%AF%E5%88%86/%E6%99%AE%E6%9E%97%E6%96%AF%E9%A1%BF%E5%BE%AE%E7%A7%AF%E5%88%86%E8%AF%BB%E6%9C%AC%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">普林斯顿微积分读本阅读笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">16.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>70分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="普林斯顿微积分读本-阅读笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=290 src="//music.163.com/outchain/player?type=1&id=34751245&auto=1&height=430"></iframe>
+
+<blockquote>
+<p>《普林斯顿微积分读本》特点：是任何单变量微积分教科书的好伙伴：洋溢着非正式的、娱乐性的但非强求的对话语境风格；丰富的在线视频；大量精选例题（从简单到复杂）提供了一步一步的推理过程；定理和方法的证明以及相关应用的说明实现理论应用于实践的目标；详细探讨了诸如无穷级数这样的难点问题。这样的一本经典著作将易用性与可读性以及内容的深度与数学的严谨完美地结合在一起。对于每一个想要掌握微积分的学生来说，《普林斯顿微积分读本》都是极好的资源。当然，非数学专业的学生也将大大受益。-baidu</p>
+</blockquote>
+<span id="more"></span>
+
+
+
+<p><del>各位的饭后笑料来了!</del></p>
+<p>(2019年10月24日21:37:30)虽然我今天什么都不会写,但是我就是想今天新建这篇文章哈哈,毕竟我现在连定积分和不定积分都还没有读到呢.当然,想下载电子版又不想在网上到处找这本书的pdf版本的同志可以私聊!</p>
+<p>话说今天艺术节可真好看,对吧森木同学</p>
+<h1 id="Chapter-I-极限导论"><a href="#Chapter-I-极限导论" class="headerlink" title="Chapter I 极限导论"></a>Chapter I 极限导论</h1><blockquote>
+<p>2019年10月30日09:44:19</p>
+</blockquote>
+<p>这本书的前两章是高中一年级常规内容(函数基础,三角函数基础),因此不做冗余介绍</p>
+<h2 id="极限"><a href="#极限" class="headerlink" title="极限"></a>极限</h2><p>第一小节是引入<strong>极限</strong>这一概念</p>
+<p>假设有函数$f(x)=x+1 \ (x!=2)$,也就是函数在$x=2$上没有定义,但当x非常接近2的时候,函数的值会非常接近3,于是我们把这个东西写成:</p>
+<p>$\lim_{x\to 2}f(x)=3$,读作:当x趋近2,$f(x)$的极限等于3</p>
+<p>但需要注意的是,这时$f(x)$极限和原来的函数值没有任何关系.也就是说,假如把上面函数改成分段函数(当$x=2$的时候定义函数值为10213,其他的时候为$x+1$),$\lim_{x\to 2}f(x)$还是等于3</p>
+<h2 id="双侧极限-左极限和右极限"><a href="#双侧极限-左极限和右极限" class="headerlink" title="双侧极限,左极限和右极限"></a>双侧极限,左极限和右极限</h2><p><img src="https://i.loli.net/2019/10/30/MIZc1NW2dauvGHU.png" alt="left limits and right limits.PNG"></p>
+<p>考虑上图这样一个分段函数,假设你就是图中那个小人,你从左向右走,在无限接近$x=2$的地方,你的函数值会无限接近1,这个时候我们就定义函数$f(x)$在$x=2$的左极限为1.同理,从右边走过来,函数值会无限接近-2,因此我们定义函数在2处的右极限为-2,写作:</p>
+<p>$$\lim_{x\to 2^-}f(x)=1 \ \ \  \  \  \lim_{x\to 2^+}f(x)=-2$$</p>
+<p>2后面带一个减号就叫做左极限,2后面带一个加号就叫做右极限,而我们上面定义的那种没有带加减号的那种极限叫做双侧极限.</p>
+<p>当左极限和右极限相等的时候才有双侧极限.</p>
+<h2 id="关于极限的存在性"><a href="#关于极限的存在性" class="headerlink" title="关于极限的存在性"></a>关于极限的存在性</h2><p>双侧极限:当且仅当左右极限都存在且相等时双侧极限存在</p>
+<p>左右极限:根据图像判断是否存在(如函数$f(x)=sin(\frac{1}{x})$在趋近0的时候函数值剧烈的在[$0,1$]之间震动,因此这个函数在趋近于0的时候没有左极限和右极限)</p>
+<p>$f(x)=sin(\frac{1}{x})$:</p>
+<p><img src="https://i.loli.net/2019/10/30/IbnKC5YSpeWGocr.png" alt="sinx.PNG"></p>
+<h2 id="无穷处的极限"><a href="#无穷处的极限" class="headerlink" title="无穷处的极限"></a>无穷处的极限</h2><p>除了像上面的那些点的极限外,还有一类很重要的极限:函数在正,负无穷处的极限</p>
+<p>这时的极限就不存在什么左右极限之分了,它就可以直接理解为双侧极限.</p>
+<p>比如上面的函数$f(x)=sin(\frac{1}{x})$,当x趋近于正无穷的时候,$\frac{1}{x}$趋近于0,因此$sin(\frac{1}{x})$趋近于0(三角函数基础!),当然由上面的图像也可以看出来是这样的.同时,$f(x)$是一个奇函数,因此在负无穷处的极限也是趋近于0的,这是可以把函数的极限写成:</p>
+<p>$$\lim_{x\to \infty}sin(\frac{1}{x})=0$$</p>
+<p>$$\lim_{x\to -\infty}sin(\frac{1}{x})=0$$</p>
+<h3 id="极限中的大数和小数"><a href="#极限中的大数和小数" class="headerlink" title="极限中的大数和小数"></a>极限中的大数和小数</h3><blockquote>
+<p>2019年10月30日19:13:29 说实话我现在还没搞明白这一小节是来干什么的..</p>
+</blockquote>
+<p>定义<strong>大数</strong>为绝对值大的数,<strong>小数</strong>为绝对值无限接近0的数.</p>
+<h2 id="由原极限产生新极限"><a href="#由原极限产生新极限" class="headerlink" title="由原极限产生新极限"></a>由原极限产生新极限</h2><p>$\lim_{x\to a}f(x)+\lim_{x\to a}g(x)=\lim_{x\to a}(f(x)+g(x))$</p>
+<p>$\lim_{x\to a}f(x)-\lim_{x\to a}g(x)=\lim_{x\to a}(f(x)-g(x))$</p>
+<p>(<strong>注:仅当极限不为正负无穷的时候极限的加法法则和减法法则有效</strong>)</p>
+<p>$\lim_{x\to a}f(x)\times\lim_{x\to a}g(x)=\lim_{x\to a}(f(x)g(x))$</p>
+<p>$\frac{\lim_{x\to a}f(x)}{\lim_{x\to a}g(x)}=\lim_{x\to a}(\frac{f(x)}{g(x)})$</p>
+<h2 id="渐近线"><a href="#渐近线" class="headerlink" title="渐近线"></a>渐近线</h2><blockquote>
+<p>曲线上一点M沿曲线无限远离原点或无限接近间断点时，如果M到一条直线的距离无限趋近于零，那么这条直线称为这条曲线的渐近线 –baidu</p>
+</blockquote>
+<p>当$\lim_{x\to \infty}f(x)=L$的时候,函数就有一条$y=L$的水平渐近线</p>
+<p>当</p>
+<p>$\lim_{x\to a^+}f(x)=+\infty$</p>
+<p>$\lim_{x\to a^-}f(x)=+\infty$</p>
+<p>$\lim_{x\to a^+}f(x)=-\infty$</p>
+<p>$\lim_{x\to a^-}f(x)=-\infty$</p>
+<p>4个条件中有任何一个条件满足的时候,函数就有一条$x=a$的水平渐近线</p>
+<ul>
+<li>关于渐近线的常见误解(下面的是正确理解)</li>
+</ul>
+<ol>
+<li>一个函数左右两边不一定要有对应的渐进线</li>
+<li>一个函数的渐近线最少0条,最多2条</li>
+<li>函数可以和其渐近线相交,比如$y=\frac{sin(x)}{x}$</li>
+</ol>
+<p>$y=\frac{sin(x)}{x}$和其渐近线:</p>
+<p><img src="https://i.loli.net/2019/10/30/ITgn7JDlUzevFCa.png" alt="sinxDx.PNG"></p>
+<h2 id="Squeeze-Theorem-夹逼定理"><a href="#Squeeze-Theorem-夹逼定理" class="headerlink" title="Squeeze Theorem 夹逼定理"></a>Squeeze Theorem 夹逼定理</h2><p>抛开一切感性因素,我们来谈谈这个定理的内容(算了,后面叫它<strong>三明治定理</strong>):</p>
+<p>三明治定理:</p>
+<p>若$\lim_{x\to x_0}F(x)=\lim_{x\to x_0}G(x)=A$,且若有函数$f(x)$在$x_0$的某邻域(邻近区间)内恒有$F(x)≤f(x)≤G(x)$</p>
+<p>则$\lim_{x\to x_0}f(x)=A$</p>
+<p>说白了就是函数A&gt;B,函数B&gt;C，函数A的极限是X，函数C的极限也是X ，那么函数B的极限就一定是X</p>
+<p>对于单侧极限来讲也差不多的,只是这个时候的不等式成立的区间就只需要考虑$x_0$某一边的邻域了</p>
+<h3 id="应用举例"><a href="#应用举例" class="headerlink" title="应用举例"></a>应用举例</h3><ul>
+<li> $f(x)=xsin(\frac{1}{x})$,求$\lim_{x\to 0^+}f(x)$</li>
+</ul>
+<p>因为$sin(\frac{1}{x})\in [-1,1]$,因此$xsin(\frac{1}{x})\in[-x,x]$,因此有不等式$-x&lt;=f(x)&lt;=x$</p>
+<p>注意到$\lim_{x\to0+}x=\lim_{x\to0+}-x=0$</p>
+<p>故$\lim_{x\to 0^+}f(x)=0$</p>
+<ul>
+<li>求$\lim_{x\to \infty}\frac{sin(x)}{x}$</li>
+</ul>
+<p>$∵sin(x)\in[-1,1] $</p>
+<p>$∴\frac{sin(x)}{x}\in [-\frac{1}{x},\frac{1}{x}]$</p>
+<p>$∵\lim_{x\to \infty}\frac{1}{x}=\lim_{x\to \infty}-\frac{1}{x}=0$</p>
+<p>$∴\lim_{x\to \infty}\frac{sin(x)}{x}=0$</p>
+<h1 id="Chapter-II-多项式的极限问题"><a href="#Chapter-II-多项式的极限问题" class="headerlink" title="Chapter II 多项式的极限问题"></a>Chapter II 多项式的极限问题</h1><p>本章探究多项式的极限问题,简单来讲,就是做一些练习</p>
+<h2 id="x趋近于a时有理函数的极限"><a href="#x趋近于a时有理函数的极限" class="headerlink" title="x趋近于a时有理函数的极限"></a>x趋近于a时有理函数的极限</h2><p>有理函数:两个多项式之比,形如$\frac{p(x)}{q(x)}$</p>
+<p>试求$\lim_{x\to a}\frac{p(x)}{q(x)}$</p>
+<h3 id="方法一-代入法"><a href="#方法一-代入法" class="headerlink" title="方法一 代入法"></a>方法一 代入法</h3><p>当把a代入有理函数后函数分母不为0,根据连续性,就可以直接把代入得到的值作为极限来使用</p>
+<ul>
+<li>求$\lim_{x\to -1}\frac{x^2-3x+2}{x-2}$</li>
+</ul>
+<p>当x=-1的时候,原多项式值为-2,故$\lim_{x\to -1}\frac{x^2-3x+2}{x-2}=-2$</p>
+<h3 id="方法二-因式分解-代入法"><a href="#方法二-因式分解-代入法" class="headerlink" title="方法二 因式分解+代入法"></a>方法二 因式分解+代入法</h3><p>有时候将a代入有理函数会使得分子分母都为0,这个时候的极限就有很多情况,因此应该使用因式分解将有理函数转化后代值.这里需要使用相关公式和技巧进行因式分解</p>
+<ul>
+<li>求$\lim_{x\to 2}\frac{x^2-3x+2}{x-2}$</li>
+</ul>
+<p> $\lim_{x\to 2}\frac{x^2-3x+2}{x-2}=\lim_{x\to 2}\frac{(x-2)(x-1)}{x-2}=\lim_{x\to 2}(x-1)=1$</p>
+<ul>
+<li>求$\lim_{x\to 3}\frac{x^3-27}{x^4-5x^3+6x^2}$</li>
+</ul>
+<p>注意使用立方差公式:$a^3-b^3=(a-b)(a^2+ab+b^2)$</p>
+<p> $\lim_{x\to 3}\frac{x^3-27}{x^4-5x^3+6x^2}=\lim_{x\to 3}\frac{(x-3)(x^2+3x+9)}{x^2(x^2-5x+6)}$</p>
+<p> $=\lim_{x\to 3}\frac{(x-3)(x^2+3x+9)}{x^2(x-3)(x-2)}=\lim_{x\to 3}\frac{(x^2+3x+9)}{x^2(x-2)}$</p>
+<p>使用代入法得$\lim_{x\to 3}\frac{x^3-27}{x^4-5x^3+6x^2}=\frac{27}{9}=3$</p>
+<h3 id="方法三-微调法"><a href="#方法三-微调法" class="headerlink" title="方法三 微调法"></a>方法三 微调法</h3><p>当使用代入法,分母为0但分子不为0,这个时候在待求点一定有一条垂直渐进线(具体为什么我不知道):</p>
+<p><img src="https://i.loli.net/2019/11/01/DG3N1CThA8OaSzI.png" alt="limitts.PNG"></p>
+<p>(DNE表示没有定义)</p>
+<p>因此如果遇到这种情况,就将自变量值在a附近微调,观察函数值的变化趋势,从而得出结论</p>
+<ul>
+<li>求$\lim_{x\to 1}\frac{2x^2-x-6}{x(x-1)^3}$</li>
+</ul>
+<p>(我一开始的解答..得到了和答案完全相反的结果)</p>
+<p>代入得到$\frac{-5}{0}$,故令$f(x)=\frac{2x^2-x-6}{x(x-1)^3}$</p>
+<p>当x=3时,$f(x)=\frac{18-3-6}{3\times8}=\frac{3}{8}=0.375$</p>
+<p>当x=4时,$f(x)=\frac{32-10}{4\times 27}=\frac{11}{54}=0.2037…$,</p>
+<p>故$f(3)&gt;f(4)$,因此$\lim_{x\to 1^+}\frac{2x^2-x-6}{x(x-1)^3}=+\infty$</p>
+<p>当x=-1时,$f(x)=\frac{2+1-6}{1\times8}=-\frac{3}{8}=-0.375$</p>
+<p>当x=-2时,$f(x)=\frac{8+2-6}{2\times 27}=\frac{2}{27}=$$0.0740…$,</p>
+<p>故$f(-2)&gt;f(-1)$,因此$\lim_{x\to 1^-}\frac{2x^2-x-6}{x(x-1)^3}=-\infty$</p>
+<p>由于左极限和右极限不相等,故$\lim_{x\to 1}\frac{2x^2-x-6}{x(x-1)^3}=DNE$</p>
+<blockquote>
+<p>错误原因:代入的值不够小,不能够保证反应出函数在极限附近的变化规律</p>
+</blockquote>
+<p>代入得到$\frac{-5}{0}$,故令$f(x)=\frac{2x^2-x-6}{x(x-1)^3}$</p>
+<p>分析这个函数在x=1附近的行为</p>
+<p>当x=1的时候,分子为负,当x在1附近时,分子仍然为负;</p>
+<p>而分母中因式x当x在1附近时为正,而因式$(x-1)^3$当x稍稍大于1的时候为正,稍稍小于1的时候为负</p>
+<p>故综合考虑得到:当x略大于1的时候函数值小于0,略小于1的时候函数值大于0,参考图中发现只有第3个图中的图像满足要求,故</p>
+<p>$\lim_{x\to 1+}\frac{2x^2-x-6}{x(x-1)^3}=-\infty$</p>
+<p>$\lim_{x\to 1-}\frac{2x^2-x-6}{x(x-1)^3}=+\infty$</p>
+<p>$\lim_{x\to 1}\frac{2x^2-x-6}{x(x-1)^3}=DNE$</p>
+<ul>
+<li>求$\lim_{x\to 1}\frac{2x^2-x-6}{x(x-1)^2}$</li>
+</ul>
+<p>当x接近1时,分母大于0,分子小于0(略大于1和略小于1都是),故</p>
+<p>$\lim_{x\to 1^+}\frac{2x^2-x-6}{x(x-1)^2}=\lim_{x\to 1^-}\frac{2x^2-x-6}{x(x-1)^2}=\lim_{x\to 1}\frac{2x^2-x-6}{x(x-1)^2}=-\infty$</p>
+<h2 id="x趋近于a时带平方根函数的极限"><a href="#x趋近于a时带平方根函数的极限" class="headerlink" title="x趋近于a时带平方根函数的极限"></a>x趋近于a时带平方根函数的极限</h2><h3 id="技巧-共轭表达式"><a href="#技巧-共轭表达式" class="headerlink" title="技巧 共轭表达式"></a>技巧 共轭表达式</h3><p>共轭表达式:$a+b$的共轭表达式是$a-b$,反之亦然</p>
+<p>本质上是利用平方差公式做分子分母有理化</p>
+<ul>
+<li>求$\lim_{x\to 5}\frac{\sqrt{x^2-9}-4}{x-5}$</li>
+</ul>
+<p>$\lim_{x\to 5}\frac{\sqrt{x^2-9}-4}{x-5}$</p>
+<p>$=\lim_{x\to 5}\frac{\sqrt{x^2-9}-4}{x-5}\times \frac{\sqrt{x^2-9}+4}{\sqrt{x^2-9}+4}$</p>
+<p>$=\lim_{x\to 5}\frac{x^2-25}{(x-5)\times(\sqrt{x^2-9}+4)}$</p>
+<p>$=\lim_{x\to 5}\frac{x+5}{\sqrt{x^2-9}+4}$</p>
+<p>代入5得到$\lim_{x\to 5}\frac{\sqrt{x^2-9}-4}{x-5}=\frac{10}{8}=\frac{5}{4}$</p>
+<h2 id="x趋近于正无穷时带平方根函数的极限"><a href="#x趋近于正无穷时带平方根函数的极限" class="headerlink" title="x趋近于正无穷时带平方根函数的极限"></a>x趋近于正无穷时带平方根函数的极限</h2><h3 id="最高次项决定极限"><a href="#最高次项决定极限" class="headerlink" title="最高次项决定极限"></a>最高次项决定极限</h3><p>令$p’(x)$为多项式$p(x)$的最高次项,则有</p>
+<p>$\lim_{x\to \infty}\frac{p’(x)}{p(x)}=1$</p>
+<p>这个可以简单理解为:非最高次项在$x\to +\infty$的时候的大小和最高次项比起来就像地球大小和一个人的大小一样.正因为我们在估计地球的大小的时候没有考虑一个人的大小,我们在考虑$x\to +\infty$的时候多项式$p(x)$的大小时不会考虑非最高次项的大小,故最高次项就约等于是原多项式了</p>
+<h3 id="简单分式极限"><a href="#简单分式极限" class="headerlink" title="简单分式极限"></a>简单分式极限</h3><p>对于任意的n&gt;0,有</p>
+<p>$\lim_{x\to +\infty}\frac{C}{x^n}=0,C$是常数</p>
+<p>因为分母无限变大,原分式无限接近0</p>
+<h3 id="方法-等效提取法"><a href="#方法-等效提取法" class="headerlink" title="方法 等效提取法"></a>方法 等效提取法</h3><p>当遇到一个多项式的项数多于1项时,将其除以其最高次项再乘其最高次项,然后用简单分式极限中提到的式子来化简即可</p>
+<p>注意:这里不能够直接用最高次项去代替这种方法,因为这种方法会考虑到极限前可能存在的常数,至少常数可以决定符号嘛,而用最高次项直接代替就不能够考虑到这个问题</p>
+<ul>
+<li>求$\lim_{x\to +\infty}\frac{x-8x^4}{7x^4+5x^3+2000x^2-6}$</li>
+</ul>
+<p>$\lim_{x\to +\infty}\frac{x-8x^4}{7x^4+5x^3+2000x^2-6}$</p>
+<p>$=\lim_{x\to +\infty}\frac{\frac{x-8x^4}{-8x^4}\times -8x^4}{\frac{7x^4+5x^3+2000x^2-6}{7x^4}\times 7x^4}$</p>
+<p>$=\lim_{x\to +\infty}\frac{\frac{x-8x^4}{-8x^4}\times -8x^4}{\frac{7x^4+5x^3+2000x^2-6}{7x^4}\times 7x^4}$</p>
+<p>$=\lim_{x\to +\infty}\frac{(\frac{1}{-8x^3}+1)\times -8x^4}{(1+\frac{5}{7x}+\frac{2000}{7x^2}-\frac{6}{7x^4})\times 7x^4}$</p>
+<p>根据$\lim_{x\to +\infty}\frac{C}{x^n}=0$,原式化为</p>
+<p>$=\lim_{x\to +\infty}\frac{(0+1)\times -8x^4}{(1+0+0-0)\times 7x^4}=-\frac{8}{7}$</p>
+<ul>
+<li>求$\lim_{x\to +\infty}\frac{(x^4+3x-99)(2-x^5)}{(18x^7+9x^6-3x^2-1)(x+1)}$</li>
+</ul>
+<p>$\lim_{x\to +\infty}\frac{(x^4+3x-99)(2-x^5)}{(18x^7+9x^6-3x^2-1)(x+1)}$</p>
+<p>$=\lim_{x\to +\infty}\frac{\frac{(x^4+3x-99)}{x^4}\times x^4\times \frac{(2-x^5)}{-x^5}\times-x^5}{\frac{(18x^7+9x^6-3x^2-1)}{x^7}\times x^7\times \frac{(x+1)}{x}\times x}$</p>
+<p>$=\lim_{x\to +\infty}\frac{(1+0+0)\times x^4\times (0+1)\times-x^5}{(18+0-0-0)\times x^7\times (1+0)\times x}$</p>
+<p>$=\lim_{x\to +\infty}-\frac{x^4\times x^5}{18x^8}=-\frac{x}{18}=-\infty$</p>
+<ul>
+<li>求$\lim_{x\to \infty}\frac{2x+3}{x^2-7}$</li>
+</ul>
+<p>$\lim_{x\to \infty}\frac{2x+3}{x^2-7}$</p>
+<p>$=\lim_{x\to \infty}\frac{\frac{2x+3}{2x}\times 2x}{\frac{x^2-7}{x^2}\times x^2}=(\frac{1+0}{1-0})\lim_{x\to \infty}\frac{2}{x}=0$</p>
+<h2 id="x趋近正无穷时多项式型函数的极限"><a href="#x趋近正无穷时多项式型函数的极限" class="headerlink" title="x趋近正无穷时多项式型函数的极限"></a>x趋近正无穷时多项式型函数的极限</h2><p>这里的麻烦点在于可能会出现根号,这使得最高次项不是那么明显,但是操作方式还是差不多,具体来讲就是把根号下的最高次项开方后再进行操作</p>
+<ul>
+<li>求$\lim_{x\to \infty}\frac{\sqrt{16x^4+8}+3x}{2x^2+6x+1}$</li>
+</ul>
+<p>$\lim_{x\to \infty}\frac{\sqrt{16x^4+8}+3x}{2x^2+6x+1}$</p>
+<p>$=\lim_{x\to \infty}\frac{\frac{\sqrt{16x^4+8}+3x}{4x^2}\times4x^2}{\frac{2x^2+6x+1}{2x^2}\times 2x^2}$</p>
+<p>$=\lim_{x\to \infty}\frac{(\sqrt{\frac{16x^4+8}{16x^4}}+\frac{3x}{4x^2})\times 4x^2}{(1+0+0)\times 2x^2}$</p>
+<p>$=\lim_{x\to \infty}\frac{(\sqrt{1+0}+0)\times 4x^2}{(1+0+0)\times 2x^2}$</p>
+<p>$=\lim_{x\to \infty}\frac{4x^2}{2x^2}=2$</p>
+<ul>
+<li>求 $\lim_{x\to \infty}\frac{\sqrt{16x^4+8}+3x^3}{2x^2+6x+1}$</li>
+</ul>
+<p>$\lim_{x\to \infty}\frac{\sqrt{16x^4+8}+3x^3}{2x^2+6x+1}$</p>
+<p>$=\lim_{x\to \infty}\frac{\frac{\sqrt{16x^4+8}}{3x^3}\times3x^3+3x^3}{\frac{2x^2+6x+1}{2x^2}\times 2x^2}$</p>
+<p>$=\lim_{x\to \infty}\frac{\sqrt{\frac{16x^4+8}{9x^6}}\times3x^3+3x^3}{(1+0+0)\times 2x^2}$</p>
+<p>$=\lim_{x\to \infty}\frac{3x^3}{(1+0+0)\times 2x^2}$</p>
+<p>$=\lim_{x\to \infty}\frac{3x^3}{2x^2}=\frac{3}{2}x=\infty$</p>
+<ul>
+<li>求$\lim_{x\to \infty}\frac{\sqrt{4x^6-5x^5}-2x^3}{\sqrt[3]{27x^6+8x}}$</li>
+</ul>
+<p>$\lim_{x\to \infty}\frac{\sqrt{4x^6-5x^5}-2x^3}{\sqrt[3]{27x^6+8x}}$</p>
+<p>$=\lim_{x\to \infty}\frac{\frac{\sqrt{4x^6-5x^5}}{2x^3}\times 2x^3-2x^3}{\frac{\sqrt[3]{27x^6+8x}}{3x^2}\times 3x^2}$</p>
+<p>$=\lim_{x\to \infty}\frac{({\sqrt{\frac{4x^6-5x^5}{4x^6}}})\times 2x^3-2x^3}{\sqrt[3]{\frac{27x^6+8x}{27x^2}}\times 3x^2}$</p>
+<p>$=\lim_{x\to \infty}\frac{(1+0)\times 2x^3-2x^3}{\sqrt[3]{\frac{27x^6+8x}{27x^2}}\times 3x^2}=\frac{0-0}{\sqrt[3]{\frac{27x^6+8x}{27x^2}}\times 3x^2}=0$</p>
+<blockquote>
+<p>错误原因:当两个多项式的最高次项相同的时候,如果这个时候把两个多项式的值直接看成最高次项的值,那么这两个多项式的差就等于0,但实际上这两个多项式的非最高次项不同,故当值趋于正无穷的时候,这两个多项式的差不会等于0.</p>
+</blockquote>
+<p>为了避免分子抵消成0,我们使用共轭表达式的技巧处理这个问题</p>
+<p>$\lim_{x\to \infty}\frac{\sqrt{4x^6-5x^5}-2x^3}{\sqrt[3]{27x^6+8x}}$</p>
+<p>$=\lim_{x\to \infty}\frac{4x^6-5x^5-4x^6}{\sqrt[3]{27x^6+8x}\times(\sqrt{4x^6-5x^5}+2x^3)}$</p>
+<p>$=\lim_{x\to \infty}\frac{-5x^5}{\sqrt[3]{\frac{27x^6+8x}{27x^6}\times 27x^6}\times(\sqrt{\frac{4x^6-5x^5}{4x^6}\times 4x^6}+2x^3)}$</p>
+<p>$=\lim_{x\to \infty}\frac{-5x^5}{3x^2\times(2x^3+2x^3)}=\frac{-5x^5}{12x^5}=-\frac{5}{12}$</p>
+<h2 id="x趋近负无穷时有理函数的极限"><a href="#x趋近负无穷时有理函数的极限" class="headerlink" title="x趋近负无穷时有理函数的极限"></a>x趋近负无穷时有理函数的极限</h2><p>处理方法和上面趋于正无穷的一样,但是有些许要点</p>
+<ul>
+<li><p>$\lim_{x\to -\infty}\frac{C}{x^n}=0,n&gt;=1$</p>
+</li>
+<li><p>$\lim_{x\to -\infty} Cx=-\infty$</p>
+</li>
+<li><p>对于任意偶数n,在替换出根号的时候都要按照负数的规则:$\sqrt[n]{x^n}=-x$</p>
+</li>
+<li><p>扩展第三要点得到:如果x小于0(趋近负无穷),并且想写$\sqrt[n]{x^{某次幂}}=x^m$,那么当且仅当n是偶数且m是奇数的时候$x^m$的前面要加一个负号</p>
+</li>
+</ul>
+<p>**例题:**求证$\lim_{x\to -\infty}\frac{\sqrt{4x^6+8}}{2x^3+6x+1}=-1$</p>
+<h2 id="包含绝对值的极限"><a href="#包含绝对值的极限" class="headerlink" title="包含绝对值的极限"></a>包含绝对值的极限</h2><p>这种极限就根据绝对值内部的符号,考虑两个或更多个不同的x的区间,通过考虑左右极限来得到解</p>
+<p>**例题:**求证$\lim_{x\to 0}\frac{|x|}{x}=\lim_{x\to 0}\frac{|x+2|}{x+2}=DNE$</p>
+<p><strong>求多项式的极限除了上面这些方法外,还有一个重要的方法:三明治定理!</strong></p>
+<h1 id="Chapter-III-连续性和可导性"><a href="#Chapter-III-连续性和可导性" class="headerlink" title="Chapter III 连续性和可导性"></a>Chapter III 连续性和可导性</h1><h2 id="连续性"><a href="#连续性" class="headerlink" title="连续性"></a>连续性</h2><h3 id="在一点处连续"><a href="#在一点处连续" class="headerlink" title="在一点处连续"></a>在一点处连续</h3><p>思考这样一个过程:函数图像上有一点(x,f(x)),在画函数图像的时候如果想要在画这个点的时候不提起笔,那么就应该在画这个点附近的函数图像的时候不提起笔.但有多<strong>附近</strong>呢?要多附近就多附近!这就是极限嘛,故:</p>
+<p>$$如果\lim_{x\to a}f(x)=f(a),函数在点x=a处连续$$</p>
+<p>细化来讲,函数在点x=a处连续,要满足以下条件:</p>
+<ul>
+<li><p>双侧极限$\lim_{x\to a}f(x)存在且有限$</p>
+</li>
+<li><p>函数在点$x=a$处有定义,即f(a)存在</p>
+</li>
+<li><p>$\lim_{x\to a}f(x)=f(a)$</p>
+</li>
+</ul>
+<h3 id="在区间上连续"><a href="#在区间上连续" class="headerlink" title="在区间上连续"></a>在区间上连续</h3><ul>
+<li><p>对于开区间$(a,b)$,函数在区间上连续相当于在区间内所有点连续</p>
+</li>
+<li><p>对于闭区间$[a,b]$,函数在区间上连续相当于:1.在$(a,b)$内函数连续 2.函数在x=a处右连续($\lim_{x\to a^+}f(x)=f(a)$) 3.函数在x=b处左连续($\lim_{x\to b^-}f(x)=f(a)$)</p>
+</li>
+</ul>
+<h3 id="连续函数运算"><a href="#连续函数运算" class="headerlink" title="连续函数运算"></a>连续函数运算</h3><p>对于两个连续函数做加减乘除,甚至将其复合,都会得到另外一个连续函数</p>
+<ul>
+<li>常见的连续函数:x的任意次幂,所有的指数和对数函数,所有的三角函数(除了在渐近线上)</li>
+</ul>
+<p><strong>练习:</strong></p>
+<ul>
+<li>证明函数</li>
+</ul>
+<p>$$g(x)=<br>\begin{cases}<br>xsin(\frac{1}{x}),x!=0\0,x=0<br>\end{cases}<br>$$</p>
+<p>在0处连续</p>
+<p>$∵sin(\frac{1}{x})\in[-1,1]$</p>
+<p>$∴xsin(\frac{1}{x})\in[-x,x]$</p>
+<p>$设k(x)=x,z(x)=-x,f(x)=xsin(\frac{1}{x})$</p>
+<p>$则有z(x)&lt;=f(x)&lt;=k(x),x\in Z$</p>
+<p>$∵\lim_{x\to 0}z(x)=\lim_{x\to 0}k(x)=0$</p>
+<p>$∴\lim_{x\to 0}f(x)=0$(三明治定理)</p>
+<p>$∵g(0)=0,\lim_{x\to 0}g(x)=\lim_{x\to 0}f(x)=0$</p>
+<p>$∴\lim_{x\to 0}g(x)=g(0)$,函数在0处连续</p>
+<ul>
+<li>证明函数$f(x)=\frac{x^2-3x+2}{x-2}$在$x=-1$处连续</li>
+</ul>
+<p><del>(这题有点sb)</del></p>
+<p>$∵x的任意次幂是连续的$</p>
+<p>$∴g(x)=x^2-3x+2,k(x)=x-2是连续的$</p>
+<p>$∴f(x)=\frac{x^2-3x+2}{x-2}在除x=2外的其他点都是连续的$</p>
+<p>$∴f(x)=\frac{x^2-3x+2}{x-2}在x=-1处连续$</p>
+<h3 id="介值定理"><a href="#介值定理" class="headerlink" title="介值定理"></a>介值定理</h3><p>内容:如果$f$在$[a,b]$上连续,且$f(a)&lt;0$且$f(b)&gt;0$,那么在区间$(a,b)$上至少有一点c,使得$f(c)=0$(当然如果条件是$f(a)&gt;0,f(b)&lt;0$也成立)</p>
+<p>扩展:如果 $f在[a,b]上连续,且f(a)&lt;k且f(b)&gt;k,那么在区间(a,b)上至少有一点c,使得f(c)=k$ (当然如果条件是 $f(a)&gt;k,f(b)&lt;k$ 也成立)</p>
+<p>练习:</p>
+<ul>
+<li><p>证明多项式$p(x)=-x^5+x^4+3x+1$在$x=1$和$x=2$之间有一个x轴截距</p>
+</li>
+<li><p>证明方程$x=cos(x)$有一个解</p>
+</li>
+<li><p>证明任意的奇数次多项式至少有一个根(提示:利用$\lim_{x\to \infty}\frac{p(x)}{a_nx^n}=\lim_{x\to -\infty}\frac{p(x)}{a_nx^n}=1$)</p>
+</li>
+</ul>
+<h3 id="最大值最小值定理"><a href="#最大值最小值定理" class="headerlink" title="最大值最小值定理"></a>最大值最小值定理</h3><p>如果$f$在$[a,b]$上连续,那么函数在$[a,b]$上至少有一个最大值和一个最小值</p>
+<h2 id="可导性"><a href="#可导性" class="headerlink" title="可导性"></a>可导性</h2><h3 id="运动学和导数"><a href="#运动学和导数" class="headerlink" title="运动学和导数"></a>运动学和导数</h3><p>运动学和微积分有着千丝万缕的关系.据说微积分的灵感之一就来自于人们研究运动速度的过程.因此这里会从不同于高中物理的角度讨论一些高中物理中的运动学问题</p>
+<h4 id="平均速率"><a href="#平均速率" class="headerlink" title="平均速率"></a>平均速率</h4><p>这是最粗糙的描述物体运动状态的物理量了,相关量的公式是:$速率=\frac{距离}{时间}$</p>
+<p>准确来讲,等号左边的速率应该叫做<strong>平均速率</strong>,因为分母上的时间是一段时间</p>
+<h4 id="平均速度"><a href="#平均速度" class="headerlink" title="平均速度"></a>平均速度</h4><p>上面的公式中,用位移代替距离,我们得到一个稍微精准一点的物理量:平均速度</p>
+<p>$平均速度=\frac{位移}{时间}$</p>
+<h4 id="瞬时速度"><a href="#瞬时速度" class="headerlink" title="瞬时速度"></a>瞬时速度</h4><p>如果令$v_{t\to u}$指汽车在开始于时刻t终止于时刻u这一时间段上的平均速度,那么</p>
+<p>$时刻t的瞬时速度=\lim_{u\to t}v_{t\to u}$</p>
+<p>更进一步,如果令$f(t)$为汽车在时刻t的位置,那么</p>
+<p>$v_{t\to u}=\frac{f(u)-f(t)}{u-t}$</p>
+<p>按照这种方式来表示的话,时刻t的瞬时速度就可以表示为</p>
+<p>$\lim_{u\to t}\frac{f(u)-f(t)}{u-t}$</p>
+<p>当然,如果定义$h=u-t$,那么时刻t的瞬时速度还可以表示为</p>
+<p>$\lim_{h\to 0}\frac{f(t+h)-f(t)}{h}$</p>
+<p>两种表示方法本质一样</p>
+<p><strong>例题:求瞬时速度:</strong></p>
+<blockquote>
+<p>一辆静止状态的汽车从7公里标志处向右开始加速,这个时候的时刻为t=0小时.汽车在时刻t时的位置是$f(t)=15t^2+7$,求时刻t汽车的速度</p>
+</blockquote>
+<p>虽然这题直接用高中物理$x=V_0t+\frac{1}{2}at^2$一代入就可知道答案,但是我们暂且不这样做,后面算出答案后会用这个方法验证的</p>
+<p>根据上面对瞬时速度$v_t$的定义,我们可以列出如下式子:$v_t=\lim_{h\to 0}\frac{f(t+h)-f(t)}{h}$</p>
+<p>因此我们要做的已经很明确,那就是求这个有理函数的极限.使用之前讲的方法:</p>
+<p>$\lim_{h\to 0}\frac{f(t+h)-f(t)}{h}=\lim_{h\to 0}\frac{15(t+h)^2+7-15t^2-7}{h}=\lim_{h\to 0}\frac{15(t^2+2th+h^2)-15t^2}{h}$</p>
+<p>$=\lim_{h\to 0}\frac{30th+15h^2}{h}=30t+15h=30t$</p>
+<p>也就是说,汽车在任意时刻t的瞬时速度为$30t$.我们这时用$x=V_0t+\frac{1}{2}at^2$来看看:</p>
+<p>$0t+15t^2=V_0t+\frac{1}{2}at^2\rightarrow 15=\frac{1}{2}a\rightarrow a=30$</p>
+<p>加速度是$30m/s^2$,那么速率就是$at=30t$</p>
+<h4 id="速度的图像解释"><a href="#速度的图像解释" class="headerlink" title="速度的图像解释"></a>速度的图像解释</h4><p>我们将位移和时间图像画出来,如下图所示(y就是位移):</p>
+<p><img src="https://img-blog.csdnimg.cn/20191102154100444.png" alt="ToChange!"></p>
+<p>根据平均速度的定义式$v_{t\to u}=\frac{f(u)-f(t)}{u-t}$,我们发现$v_{t\to u}$就是图中虚线的斜率</p>
+<p>而根据瞬时速度是$\lim_{u\to t}\frac{f(u)-f(t)}{u-t}$,我们发现瞬时速度就等于过点$(t,f(t))$的切线的斜率</p>
+<p><strong>因此导出函数f在t点斜率</strong> $f’(t)$ <strong>的公式:</strong> $f’(t)\lim_{u\to t}\frac{f(u)-f(t)}{u-t}$</p>
+<p><strong>更进一步的说,我们一般把这个斜率叫做f的导数</strong></p>
+<h3 id="导函数"><a href="#导函数" class="headerlink" title="导函数"></a>导函数</h3><p>定义:通过$(x,f(x))$的切线的斜率是x的一个函数,我们把这个函数叫做f的导数,写作$f’$</p>
+<p>一般说,对$f$关于变量$x$求导得到函数$f’$</p>
+<p>如果极限存在的话,有</p>
+<p>$f’(x)=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}$</p>
+<p>这个时候,函数$f$在$x$点可导,如果对于某个$x$,上面的极限不存在,那么$x$的值就不在导函数$f’$的定义域里,即$f$在$x$点不可导</p>
+<p><strong>练习</strong>:对于$f(x)=x^2$,求证$f’(x)=2x$</p>
+<h3 id="作为极限比的导数"><a href="#作为极限比的导数" class="headerlink" title="作为极限比的导数"></a>作为极限比的导数</h3><blockquote>
+<p>2019年11月2日16:50:34  <del>也许老外写书就是会写一些很奇怪的章节吧.这个章节我也没有搞懂它作为一个章节存在的意义</del></p>
+</blockquote>
+<p>导数$f’(x)$的不同写法:</p>
+<ul>
+<li>$f’(x)=\lim_{\triangle x\to 0}\frac{\triangle y}{\triangle x}$</li>
+</ul>
+<p>这种写法代表的是<strong>x中的一个小的变化产生了大约</strong>$f’(x)$<strong>倍的y中的变化</strong></p>
+<ul>
+<li>$令y=f(x),则f’(x)=\frac{dy}{dx}$</li>
+</ul>
+<p>这种写法中,$\frac{dy}{dx}$等价于分数$\frac{\triangle y}{\triangle x}$在$\triangle x$无限趋近于0时的极限,也就是$\lim_{\triangle x\to 0}\frac{\triangle y}{\triangle x}$</p>
+<h3 id="线性函数和常数函数的导数"><a href="#线性函数和常数函数的导数" class="headerlink" title="线性函数和常数函数的导数"></a>线性函数和常数函数的导数</h3><ul>
+<li><p>对于线性函数$f(x)=mx+b$,$f’(x)=m$</p>
+</li>
+<li><p>对于常数函数$f(x)=c$,$f’(x)=0$</p>
+</li>
+</ul>
+<p>可自行证明</p>
+<h3 id="高阶导数"><a href="#高阶导数" class="headerlink" title="高阶导数"></a>高阶导数</h3><p>我们还可以更近一步:从一个函数$f$出发,求一次导得到新的函数$f’$,然后继续对$f’$求导,得到$f’’$…基本上你可以求一大串导数,前提是你愿意.</p>
+<p>特别的,对于n阶导,除开$f^{n个’}$外,还有如下几种有效的表达方式:</p>
+<p>$f^{n个’}=\frac{d^ny}{dx^n}=\frac{d^n(y)}{dx^n}=\frac{d^n}{dx^n}(y)=f^{(n)}$</p>
+<h3 id="导数的存在性"><a href="#导数的存在性" class="headerlink" title="导数的存在性"></a>导数的存在性</h3><p>定义右导数和左导数分别为:</p>
+<p>$\lim_{h\to 0^+}\frac{f(x+h)-f(x)}{h}$</p>
+<p>$\lim_{h\to 0^-}\frac{f(x+h)-f(x)}{h}$</p>
+<p>如果在某一点左右导数相等,那么此点可导,导数值为左右导数值</p>
+<h3 id="可导性和连续性"><a href="#可导性和连续性" class="headerlink" title="可导性和连续性"></a>可导性和连续性</h3><p><strong>如果一个函数f在x上可导,那么它在x上连续</strong>(这个定理好像很重要诶)</p>
+<p>证明:</p>
+<p>若函数$f(x)$可导,那么式子$\frac{f(x+h)-f(x)}{h}$中的任何一项都存在,且导数$f(x)’=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}$</p>
+<p>这时构造另外一个极限:$\lim_{h\to 0}(\frac{f(x+h)-f(x)}{h}\times h)$,把极限拆开得到$\lim_{h\to 0}(\frac{f(x+h)-f(x)}{h}\times h)=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}\times \lim_{h\to 0}h=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}\times 0=0$</p>
+<p>由于$\lim_{h\to 0}(\frac{f(x+h)-f(x)}{h}\times h)=\lim_{h\to 0}f(x+h)-f(x)=0$,也就是$\lim_{h\to 0}f(x+h)=f(x)$</p>
+<p>根据前面的知识,若函数$f(x)$连续,那么$\forall x,\lim_{h\to 0}f(h+x)=f(x)$</p>
+<p>这两个式子一模一样好吧!</p>
+<p>但是一定要注意:<strong>连续函数不一定可导</strong></p>
+<h1 id="Chapter-IV-求解微分问题"><a href="#Chapter-IV-求解微分问题" class="headerlink" title="Chapter IV 求解微分问题"></a>Chapter IV 求解微分问题</h1><h2 id="使用定义求导"><a href="#使用定义求导" class="headerlink" title="使用定义求导"></a>使用定义求导</h2><p>顾标题思义,使用定义对函数求导</p>
+<ul>
+<li>对$f(x)=\frac{1}{x}$求导:</li>
+</ul>
+<p>$f(x)’=\lim_{h\to 0}\frac{\frac{1}{x+h}-\frac{1}{x}}{h}=\lim_{h\to 0}\frac{\frac{-h}{x^2+hx}}{h}=\lim_{h\to 0}\frac{-1}{x^2+hx}=-\frac{1}{x^2}$</p>
+<ul>
+<li>对$f(x)=\sqrt x$求导:</li>
+</ul>
+<p>$f(x)’=\lim_{h\to 0}\frac{\sqrt{x+h}-\sqrt x}{h}=\lim_{h\to 0}\frac{h}{h(\sqrt{x+h}+\sqrt x)}=\lim_{h\to 0}\frac{1}{\sqrt{x+h}+\sqrt x}=\frac{1}{2\sqrt x}$</p>
+<ul>
+<li>对$f(x)=\sqrt x+\frac{1}{x}$求导</li>
+</ul>
+<p>$f(x)=\lim_{h\to 0}\frac{(\sqrt {x+h}+\frac{1}{x+h}-\sqrt x+\frac{1}{x})}{h}=\lim_{h\to 0} \frac{\sqrt{x+h}-\sqrt x}{h}+\lim_{h\to 0}\frac{\frac{1}{x+h}-\frac{1}{x}}{h}$</p>
+<p>接下来的求导过程就是上面两道题的综合,过程略,答案为$f’(x)=-\frac{1}{x^2}+\frac{1}{2\sqrt{x}}$,正好是上面两个导数的和(后面会提到,这就是导数的加法法则了)</p>
+<ul>
+<li>对$f(x)=x^n$求导</li>
+</ul>
+<p>前置芝士:<strong>二项式定理</strong></p>
+<p>二项式定理:$(x+y)^n=\sum_{k=0}^n(_n^k)x^{n-k}y^{k}$</p>
+<p>$f’(x)=\lim_{h\to 0}\frac{(x+h)^n-x^n}{h}$</p>
+<p>根据二项式定理把$(x+h)^n$展开得到</p>
+<p>$=\lim_{h\to 0}\frac{x^n+nx^{n-1}h+(_n^2)x^{n-2}h^2+……-x^n}{h}$</p>
+<p>$=\lim_{h\to 0}\frac{nx^{n-1}h+(_n^2)x^{n-2}h^2+….}{h}$</p>
+<p>$=\lim_{h\to 0}nx^{n-1}+(_n^2)x^{n-2}h+….$</p>
+<p>由于省略号里的项都带有$k$个$h \ (k&gt;1)$,因此取极限把它们去掉得</p>
+<p>$f’(x)=nx^{n-1}$</p>
+<p>事实上,上面这个式子里面的$n$可以属于任意实数</p>
+<p>不得不注意到一个很好的事情:当我们有了这个式子后,任何次幂函数的导数就可以直接求了诶!</p>
+<p>比如,利用这个式子,我们可以证明:</p>
+<p>若$f(x)=C,C$为常数,$f’(x)=0$</p>
+<p>若$f(x)=ax,a$为常数,$f’(x)=a$(导数在原函数乘以常数倍后也要乘以常数倍)</p>
+<p>若$f(x)=ax^2,a$为常数,$f’(x)=2ax$</p>
+<p>$……$</p>
+<h2 id="求导法则"><a href="#求导法则" class="headerlink" title="求导法则"></a>求导法则</h2><p>这一小节,我们会尝试使用一些规则使得求导更加便捷</p>
+<h3 id="函数的常数倍"><a href="#函数的常数倍" class="headerlink" title="函数的常数倍"></a>函数的常数倍</h3><p>一句话来讲,就是<strong>导数在原函数乘以常数倍后也要乘以常数倍</strong></p>
+<p>简单证明:</p>
+<p>明确问题:令$g(x)=af(x)$,求证$g’(x)=af’(x)$</p>
+<p>$g’(x)=\lim_{h\to 0}\frac{g(x+h)-g(x)}{h}=\lim_{h\to 0}\frac{af(x+h)-af(x)}{h}=a\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}=af(x)’$</p>
+<p>得证</p>
+<p>当然也可以用可视化的方法来证明,即构造一个矩形,这在后面会提到,相关的证明可以上B站去看,链接在后面给出</p>
+<h3 id="函数和与差"><a href="#函数和与差" class="headerlink" title="函数和与差"></a>函数和与差</h3><p><strong>两个函数相加减得到的新函数的导数等于原函数的导数的和或差</strong></p>
+<p>简单证明:</p>
+<p>明确问题:令$g(x)=k(x)+f(x)$,求证$g’(x)=k’(x)+f’(x)$</p>
+<p>(只要加法成立,取个负号减法就成立了,故不再过多讨论减法)</p>
+<p>$g’(x)=\lim_{h\to 0}\frac{g(x+h)-g(x)}{h}=\lim_{h\to 0}\frac{k(x+h)+f(x+h)-k(x)-f(x)}{h}$</p>
+<p>$=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}+\lim_{h\to 0}\frac{k(x+h)-k(x)}{h}=f’(x)+k’(x)$</p>
+<p>得证</p>
+<p>还有一种证法,利用了可视化的思想,上图意会一下:</p>
+<p><img src="https://img-blog.csdnimg.cn/20191106194548241.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkwNzgwMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h3 id="函数的乘积"><a href="#函数的乘积" class="headerlink" title="函数的乘积"></a>函数的乘积</h3><p>若函数$g(x)=f(x)\times k(x)$,则$g’(x)=f(x)k’(x)+f’(x)k(x)$,可以简单记为<strong>左乘右导,右乘左导(left d right,right d left)</strong></p>
+<p>证明:</p>
+<p>这个定理的证明要抓住一点:<strong>函数的导数本质上是函数在自变量有微小变化下函数值的变化大小</strong>,这一点从导数的定义式也能够看出来:$\frac{dy}{dx}$,<strong>单位自变量导致的函数变化大小</strong></p>
+<h4 id="一-本书附录中给出的证明"><a href="#一-本书附录中给出的证明" class="headerlink" title="一:本书附录中给出的证明"></a>一:本书附录中给出的证明</h4><p>有函数$y=uv$</p>
+<p>则函数变化量$\triangle y=(u+\triangle u)(v+\triangle v)-uv$</p>
+<p>$=uv+\triangle uv+\triangle vu+\triangle u\triangle v-uv=\triangle uv+\triangle vu-\triangle u\triangle v$</p>
+<p>在等式两边全部除以一个$\triangle x$得到</p>
+<p>$\frac{\triangle y}{\triangle x}=\frac{\triangle u}{\triangle x}v+\frac{\triangle v}{\triangle x}u-\frac{\triangle u\triangle v}{\triangle x^2}\times \triangle x$</p>
+<p>注意最后一项被多除了一个$\triangle x$之后乘了一个$\triangle x$</p>
+<p>当对式子取极限后,<strong>由于最后一项有一个</strong>$\triangle x$<strong>因子会趋于0</strong>,故最后一项趋于0,其他项趋于对应的导数,即</p>
+<p>$\frac{dy}{dx}=\frac{du}{dx}v+\frac{dv}{dx}u$</p>
+<p>得证</p>
+<p>但是个人觉得这个证明有一点不严谨,不能够让我信服,因为我可以在任意一项上面乘一个$\triangle x$然后再除去,这样的话我就可以宣告这一项趋于0,如果这样的话就太荒唐了..也许是我太菜了,如果哪个正在看这篇文章的大佬可以解答这个问题的话,蒟蒻感激不尽</p>
+<h4 id="二-本书中的另外一个证明方法"><a href="#二-本书中的另外一个证明方法" class="headerlink" title="二:本书中的另外一个证明方法"></a>二:本书中的另外一个证明方法</h4><p>这种可视化的证明方法和我初三的时候在<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av10435213/?spm_id_from=333.788.videocard.0">bilibili</a>上看到的那种一模一样!</p>
+<p>考虑构造这样一个矩形:它的长由函数$g(x)$决定,宽由函数$k(x)$决定,那么它的面积就是$g(x)\times k(x)$,不妨设为$f(x)$</p>
+<p><img src="https://img-blog.csdnimg.cn/20191106193328762.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkwNzgwMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>当x发生微小变化dx的时候,这个图变成了这个样子:</p>
+<p><img src="https://img-blog.csdnimg.cn/20191106193826303.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkwNzgwMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>区域$I,II,III,IV$的面积分别是$k(dx)g(dx),k(dx)g(x),k(x)g(dx),k(x)g(x)$</p>
+<p>从中间拿出面积的变化量:$k(dx)g(x)+g(dx)k(x)+g(dx)k(dx)$,显然,由于$dx$是一个非常小的量,$g(dx)k(dx)$可以<strong>忽略不计(safe to ignore)</strong></p>
+<p>于是有$f’(x)=k(x)g’(x)+g(x)k’(x)$</p>
+<h3 id="函数的复合"><a href="#函数的复合" class="headerlink" title="函数的复合"></a>函数的复合</h3><p>$f(x)=g(k(x))$,则$f’(x)=g’(k(x))k’(x)$</p>
+<p>证明:</p>
+<p>这其实也有可视化的证明方法,<del>但是我没怎么看懂</del>,还是先说书上的证明方法吧</p>
+<p>$f’(x)=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}=\lim_{h\to 0}\frac{g(k(x+h))-g(k(x))}{h}$</p>
+<hr>
+<p>由于$k’(x)=\lim_{h\to 0}\frac{k(x+h)-k(x)}{h}$,而我们要构造出$k’(x)$,故我们需要在上面的式子中乘出来一个$\frac{k(x+h)-k(x)}{h}$</p>
+<hr>
+<p>$f’(x)=\lim_{h\to 0}\frac{g(k(x+h))-g(k(x))}{h}\times\frac{k(x+h)-k(x)}{k(x+h)-k(x)}=\lim_{h\to 0}\frac{g(k(x+h))-g(k(x))}{k(x+h)-k(x)}k’(x)$</p>
+<p>设$\alpha=k(x+h)-k(x)$</p>
+<p>$f’(x)=\lim_{h\to 0}\frac{g(k(x+h))-g(k(x))}{k(x+h)-k(x)}k’(x)=\lim_{h\to 0}\frac{g(\alpha+k(x))-g(k(x))}{\alpha}\times k’(x)$</p>
+<p>由于$\lim_{h\to 0}\alpha=0$</p>
+<p>$\lim_{h\to 0}\frac{g(\alpha+k(x))-g(k(x))}{\alpha}=\lim_{\alpha\to 0}\frac{g(\alpha+k(x))-g(k(x))}{\alpha}=g’(k(x))$</p>
+<p>故$f’(x)=g’(k(x))k’(x)$</p>
+<p>当然了,链式求导法则还有一种写法:$\frac{du}{dx}=\frac{du}{dy}\frac{dy}{dx}$,其中u是y的函数,y是x的函数</p>
+<p>这个写法就更好理解了:由于导数$\frac{du}{dx}$表示的是<strong>当x有微小变化dx的时候u的微小变化大小</strong>,因此这个量应该就等于<strong>当x有微小变化dx的时候y的微小变化大小</strong>乘以<strong>当y有微小变化dy的时候u的微小变化大小</strong></p>
+<h3 id="扩展求导法则"><a href="#扩展求导法则" class="headerlink" title="扩展求导法则"></a>扩展求导法则</h3><ul>
+<li>除法法则:</li>
+</ul>
+<p>函数$f(x)=\frac{g(x)}{k(x)}$,则$f’(x)=\frac{g’(x)k(x)-g(x)k’(x)}{k(x)^2}$</p>
+<p>证明方法:将除以一个函数看做乘以这个函数的倒数,将函数代入倒数函数$y=\frac{1}{x}$中使用乘法法则和链式法则求出即可</p>
+<ul>
+<li>多个函数相乘:</li>
+</ul>
+<p>函数$f(x)=\prod_{i=1}^ng_i(x)$,则$f’(x)=\sum_{i=1}^n\prod_{j=1}^n k(x)$</p>
+<p>其中,</p>
+<p>$$<br>k(x)=\begin{cases}<br>g_j(x),j!=i\g’_j(x),j=i<br>\end{cases}<br>$$</p>
+<p>有一个比较好直观记忆这个公式的方法:<strong>将每个n个g函数的乘积加n次,然后在第i项中选取第i个g函数把它变成导数</strong></p>
+<p>比如当$n=3$的时候:</p>
+<p>$f(x)=g_1(x)g_2(x)g_3(x)$</p>
+<p>$f’(x)=g’_1(x)g_2(x)g_3(x)+g_1(x)g’_2(x)g_3(x)+g_1(x)g_2(x)g’_3(x)$</p>
+<p>证明也很简单,就直接把乘积法则使劲用就可以了~~</p>
+<h2 id="一个巨麻烦的栗子"><a href="#一个巨麻烦的栗子" class="headerlink" title="一个巨麻烦的栗子"></a>一个巨麻烦的栗子</h2><p>对$f(x)=\frac{3x^7+x^4\sqrt{2x^5+15x^{\frac{4}{3}}-23x+9}}{6x^2-4}$,求出其$f’(x)$</p>
+<p><del>鉴于本函数求导过程容易引起读者高度不适,因此隐藏在下面</del></p>
+<p>$f(x)=\frac{3x^7+x^4\sqrt{2x^5+15x^{\frac{4}{3}}-23x+9}}{6x^2-4}$</p>
+<p>令</p>
+<p>$a(x)=2x^5+15x^{\frac{4}{3}}-23x+9,b(x)=6x^2-4$</p>
+<p>$c(x)=\sqrt{x},k(x)=x^4,g(x)=3x^7$</p>
+<p>则</p>
+<p>$a’(x)=10x^4+5x^{\frac{1}{3}}-23,b’(x)=12x$</p>
+<p>$c’(x)=\frac{1}{2}x^{-\frac{1}{2}},k’(x)=4x^3,g’(x)=21x^6$</p>
+<p>$f(x)=\frac{g(x)+k(x)c(a(x))}{b(x)}$</p>
+<p>则:</p>
+<p>$(c(a(x)))’=c’(a(x))a’(x)$</p>
+<p>$=\frac{1}{2}(2x^5+15x^{\frac{4}{3}}-23x+9)^{-\frac{1}{2}}(10x^4+5x^{\frac{1}{3}}-23)=\frac{10x^4+5x^{\frac{1}{3}}-23}{2\sqrt{2x^5+15x^{\frac{4}{3}}-23x+9}}$</p>
+<p>$(k(x)c(a(x)))’=k(x)(c(a(x)))’+k’(x)c(a(x))$</p>
+<p>$=\frac{x^4(10x^4+5x^{\frac{1}{3}}-23)}{2\sqrt{2x^5+15x^{\frac{4}{3}}-23x+9}}+4x^3 \sqrt{2x^5+15x^{\frac{4}{3}}-23x+9}$</p>
+<p>$(g(x)+k(x)c(a(x)))’=g’(x)+(k(x)c(a(x)))’$</p>
+<p>$=21x^6+\frac{x^4(10x^4+5x^{\frac{1}{3}}-23)}{2\sqrt{2x^5+15x^{\frac{4}{3}}-23x+9}}+4x^3 \sqrt{2x^5+15x^{\frac{4}{3}}-23x+9}$</p>
+<p>令$z(x)=g(x)+k(x)c(a(x))$(分子)</p>
+<p>则$z’(x)=21x^6+\frac{x^4(10x^4+5x^{\frac{1}{3}}-23)}{2\sqrt{2x^5+15x^{\frac{4}{3}}-23x+9}}+4x^3 \sqrt{2x^5+15x^{\frac{4}{3}}-23x+9}$</p>
+<p>$f’(x)=\frac{z’(x)b(x)-z(x)b’(x)}{b(x)^2}$</p>
+<p>$=\frac{(21x^6+\frac{x^4(10x^4+5x^{\frac{1}{3}}-23)}{2\sqrt{2x^5+15x^{\frac{4}{3}}-23x+9}}+4x^3 \sqrt{2x^5+15x^{\frac{4}{3}}-23x+9})(6x^2-4)-12x(3x^7+x^4\sqrt{2x^5+15x^{\frac{4}{3}}-23x+9})}{(6x^2-4)^2}$</p>
+<p>$=\frac{(21x^6+\frac{x^4(10x^4+5x^{\frac{1}{3}}-23)}{2\sqrt{2x^5+15x^{\frac{4}{3}}-23x+9}}+4x^3 \sqrt{2x^5+15x^{\frac{4}{3}}-23x+9})(6x^2-4)}{(6x^2-4)^2}-\frac{12x(3x^7+x^4\sqrt{2x^5+15x^{\frac{4}{3}}-23x+9})}{(6x^2-4)^2}$</p>
+<p>为简化运算,令$\sqrt{2x^5+15x^{\frac{4}{3}}-23x+9}=t$</p>
+<p>原式$=\frac{(21x^6+\frac{10x^8+5x^{\frac{13}{3}}-23x^4}{2t}+4x^3t)}{(6x^2-4)}-\frac{12x(3x^7+x^4t)}{(6x^2-4)^2}$</p>
+<p>$=\frac{(21x^6+\frac{10x^8+5x^{\frac{13}{3}}-23x^4}{2t}+\frac{8x^3t^2}{2t})}{(6x^2-4)}-\frac{12x(3x^7+x^4t)}{(6x^2-4)^2}$</p>
+<p>$=\frac{(21x^6+\frac{10x^8+5x^{\frac{13}{3}}-23x^4+8x^3(2x^5+15x^{\frac{4}{3}}-23x+9)}{2t})}{(6x^2-4)}-\frac{12x(3x^7+x^4t)}{(6x^2-4)^2}$</p>
+<p>$=\frac{(21x^6+\frac{10x^8+5x^{\frac{13}{3}}-23x^4+16x^8+120x^{\frac{13}{3}}-184x^4+72x^3}{2t})}{(6x^2-4)}-\frac{12x(3x^7+x^4t)}{(6x^2-4)^2}$</p>
+<p>$=\frac{(21x^6+\frac{26x^8+140x^{\frac{13}{3}}-207x^4+72x^3}{2t})}{(6x^2-4)}-\frac{12x(3x^7+x^4t)}{(6x^2-4)^2}$</p>
+<p>$=\frac{(21x^6+\frac{26x^8+140x^{\frac{13}{3}}-207x^4+72x^3}{2\sqrt{2x^5+15x^{\frac{4}{3}}-23x+9}})}{(6x^2-4)}-\frac{12x(3x^7+x^4\sqrt{2x^5+15x^{\frac{4}{3}}-23x+9})}{(6x^2-4)^2}$</p>
+<p>这样就得到了书上给出的答案!(<del>算了大半天…</del>)</p>
+<h2 id="求导的应用"><a href="#求导的应用" class="headerlink" title="求导的应用"></a>求导的应用</h2><h3 id="求切线方程"><a href="#求切线方程" class="headerlink" title="求切线方程"></a>求切线方程</h3><p>求导的用处之一便是求切线的方程</p>
+<p>假设有一函数$f(x)$,并且要求求出函数在点$(x,f(x))$上的切线.</p>
+<p>我们首先明确,点$(x,f(x))$一定在函数上.因此,我们先求出函数的导数,然后将给出的$x$值代入函数得到此处切线的斜率,利用点斜式方程,就可以得到点$(x,f(x))$处的切线方程了</p>
+<h3 id="描述运动物理量"><a href="#描述运动物理量" class="headerlink" title="描述运动物理量"></a>描述运动物理量</h3><p>这里作者班纳先生用了比较长的篇幅详细讲解了关于微分(求导)在运动学上的应用,但实际上作为<del>中国的高中生</del>,我们已经学过了运动学,因此我们只需要理解以下两点:</p>
+<ul>
+<li><p>速度描述位移的瞬时变化量,加速度描述速度的瞬时变化量</p>
+</li>
+<li><p>从导数的角度来讲,速度就是位移的一阶导数,加速度就是位移的二阶导,加速度也是速度的一阶导</p>
+</li>
+</ul>
+<h3 id="导数伪装的极限"><a href="#导数伪装的极限" class="headerlink" title="导数伪装的极限"></a>导数伪装的极限</h3><p>有很多的极限具有导数的形式,因此我们可以利用求导来求出这些极限</p>
+<p>这种方法的使用特征是:<strong>极限可以化简为虚拟变量单独在分子或分母上且另外一边是相加减的形式</strong></p>
+<ul>
+<li>求极限$\lim_{h\to 0}\frac{\sqrt[5]{32+h}-2}{h}$</li>
+</ul>
+<p>$\lim_{h\to 0}\frac{\sqrt[5]{32+h}-2}{h}=\lim_{h\to 0}\frac{\sqrt[5]{32+h}-\sqrt[5]{32}}{h}$</p>
+<p>不难发现,原式是函数$f(x)=\sqrt[5] x$在($32,f(32)$)处的切线的斜率,故</p>
+<p>$\lim_{h\to 0}\frac{\sqrt[5]{32+h}-2}{h}=f’(32)=\frac{1}{5}(32)^{-\frac{4}{5}}=\frac{1}{80}$</p>
+<ul>
+<li>求极限$\lim_{h\to 0}\frac{\sqrt{(4+h)^3-7(4+h)}-6}{h}$</li>
+</ul>
+<p>令$x=4$</p>
+<p>原式$=\lim_{h\to 0}\frac{\sqrt{(x+h)^3-7(x+h)}-\sqrt{36}}{h}=\lim_{h\to 0}\frac{\sqrt{(x+h)^3-7(x+h)}-\sqrt{x^3-7\times x}}{h}$</p>
+<p>设$f(x)=\sqrt{x^3-7x}$,则$f’(x)=\frac{3x^2-7}{2\sqrt{x^3-7x}}$,则原极限就是函数在$x=4$处的切线斜率,代入整理得原极限$=\frac{41}{12}$</p>
+<ul>
+<li>求极限$\lim_{h\to 0}\frac{h}{(x+h)^6-x^6}$</li>
+</ul>
+<p>先将极限取个倒数,这样的话就可以直接求导了:</p>
+<p>$设f(x)=x^6,则f’(x)=6x^5$</p>
+<p>$\lim_{h\to 0}\frac{(x+h)^6-x^6}{h}=f’(x)=6x^5$</p>
+<p>$\lim_{h\to 0}\frac{h}{(x+h)^6-x^6}=\frac{1}{6x^5}$</p>
+<h2 id="分段函数的导数"><a href="#分段函数的导数" class="headerlink" title="分段函数的导数"></a>分段函数的导数</h2><p>检验一个分段函数是否可导,关键是需要检验分段函数在连接点上是否可导.而检验在分段点上是否可导,就需要检验<strong>分段在连接点上相等</strong>以证明连续性,以及<strong>分段的导数在连接点上相等</strong>以证明可导性</p>
+<p>**练习:**证明函数</p>
+<p>$$<br>g(x)=\begin{cases}<br>|x^2-4|,x&lt;=1\-2x+5,x&gt;1<br>\end{cases}<br>$$</p>
+<p>在$x=-2$上不可导,在$x=1$上可导</p>
+<h2 id="如何直接画出导函数图像"><a href="#如何直接画出导函数图像" class="headerlink" title="如何直接画出导函数图像"></a>如何直接画出导函数图像</h2><blockquote>
+<p>歪果仁的脑洞真大</p>
+</blockquote>
+<p>作者提出了一种非常好理解的方法,但字数过多,我将图片放上来供大家观赏:</p>
+<p><img src="https://img-blog.csdnimg.cn/20191107171751658.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20191107171815356.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkwNzgwMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20191107171834382.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkwNzgwMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20191107171903901.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkwNzgwMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20191107171930973.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkwNzgwMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20191107171946901.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20191107172002566.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkwNzgwMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20191107172021998.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkwNzgwMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/2019110717204098.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkwNzgwMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20191107172052547.png" alt="在这里插入图片描述"></p>
+<h1 id="Chapter-V-三角函数的极限和导数"><a href="#Chapter-V-三角函数的极限和导数" class="headerlink" title="Chapter V 三角函数的极限和导数"></a>Chapter V 三角函数的极限和导数</h1><h2 id="三角函数的极限"><a href="#三角函数的极限" class="headerlink" title="三角函数的极限"></a>三角函数的极限</h2><p>对三角函数的极限.我们主要考虑两个方面:当三角函数内的自变量很小的情况和自变量很大的情况</p>
+<h3 id="小数的情况"><a href="#小数的情况" class="headerlink" title="小数的情况"></a>小数的情况</h3><p>**1.sin:**根据正弦函数的图像,$sin(x)$在x趋近0的时候趋近于0,因此有</p>
+<p>$$\lim_{x\to 0}\frac{sin(x)}{x}=1$$</p>
+<p>当然,仅仅看图像是不能够使人信服的,因此作者在后面给出了一种比较有说服力的证明方法,大概思路如下:</p>
+<p>在单位圆里面用线段表示$sin,tan$函数,根据面积的包含关系得到关于$\frac{sin(x)}{x}$的不等式,从而使用三明治定理证明上述极限的右极限为1,然后将左极限转化为右极限从而证得左极限也为1,从而得证</p>
+<p>**2.cos:**根据余弦函数的图像,当x趋近于0的时候,$cos(x)$趋近于1,因此有</p>
+<p>$$\lim_{x\to 0}cos(x)=1$$</p>
+<p>而$\lim_{x\to 0}\frac{cos(x)}{x}$中,如果将$x=0$代入上式中,那么就有$\frac{1}{0}$,根据前面极限的知识,可以知道$f(x)=\frac{cos(x)}{x}$的图像在$x=0$处有一垂直渐近线,且函数行为和$g(x)=\frac{1}{x}$很相似,故</p>
+<p>$$\lim_{x\to 0^+}\frac{cos(x)}{x}=\infty,\lim_{x\to 0^-}\frac{cos(x)}{x}=-\infty,\lim_{x\to 0}\frac{cos(x)}{x}=DNE$$</p>
+<p>**3.tan:**根据$tan(x)=\frac{sin(x)}{cos(x)}$</p>
+<p>则$\lim_{x\to 0}\frac{tan(x)}{x}=\lim_{x\to 0}\frac{sin(x)}{x}\times cos(x)=1\times(\frac{1}{1})=1$</p>
+<p>故</p>
+<p>$$\lim_{t\to 0}\frac{tan(x)}{x}=1$$</p>
+<h4 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h4><ul>
+<li>求$\lim_{x\to 0}\frac{sin(x^2)}{x^2}$</li>
+</ul>
+<p>因为$\lim_{x\to 0}x^2=0$,又有$\lim_{x\to 0}\frac{sin(x)}{x}=1$,故</p>
+<p>$$\lim_{x\to 0}\frac{sin(x^2)}{x^2}=1$$</p>
+<p>**推广:**由于正弦函数和正切函数在小数的情况下非常相似,而余弦函数行为和前两者大相径庭,故有</p>
+<p>$$\lim_{x\to 0}\frac{sin(a)}{a}=1,\lim_{x\to 0}\frac{tan(a)}{a}=1$$</p>
+<p>$$\lim_{x\to 0}cos(a)=1$$</p>
+<p>其中$a$是一个<strong>小数</strong>,即满足$\lim_{x\to 0}a=0$</p>
+<p>这一条推广是本章解题的核心(当然有一些极限是不能够用这种方式解的,要用到一些更高级的知识如洛必达法则什么的)</p>
+<ul>
+<li>求$\lim_{x\to 0}\frac{sin(5x)}{x}$</li>
+</ul>
+<p>为了让$sin$中的<strong>自变量和分母的变量匹配</strong>,我们在分母乘一个5然后在外面乘一个5:</p>
+<p>原极限$=\lim_{x\to 0}\frac{sin(5x)}{5x}\times 5=5\lim_{x\to 0}\frac{sin(5x)}{5x}=5$</p>
+<ul>
+<li>求$\lim_{x\to 0}\frac{sin^3(2x)cos(5x^{19})}{xtan(5x^2)}$</li>
+</ul>
+<p>用和上一题一样的方法:</p>
+<p>$\lim_{x\to 0}\frac{sin^3(2x)cos(5x^{19})}{xtan(5x^2)}=\lim_{x\to 0}\frac{\frac{sin^3(2x)}{(2x)^3}\times(2x)^3\times cos(5x^{19})}{x\frac{tan(5x^2)}{5x^2}\times 5x^2}$</p>
+<p>$=\lim_{x\to 0}\frac{(2x)^3}{5x^3}=\frac{2^3}{5}=\frac{8}{5}$</p>
+<ul>
+<li>求$\lim_{x\to \infty}xsin(\frac{5}{x})$</li>
+</ul>
+<p>$\lim_{x\to \infty}xsin(\frac{5}{x})=\lim_{x\to \infty}x\times \frac{sin(\frac{5}{x})}{\frac{5}{x}}\times \frac{5}{x}=\lim_{x\to \infty}5=5$</p>
+<ul>
+<li>求$\lim_{x\to 0}\frac{1-cos^2(x)}{x^3}$</li>
+</ul>
+<p>注意这里不能直接把$cos(x)$看成1,这两个量还是有区别的呢!<strong>当且仅当在乘积或商的情况下才能够采用前面这个观点</strong></p>
+<p>因此这里使用高中课本里常见的一个技巧:$sin^2(x)+cos^2(x)=1$</p>
+<p>$\lim_{x\to 0}\frac{1-cos^2(x)}{x^2}=\lim_{x\to 0}\frac{sin^2(x)+cos^2(x)-cos^2(x)}{x^3}=\lim_{x\to 0}\frac{sin^2(x)}{x^2}=\lim_{x\to 0}(\frac{sin(x)}{x})^2=1$</p>
+<ul>
+<li>求$\lim_{x\to 0}\frac{1-cos(x)}{x^2}$</li>
+</ul>
+<p>$\lim_{x\to 0}\frac{1-cos(x)}{x^2}=\lim_{x\to 0}\frac{1-cos(x)}{x^2}\times \frac{1+cos(x)}{1-cos(x)}=\lim_{x\to 0}\frac{sin^2(x)}{x^2}\times\frac{1}{1+cos(x)}=1\times\frac{1}{1+1}=\frac{1}{2}$</p>
+<ul>
+<li>求$\lim_{x\to 0}\frac{1-cos(x)}{x}$</li>
+</ul>
+<p>$\lim_{x\to 0}\frac{1-cos(x)}{x}=\lim_{x\to 0}\frac{1-cos^2(x)}{x(1+cos(x))}=\lim_{x\to 0}\frac{sin^2(x)}{x(1+cos(x))}=0$</p>
+<p>这个极限在对正弦函数求导的时候会用到,很重要</p>
+<h3 id="大数的情况"><a href="#大数的情况" class="headerlink" title="大数的情况"></a>大数的情况</h3><p><strong>1.sin(x)</strong></p>
+<p>根据前面的三明治定理,容易有</p>
+<p>$$\lim_{x\to \infty}\frac{sin(x)}{x}=0$$</p>
+<p>且$\forall x,-1&lt;=sin(x)&lt;=1$(<del>这不是废话嘛</del>)</p>
+<p><strong>2.cos(x)</strong></p>
+<p>$\forall x,-1&lt;=cos(x)&lt;=1$(<del>这不是废话嘛+1</del>)</p>
+<p><strong>3.tan(x)</strong></p>
+<p>当x变大的时候,根据正切函数的图像,这个函数会有很多垂直渐近线,因此很难列出什么不等式来限制这家伙</p>
+<h4 id="一个重要的结论"><a href="#一个重要的结论" class="headerlink" title="一个重要的结论"></a>一个重要的结论</h4><p><strong>对于任意的正指数</strong>$\alpha$,</p>
+<p>$$lim_{x\to \infty}\frac{sin(anything)}{x^{\alpha}}=0$$</p>
+<p><strong>(上面的式子中,用余弦替换正弦也会得到一样的结果)</strong></p>
+<p>这个式子也很好理解的,因为正弦函数和余弦函数的行为在$\lim_{x\to \infty}x^{\alpha}$面前就像一个常数一样</p>
+<p>因此还可以衍生出一个观点:在加减的前提下,可以将$sin(anything),cos(anything)$看做比x的任意正次幂次数要低</p>
+<h5 id="一些例子"><a href="#一些例子" class="headerlink" title="一些例子"></a>一些例子</h5><ul>
+<li>求$\lim_{x\to \infty}\frac{xsin(11x^7)-\frac{1}{2}}{2x^4}$</li>
+</ul>
+<p>在前面章节里面讲过<strong>三明治定理</strong>,而这个定理在这里可以用到,因此简单提一下这个定理的<strong>用法</strong></p>
+<p>对于一个式子,先找一个核心部分列出不等式$g(x)&lt;=hexing(x)&lt;=f(x)$</p>
+<p>然后根据不等式的性质,向核心部分加入项从而让核心部分变成要求的式子,这时候上面的$g(x)$和$f(x)$就是加载待求函数上下的函数了,这时再对它们求极限即可</p>
+<p>$-1&lt;=sin(11x^7)&lt;=1$</p>
+<p>$-x&lt;=xsin(11x^7)&lt;=x$</p>
+<p>$-x-\frac{1}{2}&lt;=xsin(11x^7)-\frac{1}{2}&lt;=x-\frac{1}{2}$</p>
+<p>$\frac{-x-\frac{1}{2}}{2x^4}&lt;=\frac{xsin(11x^7)-\frac{1}{2}}{2x^4}&lt;=\frac{x-\frac{1}{2}}{2x^4}$</p>
+<p>因为$\lim_{x\to \infty}\frac{-x-\frac{1}{2}}{2x^4}=\lim_{x\to \infty}\frac{x-\frac{1}{2}}{2x^4}=0$</p>
+<p>故$\lim_{x\to \infty}\frac{xsin(11x^7)-\frac{1}{2}}{2x^4}=0$</p>
+<p>当然这个题好像可以使用上面的结论就可以直接得出答案</p>
+<ul>
+<li>求$\lim_{x\to \infty}\frac{3x^2+2x+5+sin(3000x^9)}{2x^2-1-cos(22x)}$</li>
+</ul>
+<p>$\lim_{x\to \infty}\frac{3x^2+2x+5+sin(3000x^9)}{2x^2-1-cos(22x)}=\lim_{x\to \infty}\frac{\frac{3x^2+2x+5+sin(3000x^9)}{3x^2}\times(3x^2)}{\frac{2x^2-1-cos(22x)}{2x^2}\times(2x^2)}$</p>
+<p>$=\lim_{x\to \infty}\frac{1+\frac{2}{3x}+\frac{5}{3x^2}+\frac{sin(3000x^9)}{3x^2}}{1-\frac{1}{2x^2}-\frac{cos(22x)}{2x^2}}\times\frac{3x^2}{2x^2}=\lim_{x\to \infty}\frac{1+0+0+0}{1-0-0}\times\frac{3}{2}=\frac{3}{2}$</p>
+<h2 id="三角函数的导数"><a href="#三角函数的导数" class="headerlink" title="三角函数的导数"></a>三角函数的导数</h2><h3 id="对三角函数求导"><a href="#对三角函数求导" class="headerlink" title="对三角函数求导"></a>对三角函数求导</h3><p><strong>sin(x):</strong></p>
+<p>这里要用到两个极限:$\lim_{x\to 0}\frac{sin(x)}{x}=1,\lim_{x\to 0}\frac{1-cos(x)}{x}=0$</p>
+<p>令$f(x)=sin(x)$,则</p>
+<p>$f’(x)=\lim_{h\to 0}\frac{sin(x+h)+sin(x)}{h}=\lim_{h\to 0}\frac{sin(x)cos(h)+cos(x)sin(h)+sin(x)}{h}$</p>
+<p>$=\lim_{h\to 0}\frac{sin(x)(cos(h)-1)+cos(x)sin(h)}{h}=\lim_{h\to 0}\frac{cos(h)-1}{h}\times sin(x)+\frac{sin(h)}{h}\times cos(x)=cos(x)$</p>
+<p>故</p>
+<p>$$\frac{d}{dx}sin(x)=cos(x)$$</p>
+<p><strong>cos(x):</strong></p>
+<p>令$f(x)=cos(x)$,则</p>
+<p>$f’(x)=\lim_{h\to 0}\frac{cos(h+x)-cos(x)}{h}=\lim_{h\to 0}\frac{cos(h)cos(x)-sin(h)sin(x)-cos(x)}{h}$</p>
+<p>$\lim_{h\to 0}\frac{cos(x)(cos(h)-1)-sin(h)sin(x)}{h}=\lim_{h\to 0}\frac{cos(x)(cos(h)-1)}{h}-\frac{sin(h)sin(x)}{h}=-sin(x)$</p>
+<p>故</p>
+<p>$$\frac{d}{dx}cos(x)=-sin(x)$$</p>
+<p><strong>tan(x):</strong></p>
+<p>令$f(x)=tan(x),g(x)=sin(x),k(x)=cos(x)$,由于$f(x)=\frac{g(x)}{k(x)}$</p>
+<p>$f’(x)=\frac{g’(x)k(x)-g(x)k’(x)}{k^2(x)}=\frac{cos^2(x)+sin^2(x)}{cos^2(x)}=\frac{1}{cos^2(x)}$</p>
+<p>故</p>
+<p>$$\frac{d}{dx}tan(x)=\frac{1}{cos^2(x)}$$</p>
+<p>当然还有有其他的三角函数如$sec(x),csc(x),cot(x)$,具体证明过程就不给出了,直接给结论:</p>
+<p>(注:$sec(x)=\frac{1}{cos(x)},csc(x)=\frac{1}{sin(x)},cot(x)=\frac{1}{tan(x)}$)</p>
+<p>$$\frac{d}{dx}sec(x)=sec(x)tan(x)$$</p>
+<p>$$\frac{d}{dx}csc(x)=-csc(x)cot(x)$$</p>
+<p>$$\frac{d}{dx}cot(x)=-csc^2(x)$$</p>
+<p>有了上面的基本三角函数的导数,在遇到其他的三角函数求导的时候我们就可以直接利用求导法则求导了</p>
+<p><strong>一些练习</strong>:</p>
+<p>求证:</p>
+<p>$\frac{d}{dx}(x^2sin(x))=sin(x)\times 2x+x^2cos(x)$</p>
+<p>$\frac{d}{dx}(\frac{sec(x)}{x^5})=\frac{sec(x)(xtan(x)-5)}{x^6}$</p>
+<p>$\frac{d}{dx}(cot(x^3))=-3x^2csc^2(x^3)$</p>
+<h3 id="简谐运动"><a href="#简谐运动" class="headerlink" title="简谐运动"></a>简谐运动</h3><p>简谐运动,个人理解的就是:运动位移方程形式和$X=asin(bx)$类似的周期性运动</p>
+<p>我们需要了解: 对于简谐运动,如果要求某一时刻的速度,那就对位移函数求一阶导,如果要求某一时刻的加速度,就对位移函数求二阶导,也就是对速度求一阶导,这就是上面三角函数求导的内容了</p>
+<h3 id="一个本身可导但导数并不连续的函数"><a href="#一个本身可导但导数并不连续的函数" class="headerlink" title="一个本身可导但导数并不连续的函数"></a>一个本身可导但导数并不连续的函数</h3><p>可以尝试证明一下$f(x)=x^2sin(\frac{1}{x})$本身可导但导数并不连续</p>
+<h1 id="Chapter-VI-隐函数求导和相关变化率"><a href="#Chapter-VI-隐函数求导和相关变化率" class="headerlink" title="Chapter VI 隐函数求导和相关变化率"></a>Chapter VI 隐函数求导和相关变化率</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>首先,什么是隐函数?我个人理解为<strong>隐藏在方程只中的函数</strong>,这种函数一般没有明确的自变量的函数值的关系,甚至有时候根本不能够叫做函数,因为它的图像可能是一个圆!比如下列隐函数函数$x^2+y^2=0,sin(x)y^2=x$</p>
+<p>其次,考虑两个导数:</p>
+<p>$\frac{d}{dx}(x^2),\frac{d}{dx}(y^2)$</p>
+<p>首先第一个导数很简单,就等于$2x$,而第二个导数就不一样了.由于分母上写的是x,因此求的是<strong>当x有微小变化的时候y方的变化大小</strong>,因此第二个导数相当于是两个导数的复合,这时就应该使用链式法则求导了:</p>
+<p>设$u=y^2$,则$\frac{d}{dx}y^2=\frac{du}{dx}=\frac{du}{dy}\frac{dy}{dx}$</p>
+<p>就像前面讲的一样,这里的$\frac{dy}{dx}$是x有变化的时候y的变化大小,这个量乘上$\frac{du}{dy}$(y有变化的时候u的变化大小)就可以得到x有变化的时候u的变化大小,,也就是上面的导数了</p>
+<p>因此$\frac{d}{dx}(y^2)=2y\frac{dy}{dx}$</p>
+<p>(<strong>注:链式求导法则有两种写法</strong>,$f’(x)=g’(k(x))k’(x)$和$\frac{du}{dx}=\frac{du}{dy}\frac{dy}{dx}$)</p>
+<h2 id="一些隐函数求导的例子"><a href="#一些隐函数求导的例子" class="headerlink" title="一些隐函数求导的例子"></a>一些隐函数求导的例子</h2><h3 id="隐函数求一阶导"><a href="#隐函数求一阶导" class="headerlink" title="隐函数求一阶导"></a>隐函数求一阶导</h3><p><strong>1.方程</strong>$x^2+y^2=4$</p>
+<p>我们要对其求导,需要做的就是在等号两边添加一个$\frac{d}{dx}$:</p>
+<p>$\frac{d}{dx}(x^2+y^2)=\frac{d}{dx}(4)$</p>
+<p>$\frac{d}{dx}(x^2)+\frac{d}{dx}(y^2)=\frac{d}{dx}(4)$</p>
+<p>$2x+2y\frac{dy}{dx}=0$</p>
+<p>$\frac{dy}{dx}=-\frac{x}{y}$</p>
+<p>因此,圆上一点($x,y$)的切线的斜率就是$-\frac{x}{y}$</p>
+<p>这里有一个比较难以理解的问题:<strong>为什么要对等式两边同时求导,这意味着什么?</strong></p>
+<p>首先安利一个视频(<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av24325548?p=6">还是原来那个系列,真心讲得好!</a>),我一开始也不能够理解这么干是个什么鬼意思,在反复看了四五遍这个视频后终于搞懂了</p>
+<p>设$S=x^2+y^2$,则$\frac{d}{dx}(x^2+y^2)$表示的是当x和y在平面内任意移动一段距离后S的变化大小.而如果要移动了这一步后仍然在圆上,那么就要满足的条件就是<strong>s的变化量为0</strong>,而对等式右边求导正好也就是求得了这个条件,这就是这样做的道理所在.(当然并不是什么时候都能够很好的直观理解对等式右边求导后得到的条件,我们只需知道要满足这个条件就可以了)</p>
+<p><strong>2.方程</strong>$5sin(x)+3sec(y)=y-x^2+3$<strong>在原点处的切线方程</strong></p>
+<p>($sec(x)=\frac{1}{cos(x)}$)</p>
+<p>首先,很容易验证这个隐函数的图像过原点.然后求导:</p>
+<p>$\frac{d}{dx}5sin(x)+\frac{d}{dx}3sec(y)=\frac{dy}{dx}-\frac{d}{dx}(x^2)+\frac{d}{dx}3$</p>
+<p>$5cos(x)+\frac{d}{dx}3sec(y)=\frac{dy}{dx}-2x$</p>
+<p>等号左边第二项稍显麻烦,于是设$u=3sec(y)$</p>
+<p>$5cos(x)+\frac{du}{dx}=\frac{dy}{dx}-2x$</p>
+<p>$5cos(x)+\frac{du}{dy}\frac{dy}{dx}=\frac{dy}{dx}-2x$</p>
+<p>$5cos(x)+3sec(y)tan(y)\frac{dy}{dx}=\frac{dy}{dx}-2x$</p>
+<p>$(3sec(y)tan(y)-1)\frac{dy}{dx}=-2x-5cos(x)$</p>
+<p>$\frac{dy}{dx}=\frac{-2x-5cos(x)}{(3sec(y)tan(y)-1)}$</p>
+<p>之后将$x=0,y=0$代入得到斜率为$5$,由于过原点,直线方程为$y=5x$</p>
+<p>当然,由于我们是要求一个特定点的直线方程,我们在$5cos(x)+\frac{du}{dx}=\frac{dy}{dx}-2x$得到这个方程的时候就可以将$x=0,y=0$代入,直接得到斜率</p>
+<p><strong>3.方程</strong>$ycot(x)=3csc(y)+x^7$</p>
+<p>($csc(y)=\frac{1}{sin(y)},cot(x)=\frac{1}{tan(x)}$)</p>
+<p>$\frac{d}{dx}(ycot(x))=\frac{d}{dx}3csc(y)+\frac{d}{dx}x^7$</p>
+<p>根据乘积求导法则和链式求导法则</p>
+<p>$y\frac{d}{dx}cot(x)+\frac{dy}{dx}cot(x)=\frac{d}{dx}3csc(y)+\frac{d}{dx}x^7$</p>
+<p>$y(-csc^2(x))+\frac{dy}{dx}cot(x)=\frac{d}{dx}3csc(y)+\frac{d}{dx}x^7$</p>
+<p>$y(-csc^2(x))+\frac{dy}{dx}cot(x)=3\frac{d(csc(y))}{dy}\frac{dy}{dx}+7x^6$</p>
+<p>$y(-csc^2(x))+\frac{dy}{dx}cot(x)=-3csc(y)cot(y)\frac{dy}{dx}+7x^6$</p>
+<p>$\frac{dy}{dx}(cot(x)+3csc(y)cot(y))=ycsc^2(x)+7x^6$</p>
+<p>$\frac{dy}{dx}=\frac{ycsc^2(x)+7x^6}{(cot(x)+3csc(y)cot(y))}$</p>
+<p><strong>4.方程</strong>$x-ycos(\frac{y}{x^4})=\pi+1$<strong>在(1,π)处的切线方程</strong></p>
+<p>毋庸置疑,$(1,π)$在曲线上,求导:</p>
+<p>$\frac{d}{dx}x-\frac{d}{dx}(ycos(\frac{y}{x^4}))=\frac{d}{dx}\pi+\frac{d}{dx}1$</p>
+<p>$1-\frac{d}{dx}(ycos(\frac{y}{x^4}))=0$</p>
+<p>$1-\frac{dy}{dx}cos(\frac{y}{x^4})-y\frac{d}{dx}cos(\frac{y}{x^4})=0$</p>
+<p>把$\frac{d}{dx}cos(\frac{y}{x^4})$单独拿出计算:设$\frac{y}{x^4}=u$</p>
+<p>根据链式求导法则</p>
+<p>$\frac{d}{dx}cos(\frac{y}{x^4})=\frac{d}{dx}cos(u)=sin(u)\frac{d}{dx}u$</p>
+<p>再把$\frac{d}{dx}u$单独拿出计算:</p>
+<p>$\frac{d}{dx}(yx^{-4})=\frac{dy}{dx}x^{-4}-4yx^{-5}$</p>
+<p>因此整理:</p>
+<p>$1-\frac{dy}{dx}cos(\frac{y}{x^4})-ysin(\frac{y}{x^4})(\frac{dy}{dx}x^{-4}-4yx^{-5})=0$</p>
+<p>$1-\frac{dy}{dx}cos(\frac{y}{x^4})-ysin(\frac{y}{x^4})\frac{dy}{dx}x^{-4}+ysin(\frac{y}{x^4})4yx^{-5}=0$</p>
+<p>$1-\frac{dy}{dx}cos(\frac{y}{x^4})-yx^{-4}\frac{dy}{dx}sin(\frac{y}{x^4})+y^24x^{-5}sin(\frac{y}{x^4})=0$</p>
+<p>$\frac{dy}{dx}(cos(\frac{y}{x^4})+yx^{-4}sin(\frac{y}{x^4}))=1+y^24x^{-5}sin(\frac{y}{x^4})$</p>
+<p>$\frac{dy}{dx}=\frac{1+y^24x^{-5}sin(\frac{y}{x^4})}{(cos(\frac{y}{x^4})+yx^{-4}sin(\frac{y}{x^4}))}$</p>
+<p>代入$(1,π)$,$\frac{dx}{dy}=\frac{1+4{\pi}^2sin(\pi)}{cos(\pi)+\pi sin(\pi)}=\frac{1}{-1}=-1$</p>
+<p>利用点斜式得到斜率方程为$y=-x+\pi+1$</p>
+<p>总结一下上面的方法:<strong>在原始方程中,对一切求导并且使用相对应的法则进行化简,最后整理可以得到</strong>$\frac{dy}{dx}$.</p>
+<p><strong>如果要求的是曲线上某一个特定点的切线方程,可以先代入x和y的已知值,接着再来整理出</strong>$\frac{dy}{dx}$,<strong>这样的话计算会快很多</strong></p>
+<h3 id="隐函数求二阶导"><a href="#隐函数求二阶导" class="headerlink" title="隐函数求二阶导"></a>隐函数求二阶导</h3><p>首先要明确,二阶导的意义是<strong>变化量的变化量</strong>,如果把变化量写作$\frac{dy}{dx}$,那么二阶导就是前式的变化量,即$\frac{d}{dx}(\frac{dy}{dx})$,简写做$\frac{d^2y}{dx}$</p>
+<p><strong>例:</strong> 对$2y+sin(y)=\frac{x^2}{\pi}+1$求在点$(\pi,\frac{\pi}{2})$处的$\frac{d^2y}{dx^2}$</p>
+<p>首先求一阶导,得到$2\frac{dy}{dx}+cos(y)\frac{dy}{dx}=\frac{2x}{\pi}$</p>
+<p>故$\frac{dy}{dx}=\frac{2x}{\pi(2+cos(y))}$</p>
+<p>再次求导:</p>
+<p>$\frac{d}{dx}(2\frac{dy}{dx})+\frac{d}{dx}(cos(y)\frac{dy}{dx})=\frac{d}{dx}(\frac{2x}{\pi})$</p>
+<p>$2\frac{d^2y}{dx^2}+\frac{d}{dx}(cos(y)\frac{dy}{dx})=\frac{2}{\pi}$</p>
+<p>$2\frac{d^2y}{dx^2}+\frac{dy}{dx}\frac{d}{dx}cos(y)+cos(y)\frac{d^2y}{dx^2}=\frac{2}{\pi}$</p>
+<p>$2\frac{d^2y}{dx^2}+\frac{dy}{dx}\frac{dcos(y)}{dy}\frac{dy}{dx}+cos(y)\frac{d^2y}{dx^2}=\frac{2}{\pi}$</p>
+<p>$2\frac{d^2y}{dx^2}-(\frac{dy}{dx})^2sin(y)+cos(y)\frac{d^2y}{dx^2}=\frac{2}{\pi}$</p>
+<p>这时,$\frac{d^2y}{dx^2}$的变化关系已经很明确了,因此我们可以代入$(\pi,\frac{\pi}{2})$:</p>
+<p>$2\frac{d^2y}{dx^2}-(\frac{dy}{dx})^2=\frac{2}{\pi}$</p>
+<p>根据前面的一阶导方程,我们代入点$(\pi,\frac{\pi}{2})$得到</p>
+<p>$\frac{dy}{dx}=1$</p>
+<p>因此$2\frac{d^2y}{dx^2}-1=\frac{2}{\pi}$</p>
+<p>$\frac{d^2y}{dx^2}=\frac{1}{\pi}+\frac{1}{2}$</p>
+<h2 id="相关变化率"><a href="#相关变化率" class="headerlink" title="相关变化率"></a>相关变化率</h2><p>当两个相互关联的量中一个量发生变化的时候,另外一个量会发生多少变化呢?这就是相关变化率问题</p>
+<p>假设我们要探求某个量X关于时间的变化过程,我们应该自然而然的想到关于这个量对时间求导,也就是尝试求出$\frac{dX}{dt}$.一般来讲,我们通过求得这个量和其他量的关系,然后进行隐函数求导得到解.作者列出的相关步骤如下:</p>
+<ol>
+<li>读题,识别出待求相关变化率的量</li>
+<li>写出关联所有量的方程(组)</li>
+<li>对方程(组)关于时间t隐函数求导</li>
+<li>把我们所知道的值代入所有方程中做替换,联立得到我们想要的变化率</li>
+</ol>
+<h3 id="一个简单的例子"><a href="#一个简单的例子" class="headerlink" title="一个简单的例子"></a>一个简单的例子</h3><p>用打气筒给一个球体充气,空气以常数$12\pi$立方米每秒进入气球,当气球半径达到2米的时候,气球的半径变化率是多少?</p>
+<p>根据几何知识:$V=\frac{4}{3}\pi r^3$</p>
+<p>隐函数求导:$\frac{d}{t}(V)=\frac{d}{dt}(\frac{4}{3}\pi r^3)$</p>
+<p>$\frac{dV}{dt}=\frac{4}{3}\pi \frac{dt^r}{dr}\frac{dr}{dt}=4\pi r^2\frac{dr}{dt}$</p>
+<p>由于$\frac{dV}{dt}=12\pi$</p>
+<p>则$12\pi=4\pi r^2\frac{dr}{dt}$</p>
+<p>$\frac{dr}{dt}=\frac{3}{r^2}$</p>
+<p>当$r=2$时,$\frac{dr}{dt}=\frac{3}{4}$</p>
+<p>故当气球半径达到2米的时候,气球的半径变化率是$\frac{3}{4}$米每秒</p>
+<h3 id="一个稍微难一点的例子"><a href="#一个稍微难一点的例子" class="headerlink" title="一个稍微难一点的例子"></a>一个稍微难一点的例子</h3><p>一辆汽车$A$在一条路上径直向北行驶远离你的大豪宅,另外一辆汽车$B$在另外一条路上径直向西行驶接近你的豪宅.汽车$A$以$55km/h$的速度行驶,而$B$以$45km/h$的速度行驶.当$A$到你家北面$21km$,$B$在你家东面28$km$时,两辆车之间的距离的变化率为多少?</p>
+<p>俗话说,$talk \ is \ cheap, \ show \ me \ the \ graph$,我们来画个图怎么样:</p>
+<p><img src="https://img-blog.csdnimg.cn/20191110154322111.png" alt="在这里插入图片描述"></p>
+<p>设$a,b,c$意义如图中所示</p>
+<p>那么这些量之间的关系就是$a^2+b^2=c^2$</p>
+<p>求导:$\frac{da^2}{dt}+\frac{db^2}{dt}=\frac{dc^2}{dt}$</p>
+<p>$\frac{da^2}{da}\frac{da}{dt}+\frac{db^2}{db}\frac{db}{dt}=\frac{dc^2}{dc}\frac{dc}{dt}$</p>
+<p>$2a\frac{da}{dt}+2b\frac{db}{dt}=2c\frac{dc}{dt}$</p>
+<p>由于$\frac{di}{dt}$就是$i$车的速度,我们写作$v_i$,那么原方程就可以写成</p>
+<p>$2av_a+2bv_b=2cv_c$</p>
+<p>我们要求的就是在$v_a=55,v_b=-45,a=21,b=28$时的$v_c$(<strong>注意这里的b的速度要代入负号,因为b的长度在减小</strong>),因此代入得到</p>
+<p>$2\times 55\times 21-2\times 45\times 28=2cv_c$</p>
+<p>解得$v_c=-3$,这也就意味着在我们研究的这一瞬间,c在以$3km/h$的速度减小</p>
+<h3 id="一个更加难一点的例子"><a href="#一个更加难一点的例子" class="headerlink" title="一个更加难一点的例子"></a>一个更加难一点的例子</h3><p>有一个圆锥形水罐(锥尖在下方),圆锥的高是圆锥半径的两倍.如果水是以$8\pi \  m^3/s$的速度注入水罐,当水罐中的水的体积为$18\pi \ m^3$的时候,水位的变化率是多少?再设想水罐底部有一个小洞,使得水罐里每一立方米的水以一立方米每秒的速率流出(<strong>也就是有体积为V的水,每秒钟流水的速度就是V立方米每秒</strong>),这时当水罐中的水的体积为$18\pi \ m^3$的时候,水位的变化率是多少?</p>
+<p>画个图大概长这样:</p>
+<p><img src="https://img-blog.csdnimg.cn/20191110162151181.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkwNzgwMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>还要知道一点,圆锥的体积公式是:$S=\frac{1}{3}\pi r^2h$,这之后就可以开始解题了:</p>
+<p>根据相似三角形(三角函数也可以),图中圆锥的半径和水位的比值为$1:2$,因此不难整理出圆锥体积关于高(水位)的关系式:$V=\frac{\pi h^3}{12}$</p>
+<p>对于两个问,都是要求水位的变化率(也就是$\frac{dh}{dt}$),于是隐函数求导:</p>
+<p>$\frac{dV}{dt}=\frac{\pi}{12}\frac{dh^3}{dt}$</p>
+<p>$\frac{dV}{dt}=\frac{\pi}{12}3h^2\frac{dh}{dt}=\frac{\pi h^2}{4}\frac{dh}{dt}$</p>
+<p>这里注意,两个问题的区别在于<strong>圆锥内水体积的变化率</strong>,也就是说,第一个问里圆锥内水体积的变化率就是<strong>外部灌水的速度</strong>,而第二个问中圆锥内水体积的变化率是<strong>外部灌水的速度-漏水的速度</strong></p>
+<p>由于接下来的式子会涉及到$h$,我们先解出当$V=18\pi$的时候水位高度为$6$</p>
+<p>因此对于第一问,$\frac{dV}{dt}=8\pi$,$8\pi=\frac{\pi h^2}{4}\frac{dh}{dt}$</p>
+<p>于是$\frac{dh}{dt}=\frac{8}{9}$,水位以$\frac{8}{9}$米每秒的速度上升</p>
+<p>对于第二问,$\frac{dV}{dt}=8\pi-V$,$8\pi-18\pi=\frac{\pi h^2}{4}\frac{dh}{dt}$</p>
+<p>于是$\frac{dh}{dt}=-\frac{10}{9}$,水位以$\frac{10}{9}$米每秒的速度下降</p>
+<h3 id="一个还要难一点的例子"><a href="#一个还要难一点的例子" class="headerlink" title="一个还要难一点的例子"></a>一个还要难一点的例子</h3><p>设想有一架灰机保持在2km高度远离你想正东方向飞行,飞机的速度是$v=500m/s$,同时,天上掉下来一个空降兵(可能是从其他什么飞机上掉下来的,反正不是刚刚提到的这个灰机),在你东边1000m的上空垂直的以10m/s的速度向下运动,就像下图中显示的一样:</p>
+<p><img src="https://img-blog.csdnimg.cn/20191110173314571.png" alt="在这里插入图片描述">问题是:当灰机和空降兵在同一高度,但灰机在东边8000m的时候,$\theta$的变化率$\frac{d\theta}{dt}$是多少?</p>
+<p>作者前面提到的解题步骤中的第一步是要明确题中的变量条件:不难发现,空降兵离你的水平距离是不变的1000m,飞机离你的高度是不变的2000m,而空降兵的高度和飞机离你的水平距离以及角度$\theta$都是在改变的,因此可以画出下图:</p>
+<p><img src="https://img-blog.csdnimg.cn/20191110170907788.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkwNzgwMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>这就结束了第一步的相关事项.</p>
+<p>接下来是把所有有关量的方程列出来:</p>
+<p>$$<br>\begin{cases}<br>tan(\alpha)=\frac{2000}{p}\tan(\beta)=\frac{h}{1000}\\theta+\alpha=\beta<br>\end{cases}<br>$$</p>
+<p>这就是第二步</p>
+<p>第三步是依次求导:</p>
+<p>对第一个方程:$\frac{d}{dt}tan(\alpha)=2000\frac{d}{dt}(\frac{1}{p})$</p>
+<p>$sec^2(a)\frac{d\alpha}{dt}=2000(-p^{-2})=-\frac{2000}{p^2}$</p>
+<p>对第二个方程:$\frac{d}{dt}\tan(\beta)=\frac{d}{dt}\frac{h}{1000}$</p>
+<p>$sec^2(\beta)\frac{d\beta}{dt}=\frac{1}{1000}\frac{dh}{dt}$</p>
+<p>对第三个方程:$\frac{d\theta}{dt}+\frac{d\alpha}{dt}=\frac{d\beta}{dt}$</p>
+<p>得到</p>
+<p>$$<br>\begin{cases}<br>sec^2(a)\frac{d\alpha}{dt}=2000(-p^{-2})=-\frac{2000}{p^2}\sec^2(\beta)\frac{d\beta}{dt}=\frac{1}{1000}\frac{dh}{dt}\\frac{d\theta}{dt}+\frac{d\alpha}{dt}=\frac{d\beta}{dt}<br>\end{cases}<br>$$</p>
+<p>这就完成了第三步</p>
+<p>最后一步是代入已知量并且求得最后的待求变化量:</p>
+<p>已知:$\frac{dp}{dt}=500,\frac{dh}{dt}=-10,p=8000,h=2000,sec^2(\alpha)=\frac{17}{16},sec(\beta)=5$(注意正负号!)</p>
+<p>代入已知后得到$\frac{d\theta}{dt}=\frac{27}{2125}$(真是个鬼畜的答案)</p>
+<p>也就是角$\theta$以$\frac{27}{2125}$弧度每秒的速率递增</p>
+<p>至于解这个题的时候如此的强调作者提的步骤,原因是:按照有经验的前辈给出的步骤解决问题使得我们在复杂的问题面前头脑更加清晰</p>
+<blockquote>
+<p>2019年11月13日21:58:52 鉴于本文太长(主要是太多公式)容易引起浏览器加载缓慢甚至TLE等现象,本书后面的章节在下一篇文章中继续给出</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">AndrewLee</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2019/10/24/%E6%99%AE%E6%9E%97%E6%96%AF%E9%A1%BF%E5%BE%AE%E7%A7%AF%E5%88%86%E8%AF%BB%E6%9C%AC-%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">http://example.com/2019/10/24/%E6%99%AE%E6%9E%97%E6%96%AF%E9%A1%BF%E5%BE%AE%E7%A7%AF%E5%88%86%E8%AF%BB%E6%9C%AC-%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">AndrewLee</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%BE%AE%E7%A7%AF%E5%88%86/">微积分</a></div><div class="post_share"><div class="social-share" data-image="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2017-10-19%2F59e85568dcb46.jpg%3Fdown&amp;refer=http%3A%2F%2Fpic1.win4000.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638695731&amp;t=751aef03ff04665aafa66556eb677f73" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2019/11/06/%E5%B7%A6%E5%92%8C%E5%8F%B3/"><img class="prev-cover" src="/img/yiyuan.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">左,右</div></div></a></div><div class="next-post pull-right"><a href="/2019/10/17/%E7%AC%AC%E4%B8%80%E5%B1%8ACSP-S%E5%88%9D%E8%B5%9B%E5%A4%8D%E4%B9%A0/"><img class="next-cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fqqpublic.qpic.cn%2Fqq_public%2F0%2F0-2562029079-DAAA7EA6B13C980368EBFBD0691250C4%2F0%3Ffmt%3Djpg%26size%3D96%26h%3D601%26w%3D900%26ppv%3D1.jpg&amp;refer=http%3A%2F%2Fqqpublic.qpic.cn&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638695731&amp;t=0d9613c991c0b38956ea94cc1aef2a2d" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">第一届CSP-S初赛复习</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/02/23/普林斯顿微积分读本阅读笔记-续2/" title="普林斯顿微积分读本阅读笔记-续2"><img class="cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201707%2F04%2F20170704184913_GNYCE.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638696115&t=a486b1dc327c953b973545deccf5835a" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-02-23</div><div class="title">普林斯顿微积分读本阅读笔记-续2</div></div></a></div><div><a href="/2019/11/13/普林斯顿微积分读本-阅读笔记-续1/" title="普林斯顿微积分读本-阅读笔记-续1"><img class="cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fqqpublic.qpic.cn%2Fqq_public%2F0%2F0-2562029079-DAAA7EA6B13C980368EBFBD0691250C4%2F0%3Ffmt%3Djpg%26size%3D96%26h%3D601%26w%3D900%26ppv%3D1.jpg&refer=http%3A%2F%2Fqqpublic.qpic.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638695731&t=0d9613c991c0b38956ea94cc1aef2a2d" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-11-13</div><div class="title">普林斯顿微积分读本-阅读笔记-续1</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/tit.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">AndrewLee</div><div class="author-info__description">Gubba nub nub doo rahkah</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">29</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Andrew82106" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin=281512383&amp;website=www.oicqzone.com" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Chapter-I-%E6%9E%81%E9%99%90%E5%AF%BC%E8%AE%BA"><span class="toc-number">1.</span> <span class="toc-text">Chapter I 极限导论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%81%E9%99%90"><span class="toc-number">1.1.</span> <span class="toc-text">极限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8C%E4%BE%A7%E6%9E%81%E9%99%90-%E5%B7%A6%E6%9E%81%E9%99%90%E5%92%8C%E5%8F%B3%E6%9E%81%E9%99%90"><span class="toc-number">1.2.</span> <span class="toc-text">双侧极限,左极限和右极限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%9E%81%E9%99%90%E7%9A%84%E5%AD%98%E5%9C%A8%E6%80%A7"><span class="toc-number">1.3.</span> <span class="toc-text">关于极限的存在性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E7%A9%B7%E5%A4%84%E7%9A%84%E6%9E%81%E9%99%90"><span class="toc-number">1.4.</span> <span class="toc-text">无穷处的极限</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%81%E9%99%90%E4%B8%AD%E7%9A%84%E5%A4%A7%E6%95%B0%E5%92%8C%E5%B0%8F%E6%95%B0"><span class="toc-number">1.4.1.</span> <span class="toc-text">极限中的大数和小数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B1%E5%8E%9F%E6%9E%81%E9%99%90%E4%BA%A7%E7%94%9F%E6%96%B0%E6%9E%81%E9%99%90"><span class="toc-number">1.5.</span> <span class="toc-text">由原极限产生新极限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%90%E8%BF%91%E7%BA%BF"><span class="toc-number">1.6.</span> <span class="toc-text">渐近线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Squeeze-Theorem-%E5%A4%B9%E9%80%BC%E5%AE%9A%E7%90%86"><span class="toc-number">1.7.</span> <span class="toc-text">Squeeze Theorem 夹逼定理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E4%B8%BE%E4%BE%8B"><span class="toc-number">1.7.1.</span> <span class="toc-text">应用举例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Chapter-II-%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%9A%84%E6%9E%81%E9%99%90%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">Chapter II 多项式的极限问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#x%E8%B6%8B%E8%BF%91%E4%BA%8Ea%E6%97%B6%E6%9C%89%E7%90%86%E5%87%BD%E6%95%B0%E7%9A%84%E6%9E%81%E9%99%90"><span class="toc-number">2.1.</span> <span class="toc-text">x趋近于a时有理函数的极限</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80-%E4%BB%A3%E5%85%A5%E6%B3%95"><span class="toc-number">2.1.1.</span> <span class="toc-text">方法一 代入法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C-%E5%9B%A0%E5%BC%8F%E5%88%86%E8%A7%A3-%E4%BB%A3%E5%85%A5%E6%B3%95"><span class="toc-number">2.1.2.</span> <span class="toc-text">方法二 因式分解+代入法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89-%E5%BE%AE%E8%B0%83%E6%B3%95"><span class="toc-number">2.1.3.</span> <span class="toc-text">方法三 微调法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#x%E8%B6%8B%E8%BF%91%E4%BA%8Ea%E6%97%B6%E5%B8%A6%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%87%BD%E6%95%B0%E7%9A%84%E6%9E%81%E9%99%90"><span class="toc-number">2.2.</span> <span class="toc-text">x趋近于a时带平方根函数的极限</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%80%E5%B7%A7-%E5%85%B1%E8%BD%AD%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">2.2.1.</span> <span class="toc-text">技巧 共轭表达式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#x%E8%B6%8B%E8%BF%91%E4%BA%8E%E6%AD%A3%E6%97%A0%E7%A9%B7%E6%97%B6%E5%B8%A6%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%87%BD%E6%95%B0%E7%9A%84%E6%9E%81%E9%99%90"><span class="toc-number">2.3.</span> <span class="toc-text">x趋近于正无穷时带平方根函数的极限</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E9%AB%98%E6%AC%A1%E9%A1%B9%E5%86%B3%E5%AE%9A%E6%9E%81%E9%99%90"><span class="toc-number">2.3.1.</span> <span class="toc-text">最高次项决定极限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E5%88%86%E5%BC%8F%E6%9E%81%E9%99%90"><span class="toc-number">2.3.2.</span> <span class="toc-text">简单分式极限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95-%E7%AD%89%E6%95%88%E6%8F%90%E5%8F%96%E6%B3%95"><span class="toc-number">2.3.3.</span> <span class="toc-text">方法 等效提取法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#x%E8%B6%8B%E8%BF%91%E6%AD%A3%E6%97%A0%E7%A9%B7%E6%97%B6%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%9E%8B%E5%87%BD%E6%95%B0%E7%9A%84%E6%9E%81%E9%99%90"><span class="toc-number">2.4.</span> <span class="toc-text">x趋近正无穷时多项式型函数的极限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#x%E8%B6%8B%E8%BF%91%E8%B4%9F%E6%97%A0%E7%A9%B7%E6%97%B6%E6%9C%89%E7%90%86%E5%87%BD%E6%95%B0%E7%9A%84%E6%9E%81%E9%99%90"><span class="toc-number">2.5.</span> <span class="toc-text">x趋近负无穷时有理函数的极限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%85%E5%90%AB%E7%BB%9D%E5%AF%B9%E5%80%BC%E7%9A%84%E6%9E%81%E9%99%90"><span class="toc-number">2.6.</span> <span class="toc-text">包含绝对值的极限</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Chapter-III-%E8%BF%9E%E7%BB%AD%E6%80%A7%E5%92%8C%E5%8F%AF%E5%AF%BC%E6%80%A7"><span class="toc-number">3.</span> <span class="toc-text">Chapter III 连续性和可导性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9E%E7%BB%AD%E6%80%A7"><span class="toc-number">3.1.</span> <span class="toc-text">连续性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E4%B8%80%E7%82%B9%E5%A4%84%E8%BF%9E%E7%BB%AD"><span class="toc-number">3.1.1.</span> <span class="toc-text">在一点处连续</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E5%8C%BA%E9%97%B4%E4%B8%8A%E8%BF%9E%E7%BB%AD"><span class="toc-number">3.1.2.</span> <span class="toc-text">在区间上连续</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E7%BB%AD%E5%87%BD%E6%95%B0%E8%BF%90%E7%AE%97"><span class="toc-number">3.1.3.</span> <span class="toc-text">连续函数运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8B%E5%80%BC%E5%AE%9A%E7%90%86"><span class="toc-number">3.1.4.</span> <span class="toc-text">介值定理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E5%80%BC%E6%9C%80%E5%B0%8F%E5%80%BC%E5%AE%9A%E7%90%86"><span class="toc-number">3.1.5.</span> <span class="toc-text">最大值最小值定理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E5%AF%BC%E6%80%A7"><span class="toc-number">3.2.</span> <span class="toc-text">可导性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E5%8A%A8%E5%AD%A6%E5%92%8C%E5%AF%BC%E6%95%B0"><span class="toc-number">3.2.1.</span> <span class="toc-text">运动学和导数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%B3%E5%9D%87%E9%80%9F%E7%8E%87"><span class="toc-number">3.2.1.1.</span> <span class="toc-text">平均速率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%B3%E5%9D%87%E9%80%9F%E5%BA%A6"><span class="toc-number">3.2.1.2.</span> <span class="toc-text">平均速度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9E%AC%E6%97%B6%E9%80%9F%E5%BA%A6"><span class="toc-number">3.2.1.3.</span> <span class="toc-text">瞬时速度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%9F%E5%BA%A6%E7%9A%84%E5%9B%BE%E5%83%8F%E8%A7%A3%E9%87%8A"><span class="toc-number">3.2.1.4.</span> <span class="toc-text">速度的图像解释</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%87%BD%E6%95%B0"><span class="toc-number">3.2.2.</span> <span class="toc-text">导函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E4%B8%BA%E6%9E%81%E9%99%90%E6%AF%94%E7%9A%84%E5%AF%BC%E6%95%B0"><span class="toc-number">3.2.3.</span> <span class="toc-text">作为极限比的导数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%87%BD%E6%95%B0%E5%92%8C%E5%B8%B8%E6%95%B0%E5%87%BD%E6%95%B0%E7%9A%84%E5%AF%BC%E6%95%B0"><span class="toc-number">3.2.4.</span> <span class="toc-text">线性函数和常数函数的导数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E9%98%B6%E5%AF%BC%E6%95%B0"><span class="toc-number">3.2.5.</span> <span class="toc-text">高阶导数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E6%95%B0%E7%9A%84%E5%AD%98%E5%9C%A8%E6%80%A7"><span class="toc-number">3.2.6.</span> <span class="toc-text">导数的存在性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E5%AF%BC%E6%80%A7%E5%92%8C%E8%BF%9E%E7%BB%AD%E6%80%A7"><span class="toc-number">3.2.7.</span> <span class="toc-text">可导性和连续性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Chapter-IV-%E6%B1%82%E8%A7%A3%E5%BE%AE%E5%88%86%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">Chapter IV 求解微分问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%AE%9A%E4%B9%89%E6%B1%82%E5%AF%BC"><span class="toc-number">4.1.</span> <span class="toc-text">使用定义求导</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%82%E5%AF%BC%E6%B3%95%E5%88%99"><span class="toc-number">4.2.</span> <span class="toc-text">求导法则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%B8%B8%E6%95%B0%E5%80%8D"><span class="toc-number">4.2.1.</span> <span class="toc-text">函数的常数倍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%92%8C%E4%B8%8E%E5%B7%AE"><span class="toc-number">4.2.2.</span> <span class="toc-text">函数和与差</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E4%B9%98%E7%A7%AF"><span class="toc-number">4.2.3.</span> <span class="toc-text">函数的乘积</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80-%E6%9C%AC%E4%B9%A6%E9%99%84%E5%BD%95%E4%B8%AD%E7%BB%99%E5%87%BA%E7%9A%84%E8%AF%81%E6%98%8E"><span class="toc-number">4.2.3.1.</span> <span class="toc-text">一:本书附录中给出的证明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C-%E6%9C%AC%E4%B9%A6%E4%B8%AD%E7%9A%84%E5%8F%A6%E5%A4%96%E4%B8%80%E4%B8%AA%E8%AF%81%E6%98%8E%E6%96%B9%E6%B3%95"><span class="toc-number">4.2.3.2.</span> <span class="toc-text">二:本书中的另外一个证明方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%A4%8D%E5%90%88"><span class="toc-number">4.2.4.</span> <span class="toc-text">函数的复合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E6%B1%82%E5%AF%BC%E6%B3%95%E5%88%99"><span class="toc-number">4.2.5.</span> <span class="toc-text">扩展求导法则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E5%B7%A8%E9%BA%BB%E7%83%A6%E7%9A%84%E6%A0%97%E5%AD%90"><span class="toc-number">4.3.</span> <span class="toc-text">一个巨麻烦的栗子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%82%E5%AF%BC%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">4.4.</span> <span class="toc-text">求导的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%82%E5%88%87%E7%BA%BF%E6%96%B9%E7%A8%8B"><span class="toc-number">4.4.1.</span> <span class="toc-text">求切线方程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0%E8%BF%90%E5%8A%A8%E7%89%A9%E7%90%86%E9%87%8F"><span class="toc-number">4.4.2.</span> <span class="toc-text">描述运动物理量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E6%95%B0%E4%BC%AA%E8%A3%85%E7%9A%84%E6%9E%81%E9%99%90"><span class="toc-number">4.4.3.</span> <span class="toc-text">导数伪装的极限</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E5%87%BD%E6%95%B0%E7%9A%84%E5%AF%BC%E6%95%B0"><span class="toc-number">4.5.</span> <span class="toc-text">分段函数的导数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E7%9B%B4%E6%8E%A5%E7%94%BB%E5%87%BA%E5%AF%BC%E5%87%BD%E6%95%B0%E5%9B%BE%E5%83%8F"><span class="toc-number">4.6.</span> <span class="toc-text">如何直接画出导函数图像</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Chapter-V-%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0%E7%9A%84%E6%9E%81%E9%99%90%E5%92%8C%E5%AF%BC%E6%95%B0"><span class="toc-number">5.</span> <span class="toc-text">Chapter V 三角函数的极限和导数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0%E7%9A%84%E6%9E%81%E9%99%90"><span class="toc-number">5.1.</span> <span class="toc-text">三角函数的极限</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E6%95%B0%E7%9A%84%E6%83%85%E5%86%B5"><span class="toc-number">5.1.1.</span> <span class="toc-text">小数的情况</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-number">5.1.1.1.</span> <span class="toc-text">例题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E6%95%B0%E7%9A%84%E6%83%85%E5%86%B5"><span class="toc-number">5.1.2.</span> <span class="toc-text">大数的情况</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E9%87%8D%E8%A6%81%E7%9A%84%E7%BB%93%E8%AE%BA"><span class="toc-number">5.1.2.1.</span> <span class="toc-text">一个重要的结论</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E4%BE%8B%E5%AD%90"><span class="toc-number">5.1.2.1.1.</span> <span class="toc-text">一些例子</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0%E7%9A%84%E5%AF%BC%E6%95%B0"><span class="toc-number">5.2.</span> <span class="toc-text">三角函数的导数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0%E6%B1%82%E5%AF%BC"><span class="toc-number">5.2.1.</span> <span class="toc-text">对三角函数求导</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E8%B0%90%E8%BF%90%E5%8A%A8"><span class="toc-number">5.2.2.</span> <span class="toc-text">简谐运动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E6%9C%AC%E8%BA%AB%E5%8F%AF%E5%AF%BC%E4%BD%86%E5%AF%BC%E6%95%B0%E5%B9%B6%E4%B8%8D%E8%BF%9E%E7%BB%AD%E7%9A%84%E5%87%BD%E6%95%B0"><span class="toc-number">5.2.3.</span> <span class="toc-text">一个本身可导但导数并不连续的函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Chapter-VI-%E9%9A%90%E5%87%BD%E6%95%B0%E6%B1%82%E5%AF%BC%E5%92%8C%E7%9B%B8%E5%85%B3%E5%8F%98%E5%8C%96%E7%8E%87"><span class="toc-number">6.</span> <span class="toc-text">Chapter VI 隐函数求导和相关变化率</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">6.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E9%9A%90%E5%87%BD%E6%95%B0%E6%B1%82%E5%AF%BC%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="toc-number">6.2.</span> <span class="toc-text">一些隐函数求导的例子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%90%E5%87%BD%E6%95%B0%E6%B1%82%E4%B8%80%E9%98%B6%E5%AF%BC"><span class="toc-number">6.2.1.</span> <span class="toc-text">隐函数求一阶导</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%90%E5%87%BD%E6%95%B0%E6%B1%82%E4%BA%8C%E9%98%B6%E5%AF%BC"><span class="toc-number">6.2.2.</span> <span class="toc-text">隐函数求二阶导</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%8F%98%E5%8C%96%E7%8E%87"><span class="toc-number">6.3.</span> <span class="toc-text">相关变化率</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="toc-number">6.3.1.</span> <span class="toc-text">一个简单的例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E7%A8%8D%E5%BE%AE%E9%9A%BE%E4%B8%80%E7%82%B9%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="toc-number">6.3.2.</span> <span class="toc-text">一个稍微难一点的例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%8A%A0%E9%9A%BE%E4%B8%80%E7%82%B9%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="toc-number">6.3.3.</span> <span class="toc-text">一个更加难一点的例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E8%BF%98%E8%A6%81%E9%9A%BE%E4%B8%80%E7%82%B9%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="toc-number">6.3.4.</span> <span class="toc-text">一个还要难一点的例子</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/11/14/CTF%E5%88%B7%E9%A2%98%E8%AE%B0/" title="CTF刷题记"><img src="/img/ctf.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CTF刷题记"/></a><div class="content"><a class="title" href="/2021/11/14/CTF%E5%88%B7%E9%A2%98%E8%AE%B0/" title="CTF刷题记">CTF刷题记</a><time datetime="2021-11-14T04:43:35.000Z" title="发表于 2021-11-14 12:43:35">2021-11-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/10/16/BLOG%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/" title="Blog搭建指南"><img src="/img/hexo.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Blog搭建指南"/></a><div class="content"><a class="title" href="/2021/10/16/BLOG%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/" title="Blog搭建指南">Blog搭建指南</a><time datetime="2021-10-16T11:39:08.000Z" title="发表于 2021-10-16 19:39:08">2021-10-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/20/%E6%95%B0%E8%AE%BA%E7%AC%94%E8%AE%B0/" title="数论...这一波令人窒息的操作"><img src="/img/shulun.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数论...这一波令人窒息的操作"/></a><div class="content"><a class="title" href="/2021/08/20/%E6%95%B0%E8%AE%BA%E7%AC%94%E8%AE%B0/" title="数论...这一波令人窒息的操作">数论...这一波令人窒息的操作</a><time datetime="2021-08-20T01:09:09.000Z" title="发表于 2021-08-20 09:09:09">2021-08-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/19/CTF%E5%88%9D%E6%8E%A2-%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AC%94%E8%AE%B0/" title="CTF初探_密码学笔记"><img src="/img/ctf.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CTF初探_密码学笔记"/></a><div class="content"><a class="title" href="/2021/08/19/CTF%E5%88%9D%E6%8E%A2-%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AC%94%E8%AE%B0/" title="CTF初探_密码学笔记">CTF初探_密码学笔记</a><time datetime="2021-08-19T06:08:13.000Z" title="发表于 2021-08-19 14:08:13">2021-08-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/08/%E9%87%8D%E6%8B%BEpython-%E8%BF%9B%E9%98%B6%E7%AF%87/" title="重拾python(进阶篇)"><img src="/img/python2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="重拾python(进阶篇)"/></a><div class="content"><a class="title" href="/2021/08/08/%E9%87%8D%E6%8B%BEpython-%E8%BF%9B%E9%98%B6%E7%AF%87/" title="重拾python(进阶篇)">重拾python(进阶篇)</a><time datetime="2021-08-08T01:47:52.000Z" title="发表于 2021-08-08 09:47:52">2021-08-08</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By AndrewLee</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    loader: {
+      source: {
+        '[tex]/amsCd': '[tex]/amscd'
+      }
+    },
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        addClass: [200,() => {
+          document.querySelectorAll('mjx-container:not([display=\'true\']').forEach( node => {
+            const target = node.parentNode
+            if (!target.classList.contains('has-jax')) {
+              target.classList.add('mathjax-overflow')
+            }
+          })
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script src="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/js/mouse_snow.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
