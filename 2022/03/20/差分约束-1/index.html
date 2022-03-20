@@ -1,0 +1,260 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>差分约束——1 | AndrewLee</title><meta name="keywords" content="OI"><meta name="author" content="AndrewLee"><meta name="copyright" content="AndrewLee"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1.引例1、一类不等式组的解给定n个变量和m个不等式，每个不等式形如 x[i] – x[j] &lt;&#x3D; a[k] (0 &lt;&#x3D; i, j &lt; n, 0 &lt;&#x3D; k &lt; m， a[k]已知)，求 x[n-1] – x[0] 的最大值。例如当n &#x3D; 4，m &#x3D; 5，不等式组如图一-1-1所示的情况，求x3 – x0的最大值。    图一-1-1 观察x3 – x0的性质，我们如果">
+<meta property="og:type" content="article">
+<meta property="og:title" content="差分约束——1">
+<meta property="og:url" content="http://example.com/2022/03/20/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F-1/index.html">
+<meta property="og:site_name" content="AndrewLee">
+<meta property="og:description" content="1.引例1、一类不等式组的解给定n个变量和m个不等式，每个不等式形如 x[i] – x[j] &lt;&#x3D; a[k] (0 &lt;&#x3D; i, j &lt; n, 0 &lt;&#x3D; k &lt; m， a[k]已知)，求 x[n-1] – x[0] 的最大值。例如当n &#x3D; 4，m &#x3D; 5，不等式组如图一-1-1所示的情况，求x3 – x0的最大值。    图一-1-1 观察x3 – x0的性质，我们如果">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg9.51tietu.net%2Fpic%2F2019-091409%2F11crxji4ujd11crxji4ujd.jpg&refer=http%3A%2F%2Fimg9.51tietu.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638696115&t=d52a0526f7dc716ee2b41c4e4a252d1d">
+<meta property="article:published_time" content="2022-03-20T07:38:23.000Z">
+<meta property="article:modified_time" content="2022-03-20T07:47:58.679Z">
+<meta property="article:author" content="AndrewLee">
+<meta property="article:tag" content="OI">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg9.51tietu.net%2Fpic%2F2019-091409%2F11crxji4ujd11crxji4ujd.jpg&refer=http%3A%2F%2Fimg9.51tietu.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638696115&t=d52a0526f7dc716ee2b41c4e4a252d1d"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/03/20/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F-1/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '差分约束——1',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-03-20 15:47:58'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/tit.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">43</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">29</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">22</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> others</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg9.51tietu.net%2Fpic%2F2019-091409%2F11crxji4ujd11crxji4ujd.jpg&amp;refer=http%3A%2F%2Fimg9.51tietu.net&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638696115&amp;t=d52a0526f7dc716ee2b41c4e4a252d1d')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">AndrewLee</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> others</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">差分约束——1</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-20T07:38:23.000Z" title="发表于 2022-03-20 15:38:23">2022-03-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-20T07:47:58.679Z" title="更新于 2022-03-20 15:47:58">2022-03-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/IT/">IT</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="差分约束——1"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="1-引例"><a href="#1-引例" class="headerlink" title="1.引例"></a>1.引例</h1><h2 id="1、一类不等式组的解"><a href="#1、一类不等式组的解" class="headerlink" title="1、一类不等式组的解"></a>1、一类不等式组的解</h2><p><strong>给定n个变量和m个不等式，每个不等式形如 x[i] – x[j] &lt;= a[k] (0 &lt;= i, j &lt; n, 0 &lt;= k &lt; m， a[k]已知)，求 x[n-1] – x[0] 的最大值。例如当n = 4，m = 5，不等式组如图一-1-1所示的情况，求x3 – x0的最大值。</strong>  </p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/2d98808ff87994c0084673909c53f64c.png" alt="1-1"></p>
+<p>图一-1-1</p>
+<p><strong>观察x3 – x0的性质，我们如果可以通过不等式的两两加和得到c个形如 x3 – x0 &lt;= Ti 的不等式，那么 min{ Ti | 0 &lt;= i &lt; c } 就是我们要求的x3 – x0的最大值。于是开始人肉，费尽千辛万苦，终于整理出以下三个不等式：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">(3) x3 – x0 &lt;&#x3D; 8
+(2) + (5) x3 – x0 &lt;&#x3D; 9
+(1) + (4) + (5) x3 – x0 &lt;&#x3D; 7<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>这里的T等于{8， 9， 7}，所以min{ T } = 7，答案就是7。的确是7吗？我们再仔细看看，发现的确没有其它情况了。那么问题就是这种方法即使做出来了还是带有问号的，不能确定正确与否，如何系统地解决这类问题呢？</strong></p>
+<p><strong>让我们来看另一个问题，这个问题描述相对简单，给定四个小岛以及小岛之间的有向距离，问从第0个岛到第3个岛的最短距离。如图一-1-2所示，箭头指向的线段代表两个小岛之间的有向边，蓝色数字代表距离权值。</strong><br><img src="https://img-blog.csdnimg.cn/img_convert/889a4c5ed79ec21fa4fed72ab8523ebc.png" alt="1-2"></p>
+<p>图一-1-2</p>
+<p><strong>这个问题就是经典的最短路问题。由于这个图比较简单，我们可以枚举所有的路线，发现总共三条路线，如下：<br>0 -&gt; 3 长度为8<br>0 -&gt; 2 -&gt; 3 长度为7+2 = 9<br>0 -&gt; 1 -&gt; 2 -&gt; 3 长度为2 + 3 + 2 = 7</strong></p>
+<p><strong>最短路为三条线路中的长度的最小值即7，所以最短路的长度就是7。</strong></p>
+<h1 id="2-差分约束"><a href="#2-差分约束" class="headerlink" title="2.差分约束"></a>2.差分约束</h1><h2 id="1、数形结合"><a href="#1、数形结合" class="headerlink" title="1、数形结合"></a>1、数形结合</h2><p><strong>如若一个系统由n个变量和m个不等式组成，并且这m个不等式对应的系数矩阵中每一行有且仅有一个1和-1，其它的都为0，这样的系统称为差分约束( difference constraints )系统。引例中的不等式组可以表示成如图三-1-1的系数矩阵。</strong><br><img src="https://img-blog.csdnimg.cn/img_convert/8c29593c0bad916b57637b3baf3e29cf.png" alt="1-1"></p>
+<p>图三-1-1</p>
+<p><strong>然后继续回到单个不等式上来，观察</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">x[i] – x[j] &lt;&#x3D; a[k]
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>将这个不等式稍稍变形，将x[j]移到不等式右边，则有</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">x[i] &lt;&#x3D; x[j] + a[k]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>然后我们令a[k] = w(j, i)，再将不等式中的i和j变量替换掉，i = v， j = u，将x数组的名字改成d（以上都是等价变换，不会改变原有不等式的性质），则原先的不等式变成了以下形式：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">d[u] + w(u, v) &gt;&#x3D; d[v]。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>这时候联想到SPFA中的一个松弛操作：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">if(d[u] + w(u, v) &lt; d[v]) 
+&#123;
+    d[v] &#x3D; d[u] + w(u, v);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>对比上面的不等式， 两个不等式的不等号_正好相反_</strong></p>
+<p><strong>但是再仔细一想，其实它们的逻辑是一致的，因为SPFA的松弛操作是在满足小于的情况下进行松弛，力求达到</strong></p>
+<p><strong>d[u] + w(u, v) &gt;= d[v]</strong></p>
+<p><strong>而我们之前令a[k] = w(j, i)，所以我们可以将每个不等式转化成图上的有向边：</strong></p>
+<p><strong>对于每个不等式 x[i] – x[j] &lt;= a[k]，对结点 j 和 i 建立一条 j -&gt; i的有向边，边权为a[k]，则</strong></p>
+<p><del>！！！敲马桶！！！</del></p>
+<p><strong><em>求x[n-1] – x[0] 的最大值就是求 0 到n-1的最短路。</em></strong></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/2d98808ff87994c0084673909c53f64c.png" alt="1-1"></p>
+<p>图三-1-1</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/889a4c5ed79ec21fa4fed72ab8523ebc.png" alt="1-2"></p>
+<p>图三-1-2</p>
+<h3 id="图三-1-2-展示了-图三-1-1的不等式组转化后的图。"><a href="#图三-1-2-展示了-图三-1-1的不等式组转化后的图。" class="headerlink" title="图三-1-2 展示了 图三-1-1的不等式组转化后的图。"></a>图三-1-2 展示了 图三-1-1的不等式组转化后的图。</h3><h2 id="2、三角不等式"><a href="#2、三角不等式" class="headerlink" title="2、三角不等式"></a>2、三角不等式</h2><p><strong>如果还没有完全理解，我们可以先来看一个简单的情况，如下三个不等式：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">B – A &lt;&#x3D; c (1)
+C – B &lt;&#x3D; a (2)
+C – A &lt;&#x3D; b (3)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>我们想要知道C – A的最大值，通过(1) + (2)，可以得到 C – A &lt;= a + c，所以这个问题其实就是求min{b, a+c}。将上面的三个不等式按照 三-1 数形结合 中提到的方式建图，如图三-2-1所示。</strong><br><img src="https://img-blog.csdnimg.cn/img_convert/20b667615ebe86caafba87ea43ae44ec.png" alt="2-1"></p>
+<p>图三-2-1</p>
+<p><strong>我们发现min{b, a+c}正好对应了A到C的最短路，而这三个不等式就是著名的 三角不等式 。将三个不等式推广到m个，变量推广到n个，就变成了n个点m条边的最短路问题了。</strong></p>
+<p><strong>（min（C-A）=求A到C的最短路）</strong><br><strong>（min（n-0）=求n到0的最短路）</strong></p>
+<h2 id="3、解的存在性"><a href="#3、解的存在性" class="headerlink" title="3、解的存在性"></a>3、解的存在性</h2><p><strong>上文提到最短路的时候，会出现负权圈或者根本就不可达的情况，所以在不等式组转化的图上也有可能出现上述情况.</strong></p>
+<p><strong>先来看负权圈的情况，如图三-3-1，下图为5个变量5个不等式转化后的图，需要求得是X[t] – X[s]的最大值，可以转化成求s到t的最短路，但是路径中出现负权圈，则表示最短路无限小，即不存在最短路，那么在不等式上的表现即X[t] – X[s] &lt;= T中的T无限小，得出的结论就是 X[t] – X[s]的最大值 不存在。</strong><br><img src="https://img-blog.csdnimg.cn/img_convert/b3ad9db67012ea8ada50b33ea022a1b4.png" alt="3-1"></p>
+<p>图三-3-1</p>
+<p><strong>再来看另一种情况，即从起点s无法到达t的情况，如图三-3-2，表明X[t]和X[s]之间并没有约束关系，这种情况下X[t] – X[s]的最大值是无限大，这就表明了X[t]和X[s]的取值有无限多种。</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/d9f523f126fa6293ee7ab5990ab48966.png" alt="3-2"><br>图三-3-2</p>
+<p>在实际问题中这两种情况会让你给出不同的输出。</p>
+<h3 id="综上所述，差分约束系统的解有三种情况：1、有解；2、无解；3、无限多解；"><a href="#综上所述，差分约束系统的解有三种情况：1、有解；2、无解；3、无限多解；" class="headerlink" title="综上所述，差分约束系统的解有三种情况：1、有解；2、无解；3、无限多解；"></a>综上所述，差分约束系统的解有三种情况：1、有解；2、无解；3、无限多解；</h3><h2 id="4、最大值-gt-最小值"><a href="#4、最大值-gt-最小值" class="headerlink" title="4、最大值 =&gt; 最小值"></a>4、最大值 =&gt; 最小值</h2><p><strong>然后，我们将问题进行一个简单的转化，将原先的”&lt;=”变成”&gt;=”，转化后的不等式如下：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">原先：
+B – A &lt;&#x3D; c (1)
+C – B &lt;&#x3D; a (2)
+C – A &lt;&#x3D; b (3)
+现在：
+B – A &gt;&#x3D; c (1)
+C – B &gt;&#x3D; a (2)
+C – A &gt;&#x3D; b (3)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>然后求C – A的最 <em>小</em> 值（不是最大值！！！最大值最小，最小值最大），类比之前的方法，需要求的其实是max{b, c+a}，于是对应的是下图从A到C的最长路。同样可以推广到n个变量m个不等式的情况。</strong><br><img src="https://img-blog.csdnimg.cn/img_convert/40eb8c2859d950a28664b1a9d0a320a8.png" alt="2-1"></p>
+<h2 id="5、不等式标准化"><a href="#5、不等式标准化" class="headerlink" title="5、不等式标准化"></a>5、不等式标准化</h2><p><strong>如果给出的不等式有”&lt;=”也有”&gt;=”，又该如何解决呢？</strong></p>
+<h3 id="很明显，首先需要关注最后的问题是什么"><a href="#很明显，首先需要关注最后的问题是什么" class="headerlink" title="很明显，首先需要关注最后的问题是什么"></a>很明显，首先需要关注最后的问题是什么</h3><p><strong>如果需要求的是两个变量差的最大值，那么需要将所有不等式转变成”&lt;=”的形式，建图后求最短路；相反，如果需要求的是两个变量差的最小值，那么需要将所有不等式转化成”&gt;=”，建图后求最长路。</strong></p>
+<p><strong>如果有形如：A – B = c 这样的等式呢？我们可以将它转化成以下两个不等式：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">A – B &gt;&#x3D; c (1)
+A – B &lt;&#x3D; c (2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><strong>再通过上面的方法将其中一种不等号反向，建图即可。</strong><br><strong>最后，如果这些变量都是整数域上的，那么遇到A – B &lt; c这样的_不带等号_的不等式，我们需要将它转化成”&lt;=”或者”&gt;=”的形式，即 :</strong></p>
+<p><strong>A – B &lt;= c – 1</strong></p>
+<h2 id="关于求最长路"><a href="#关于求最长路" class="headerlink" title="关于求最长路"></a>关于求最长路</h2><p><strong>求最短路的算法太多了，但最长路就要特殊一些，<br>在一个无负环的图中，若点v到u的路径中有环，则最长路是无解的，即为正无穷，若无环才可以解出v到u的最长路</strong></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">AndrewLee</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/03/20/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F-1/">http://example.com/2022/03/20/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F-1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">AndrewLee</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/OI/">OI</a></div><div class="post_share"><div class="social-share" data-image="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg9.51tietu.net%2Fpic%2F2019-091409%2F11crxji4ujd11crxji4ujd.jpg&amp;refer=http%3A%2F%2Fimg9.51tietu.net&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638696115&amp;t=d52a0526f7dc716ee2b41c4e4a252d1d" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/03/20/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F-2/"><img class="prev-cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic_source%2F1f%2F78%2Fce%2F1f78cee1a949eb88f2880f0def761734.jpg&amp;refer=http%3A%2F%2Fup.enterdesk.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638695731&amp;t=d11724b849951ab98f2460997a237878" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">差分约束——2</div></div></a></div><div class="next-post pull-right"><a href="/2022/03/20/%E6%9C%80%E8%BF%91%E5%9C%A8%E5%B9%B2%E4%BA%9B%E4%BB%80%E4%B9%88%E5%91%A2/"><img class="next-cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2017-10-19%2F59e85568dcb46.jpg%3Fdown&amp;refer=http%3A%2F%2Fpic1.win4000.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638695731&amp;t=751aef03ff04665aafa66556eb677f73" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">最近在干些什么呢</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/03/15/重拾数据结构/" title="重拾数据结构"><img class="cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2017-10-19%2F59e85568dcb46.jpg%3Fdown&refer=http%3A%2F%2Fpic1.win4000.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638695731&t=751aef03ff04665aafa66556eb677f73" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-15</div><div class="title">重拾数据结构</div></div></a></div><div><a href="/2022/03/20/差分约束-2/" title="差分约束——2"><img class="cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic_source%2F1f%2F78%2Fce%2F1f78cee1a949eb88f2880f0def761734.jpg&refer=http%3A%2F%2Fup.enterdesk.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638695731&t=d11724b849951ab98f2460997a237878" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-20</div><div class="title">差分约束——2</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/tit.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">AndrewLee</div><div class="author-info__description">Gubba nub nub doo rahkah</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">43</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">29</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">22</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Andrew82106" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin=281512383&amp;website=www.oicqzone.com" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%BC%95%E4%BE%8B"><span class="toc-number">1.</span> <span class="toc-text">1.引例</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%B8%80%E7%B1%BB%E4%B8%8D%E7%AD%89%E5%BC%8F%E7%BB%84%E7%9A%84%E8%A7%A3"><span class="toc-number">1.1.</span> <span class="toc-text">1、一类不等式组的解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F"><span class="toc-number">2.</span> <span class="toc-text">2.差分约束</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E6%95%B0%E5%BD%A2%E7%BB%93%E5%90%88"><span class="toc-number">2.1.</span> <span class="toc-text">1、数形结合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E4%B8%89-1-2-%E5%B1%95%E7%A4%BA%E4%BA%86-%E5%9B%BE%E4%B8%89-1-1%E7%9A%84%E4%B8%8D%E7%AD%89%E5%BC%8F%E7%BB%84%E8%BD%AC%E5%8C%96%E5%90%8E%E7%9A%84%E5%9B%BE%E3%80%82"><span class="toc-number">2.1.1.</span> <span class="toc-text">图三-1-2 展示了 图三-1-1的不等式组转化后的图。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E4%B8%89%E8%A7%92%E4%B8%8D%E7%AD%89%E5%BC%8F"><span class="toc-number">2.2.</span> <span class="toc-text">2、三角不等式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E8%A7%A3%E7%9A%84%E5%AD%98%E5%9C%A8%E6%80%A7"><span class="toc-number">2.3.</span> <span class="toc-text">3、解的存在性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%BC%E4%B8%8A%E6%89%80%E8%BF%B0%EF%BC%8C%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%A7%A3%E6%9C%89%E4%B8%89%E7%A7%8D%E6%83%85%E5%86%B5%EF%BC%9A1%E3%80%81%E6%9C%89%E8%A7%A3%EF%BC%9B2%E3%80%81%E6%97%A0%E8%A7%A3%EF%BC%9B3%E3%80%81%E6%97%A0%E9%99%90%E5%A4%9A%E8%A7%A3%EF%BC%9B"><span class="toc-number">2.3.1.</span> <span class="toc-text">综上所述，差分约束系统的解有三种情况：1、有解；2、无解；3、无限多解；</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E6%9C%80%E5%A4%A7%E5%80%BC-gt-%E6%9C%80%E5%B0%8F%E5%80%BC"><span class="toc-number">2.4.</span> <span class="toc-text">4、最大值 &#x3D;&gt; 最小值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E4%B8%8D%E7%AD%89%E5%BC%8F%E6%A0%87%E5%87%86%E5%8C%96"><span class="toc-number">2.5.</span> <span class="toc-text">5、不等式标准化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%88%E6%98%8E%E6%98%BE%EF%BC%8C%E9%A6%96%E5%85%88%E9%9C%80%E8%A6%81%E5%85%B3%E6%B3%A8%E6%9C%80%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">2.5.1.</span> <span class="toc-text">很明显，首先需要关注最后的问题是什么</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%B1%82%E6%9C%80%E9%95%BF%E8%B7%AF"><span class="toc-number">2.6.</span> <span class="toc-text">关于求最长路</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/03/20/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F-2/" title="差分约束——2"><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic_source%2F1f%2F78%2Fce%2F1f78cee1a949eb88f2880f0def761734.jpg&amp;refer=http%3A%2F%2Fup.enterdesk.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638695731&amp;t=d11724b849951ab98f2460997a237878" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="差分约束——2"/></a><div class="content"><a class="title" href="/2022/03/20/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F-2/" title="差分约束——2">差分约束——2</a><time datetime="2022-03-20T07:52:23.000Z" title="发表于 2022-03-20 15:52:23">2022-03-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/20/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F-1/" title="差分约束——1"><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg9.51tietu.net%2Fpic%2F2019-091409%2F11crxji4ujd11crxji4ujd.jpg&amp;refer=http%3A%2F%2Fimg9.51tietu.net&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638696115&amp;t=d52a0526f7dc716ee2b41c4e4a252d1d" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="差分约束——1"/></a><div class="content"><a class="title" href="/2022/03/20/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F-1/" title="差分约束——1">差分约束——1</a><time datetime="2022-03-20T07:38:23.000Z" title="发表于 2022-03-20 15:38:23">2022-03-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/20/%E6%9C%80%E8%BF%91%E5%9C%A8%E5%B9%B2%E4%BA%9B%E4%BB%80%E4%B9%88%E5%91%A2/" title="最近在干些什么呢"><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2017-10-19%2F59e85568dcb46.jpg%3Fdown&amp;refer=http%3A%2F%2Fpic1.win4000.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638695731&amp;t=751aef03ff04665aafa66556eb677f73" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="最近在干些什么呢"/></a><div class="content"><a class="title" href="/2022/03/20/%E6%9C%80%E8%BF%91%E5%9C%A8%E5%B9%B2%E4%BA%9B%E4%BB%80%E4%B9%88%E5%91%A2/" title="最近在干些什么呢">最近在干些什么呢</a><time datetime="2022-03-20T02:32:53.000Z" title="发表于 2022-03-20 10:32:53">2022-03-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/20/%E7%9F%A9%E9%98%B5%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%AE%97/" title="矩阵基本运算"><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg9.51tietu.net%2Fpic%2F2019-091409%2F11crxji4ujd11crxji4ujd.jpg&amp;refer=http%3A%2F%2Fimg9.51tietu.net&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638696115&amp;t=d52a0526f7dc716ee2b41c4e4a252d1d" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="矩阵基本运算"/></a><div class="content"><a class="title" href="/2022/03/20/%E7%9F%A9%E9%98%B5%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%AE%97/" title="矩阵基本运算">矩阵基本运算</a><time datetime="2022-03-20T02:21:09.000Z" title="发表于 2022-03-20 10:21:09">2022-03-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/18/%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%81%9A%E5%85%A8%E6%A0%88%E7%9A%84%E6%88%91/" title="第一次做全栈的我"><img src="/img/programmer.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第一次做全栈的我"/></a><div class="content"><a class="title" href="/2022/03/18/%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%81%9A%E5%85%A8%E6%A0%88%E7%9A%84%E6%88%91/" title="第一次做全栈的我">第一次做全栈的我</a><time datetime="2022-03-18T05:35:16.000Z" title="发表于 2022-03-18 13:35:16">2022-03-18</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By AndrewLee</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    loader: {
+      source: {
+        '[tex]/amsCd': '[tex]/amscd'
+      }
+    },
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        addClass: [200,() => {
+          document.querySelectorAll('mjx-container:not([display=\'true\']').forEach( node => {
+            const target = node.parentNode
+            if (!target.classList.contains('has-jax')) {
+              target.classList.add('mathjax-overflow')
+            }
+          })
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script src="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/js/mouse_snow.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
