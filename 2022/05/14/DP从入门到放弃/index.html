@@ -1,0 +1,257 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DP·从入门到递归入门 | AndrewLee</title><meta name="keywords" content="oi"><meta name="author" content="AndrewLee"><meta name="copyright" content="AndrewLee"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="数字三角形经典DP，当年的IOI赛题 方程：$f[x][y]&#x3D;max(f[x+1][y],f[x+1][y+1])+a[x][y]$ [NOIP1996 提高组] 挖地雷线性DP，方程：$dp[i]$指以i结尾的最长方案数，则 $dp[i]&#x3D;dp[j]+w[i],j\in {1,2,3,4…n}$ 最大食物链树形DP：设f[u]为以u结尾的食物链的长度 方程：$f[u]&#x3D;\sum f[v]$ [N">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DP·从入门到递归入门">
+<meta property="og:url" content="http://example.com/2022/05/14/DP%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/index.html">
+<meta property="og:site_name" content="AndrewLee">
+<meta property="og:description" content="数字三角形经典DP，当年的IOI赛题 方程：$f[x][y]&#x3D;max(f[x+1][y],f[x+1][y+1])+a[x][y]$ [NOIP1996 提高组] 挖地雷线性DP，方程：$dp[i]$指以i结尾的最长方案数，则 $dp[i]&#x3D;dp[j]+w[i],j\in {1,2,3,4…n}$ 最大食物链树形DP：设f[u]为以u结尾的食物链的长度 方程：$f[u]&#x3D;\sum f[v]$ [N">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201707%2F04%2F20170704184913_GNYCE.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638696115&t=a486b1dc327c953b973545deccf5835a">
+<meta property="article:published_time" content="2022-05-14T02:23:30.000Z">
+<meta property="article:modified_time" content="2022-05-14T02:24:09.156Z">
+<meta property="article:author" content="AndrewLee">
+<meta property="article:tag" content="oi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201707%2F04%2F20170704184913_GNYCE.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638696115&t=a486b1dc327c953b973545deccf5835a"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/05/14/DP%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'DP·从入门到递归入门',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-05-14 10:24:09'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/tit.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">46</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">22</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> others</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201707%2F04%2F20170704184913_GNYCE.thumb.700_0.jpeg&amp;refer=http%3A%2F%2Fb-ssl.duitang.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638696115&amp;t=a486b1dc327c953b973545deccf5835a')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">AndrewLee</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> others</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">DP·从入门到递归入门</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-05-14T02:23:30.000Z" title="发表于 2022-05-14 10:23:30">2022-05-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-05-14T02:24:09.156Z" title="更新于 2022-05-14 10:24:09">2022-05-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/IT/">IT</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="DP·从入门到递归入门"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="数字三角形"><a href="#数字三角形" class="headerlink" title="数字三角形"></a>数字三角形</h1><p><img src="https://img-blog.csdnimg.cn/3aa93a23bf9e434198f0933a90b12750.png" alt="在这里插入图片描述"><br>经典DP，<del>当年的IOI赛题</del></p>
+<p>方程：$f[x][y]=max(f[x+1][y],f[x+1][y+1])+a[x][y]$</p>
+<h1 id="NOIP1996-提高组-挖地雷"><a href="#NOIP1996-提高组-挖地雷" class="headerlink" title="[NOIP1996 提高组] 挖地雷"></a>[NOIP1996 提高组] 挖地雷</h1><p><img src="https://img-blog.csdnimg.cn/fd30a90f9d99495c9e14f951721757e0.png" alt="在这里插入图片描述">线性DP，方程：$dp[i]$指以i结尾的最长方案数，则</p>
+<p>$dp[i]=dp[j]+w[i],j\in {1,2,3,4…n}$</p>
+<h1 id="最大食物链"><a href="#最大食物链" class="headerlink" title="最大食物链"></a>最大食物链</h1><p><img src="https://img-blog.csdnimg.cn/8f783cdaf8854fdd8b7b330231af1a6b.png" alt="在这里插入图片描述">树形DP：设f[u]为以u结尾的食物链的长度</p>
+<p>方程：$f[u]=\sum f[v]$</p>
+<h1 id="NOIP2005-普及组-采药"><a href="#NOIP2005-普及组-采药" class="headerlink" title="[NOIP2005 普及组] 采药"></a>[NOIP2005 普及组] 采药</h1><p><img src="https://img-blog.csdnimg.cn/9cad5888899345c5b2b3b95a2dfee857.png" alt="在这里插入图片描述">01背包，方程： $f[i][j]=max(f[i-1][j-v[i]]+w[i],f[i-1][j])$</p>
+<h1 id="P1616-疯狂的采药"><a href="#P1616-疯狂的采药" class="headerlink" title="P1616 疯狂的采药"></a>P1616 疯狂的采药</h1><p><img src="https://img-blog.csdnimg.cn/942ca2d263fa4c1ca7d55219653ac4d2.png" alt="在这里插入图片描述"><br>完全背包，方程：</p>
+<p>$f[i][j]=max(f[i-1][j],f[i-1][j-v[i]]+w[i],f[i-1][j-2v[i]]+2w[i]..)$</p>
+<p>$f[i][j-v[i]]=max(f[i-1][j-v[i]],f[i-1][j-2v[i]]+w[i],f[i-1][j-3v[i]]+2w[i]..)$</p>
+<p>故综合上式：</p>
+<p>$f[i][j]=max(f[i-1][j],f[i][j-v[i]]+w[i])$</p>
+<h1 id="5-倍经验日"><a href="#5-倍经验日" class="headerlink" title="5 倍经验日"></a>5 倍经验日</h1><p><img src="https://img-blog.csdnimg.cn/4217439c99fd4cccb77590cebf6b0fe5.png" alt="在这里插入图片描述"><br>01背包，方程：</p>
+<p>$f[i][j]=max(f[i-1][j]+lose[i],f[i-1][j-use[i]]+win[i])\ (j-use[i]&gt;=0)$<br>$f[i][j]=f[i-1][j]+lose[i]\ (j-use[i]&lt;0)$</p>
+<h1 id="NOIP1999-普及组-导弹拦截"><a href="#NOIP1999-普及组-导弹拦截" class="headerlink" title="[NOIP1999 普及组] 导弹拦截"></a>[NOIP1999 普及组] 导弹拦截</h1><p><img src="https://img-blog.csdnimg.cn/e188fce911d240f7b033284a52eca5f8.png" alt="在这里插入图片描述"><br>第一问求一个最长不上升子序列，第二问求一个最长上升子序列</p>
+<p>以最长不上升子序列为例，设f[i]为以第i个数为结尾的最长不上升子序列长度，则：$f[i]=f[j]+1$，简单递推可得到n方的算法</p>
+<p>但是有nlogn的算法：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/itlqs/p/5743114.html">https://www.cnblogs.com/itlqs/p/5743114.html</a></p>
+<p><img src="https://img-blog.csdnimg.cn/3d4ca45b094a43aa896ca82285c5e08f.png" alt="在这里插入图片描述"><br>也可以用数据结构优化也可以达到nlogn的复杂度：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43907802/article/details/96433490">https://blog.csdn.net/weixin_43907802/article/details/96433490</a></p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> x<span class="token punctuation">,</span>cnt<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token function">clean</span><span class="token punctuation">(</span>f<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">clean</span><span class="token punctuation">(</span>f1<span class="token punctuation">,</span><span class="token number">0x3f</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>x<span class="token punctuation">)</span><span class="token operator">!=</span><span class="token constant">EOF</span><span class="token punctuation">)</span>
+		a<span class="token punctuation">[</span><span class="token operator">++</span>cnt<span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">;</span>
+	f<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span>a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>f1<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span>a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+	<span class="token keyword">int</span> loc<span class="token punctuation">,</span>len<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>loc1<span class="token punctuation">,</span>len1<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+	<span class="token function">loop</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>cnt<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+		loc <span class="token operator">=</span> <span class="token function">upper_bound</span><span class="token punctuation">(</span>f<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>f<span class="token operator">+</span>len<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token generic-function"><span class="token function">greater</span> <span class="token generic class-name"><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span></span></span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span> f<span class="token punctuation">;</span>
+		loc1 <span class="token operator">=</span> <span class="token function">lower_bound</span><span class="token punctuation">(</span>f1<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>f1<span class="token operator">+</span>len1<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span> f1<span class="token punctuation">;</span>
+		f<span class="token punctuation">[</span>loc<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>f<span class="token punctuation">[</span>loc<span class="token punctuation">]</span><span class="token punctuation">,</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		f1<span class="token punctuation">[</span>loc1<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">min</span><span class="token punctuation">(</span>f1<span class="token punctuation">[</span>loc1<span class="token punctuation">]</span><span class="token punctuation">,</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		len <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>len<span class="token punctuation">,</span>loc<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		len1 <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>len1<span class="token punctuation">,</span>loc1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n%d"</span><span class="token punctuation">,</span>len<span class="token punctuation">,</span>len1<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>要注意upper_bound和lower_bound的区别</p>
+<p>这个题其实就涉及一堆问题：最长下降子序列，最长不上升子序列，最长不下降子序列，最长上升子序列。其实都是一样的。</p>
+<h1 id="LCS（最长公共子序列）"><a href="#LCS（最长公共子序列）" class="headerlink" title="LCS（最长公共子序列）"></a>LCS（最长公共子序列）</h1><p><img src="https://img-blog.csdnimg.cn/b3ef4c3f793d43d4ba32ea0e31448d5f.png" alt="在这里插入图片描述">LCS，设f[i][j]为A串以第i个结尾，B串以第j个结尾的最长LCS，方程：</p>
+<p>$f[i][j]=max(f[i-1][j-1]+1,f[i][j]) \ A[i]=B[j]$</p>
+<p>$f[i][j]=max(f[i-1][j],f[i][j-1]) \ A[i]\neq B[j]$</p>
+<h1 id="尼克的任务"><a href="#尼克的任务" class="headerlink" title="尼克的任务"></a>尼克的任务</h1><p><img src="https://img-blog.csdnimg.cn/7daae487ddb6454ba8b9c5713a4dd9e3.png" alt="在这里插入图片描述">设f[i]为到达第i个时刻的最大空暇时间，则</p>
+<p>（本时刻无任务）$f[i]=f[i+1]+1$</p>
+<p>（本时刻有任务）$f[i]=max(f[i],f[i+a[sum])$</p>
+<h1 id="NOIP2003-提高组-加分二叉树"><a href="#NOIP2003-提高组-加分二叉树" class="headerlink" title="[NOIP2003 提高组] 加分二叉树"></a>[NOIP2003 提高组] 加分二叉树</h1><p><img src="https://img-blog.csdnimg.cn/1cb874460a714cbba08c1d3e7302f672.png" alt="在这里插入图片描述"></p>
+<p>复习一下前中后序遍历先：</p>
+<p><img src="https://img-blog.csdnimg.cn/0a99f51a6f1240608c41d0f62299ab0b.png#pic_center" alt="在这里插入图片描述"><br>因此本题中，根据前序遍历的特性可设f[l][r]为区间[l,r]构成的子树的最大分数，有方程：</p>
+<p>$f[l][r]=max(f[l][k-1]*f[k+1][r]+f[k][k])，f[k][k]=Score[k]$</p>
+<h1 id="编辑距离"><a href="#编辑距离" class="headerlink" title="编辑距离"></a>编辑距离</h1><p><img src="https://img-blog.csdnimg.cn/e363463e13a3419b8d81dfc61fde388a.png" alt="在这里插入图片描述"></p>
+<p>方程:设$f[i][j]$为A串的前i个字符变为B串的前j个字符的最少操作数</p>
+<p>增加：$f[i][j]=f[i-1][j]+1$<br>删除：$f[i][j]=f[i][j-1]+1$<br>修改：$f[i][j]=f[i-1][j-1]+(A[i]==B[j])?0:1$</p>
+<p>综上：</p>
+<p>$f[i][j]=min(f[i-1][j]+1,f[i][j-1]+1,f[i-1][j-1]+(A[i]==B[j])?0:1)$</p>
+<p>这道题想了挺久。无论使用闫氏DP法还是用之前欧阳讲的“最后一步倒推”，关键都是在于理解<strong>最后一步</strong>的含义。这里的最后一步，无非就三种情况：</p>
+<ul>
+<li>如果是增加来的，那么<strong>增加之前</strong>一定是$f[i][j-1]$，因为A的前i和B的前j-1已经一致了，那么要让A的前i和B的前j一致，则必须要在$f[i][j-1]$中所代表的A串的末尾再加上B[j]这个字符</li>
+<li>如果是删除来的，那么<strong>删除之前</strong>一定是$f[i-1][j]$</li>
+<li>如果是修改来的，那么<strong>修改之前</strong>一定是$f[i-1][j-1]$</li>
+</ul>
+<p>因此以后在思考DP的时候回溯的时候，可以问问自己：回溯之前是什么状态？</p>
+<h1 id="luogu-P4933-大师"><a href="#luogu-P4933-大师" class="headerlink" title="luogu P4933 大师"></a>luogu P4933 大师</h1><p><img src="https://img-blog.csdnimg.cn/0d14ff2084584efaa2a47599df82c505.png" alt="在这里插入图片描述"><br>线性DP：设$f[i][j]$为以i为结尾的，公差为j的方案数，则有</p>
+<p>$f[i][j]=\sum (f[k][j]+1),(h[k]-h[i]=j)$</p>
+<p>因此不难想到一个$O(N^2V)$的算法，就是先找j，再找i，再找k</p>
+<p>但是其实可以发现，当i和k确定了后，j就确定了，因此可以直接枚举i和k，就可以转移，复杂度为$O(N^2)$</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token function">loop</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+	res<span class="token operator">++</span><span class="token punctuation">;</span>
+	<span class="token function">loop</span><span class="token punctuation">(</span>j<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+		f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>h<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">-</span>h<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span>v<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>h<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">-</span>h<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span>v<span class="token punctuation">]</span> <span class="token operator">+</span> f<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span>h<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">-</span>h<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span>v<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token punctuation">;</span><span class="token comment">//yuan lai de fang cheng xie cuo le</span>
+		res <span class="token operator">=</span> <span class="token punctuation">(</span>res <span class="token operator">+</span> f<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span>h<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">-</span>h<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span>v<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%lld"</span><span class="token punctuation">,</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">AndrewLee</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/05/14/DP%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">http://example.com/2022/05/14/DP%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">AndrewLee</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/oi/">oi</a></div><div class="post_share"><div class="social-share" data-image="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201707%2F04%2F20170704184913_GNYCE.thumb.700_0.jpeg&amp;refer=http%3A%2F%2Fb-ssl.duitang.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638696115&amp;t=a486b1dc327c953b973545deccf5835a" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/05/06/%E6%B5%85%E5%AD%A6%E4%B8%80%E4%B8%8BSQL/"><img class="next-cover" src="/img/sql.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">浅学一下SQL</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/03/26/重拾图论/" title="重拾图论"><img class="cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2017-10-19%2F59e85568dcb46.jpg%3Fdown&refer=http%3A%2F%2Fpic1.win4000.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638695731&t=751aef03ff04665aafa66556eb677f73" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">重拾图论</div></div></a></div><div><a href="/2022/03/15/重拾数据结构/" title="重拾数据结构"><img class="cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2F911%2F100G5120150%2F15100G20150-8-1200.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638695731&t=99236346a3f7f0be2fa9fb241bd94d66" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-15</div><div class="title">重拾数据结构</div></div></a></div><div><a href="/2019/09/06/01分数规划的原理分析/" title="01分数规划的原理分析"><img class="cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201707%2F04%2F20170704184913_GNYCE.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638696115&t=a486b1dc327c953b973545deccf5835a" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-09-06</div><div class="title">01分数规划的原理分析</div></div></a></div><div><a href="/2022/03/26/C-STL/" title="C++ STL"><img class="cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2018-11-06%2F5be1579bc7da3.jpg%3Fdown&refer=http%3A%2F%2Fpic1.win4000.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638695731&t=4532ee56537217508d6298ed431ff2eb" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">C++ STL</div></div></a></div><div><a href="/2022/03/20/差分约束-2/" title="差分约束——2"><img class="cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2018-11-06%2F5be1579bc7da3.jpg%3Fdown&refer=http%3A%2F%2Fpic1.win4000.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638695731&t=4532ee56537217508d6298ed431ff2eb" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-20</div><div class="title">差分约束——2</div></div></a></div><div><a href="/2022/03/20/差分约束-1/" title="差分约束——1"><img class="cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2017-10-19%2F59e85568dcb46.jpg%3Fdown&refer=http%3A%2F%2Fpic1.win4000.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638695731&t=751aef03ff04665aafa66556eb677f73" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-20</div><div class="title">差分约束——1</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/tit.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">AndrewLee</div><div class="author-info__description">Gubba nub nub doo rahkah</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">46</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">22</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Andrew82106" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin=281512383&amp;website=www.oicqzone.com" target="_blank" title="QQ"><i class="fab fa-qq"></i></a><a class="social-icon" href="http://180.76.162.227:5000/" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E4%B8%89%E8%A7%92%E5%BD%A2"><span class="toc-number">1.</span> <span class="toc-text">数字三角形</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NOIP1996-%E6%8F%90%E9%AB%98%E7%BB%84-%E6%8C%96%E5%9C%B0%E9%9B%B7"><span class="toc-number">2.</span> <span class="toc-text">[NOIP1996 提高组] 挖地雷</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E9%A3%9F%E7%89%A9%E9%93%BE"><span class="toc-number">3.</span> <span class="toc-text">最大食物链</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NOIP2005-%E6%99%AE%E5%8F%8A%E7%BB%84-%E9%87%87%E8%8D%AF"><span class="toc-number">4.</span> <span class="toc-text">[NOIP2005 普及组] 采药</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P1616-%E7%96%AF%E7%8B%82%E7%9A%84%E9%87%87%E8%8D%AF"><span class="toc-number">5.</span> <span class="toc-text">P1616 疯狂的采药</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E5%80%8D%E7%BB%8F%E9%AA%8C%E6%97%A5"><span class="toc-number">6.</span> <span class="toc-text">5 倍经验日</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NOIP1999-%E6%99%AE%E5%8F%8A%E7%BB%84-%E5%AF%BC%E5%BC%B9%E6%8B%A6%E6%88%AA"><span class="toc-number">7.</span> <span class="toc-text">[NOIP1999 普及组] 导弹拦截</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LCS%EF%BC%88%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97%EF%BC%89"><span class="toc-number">8.</span> <span class="toc-text">LCS（最长公共子序列）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%BC%E5%85%8B%E7%9A%84%E4%BB%BB%E5%8A%A1"><span class="toc-number">9.</span> <span class="toc-text">尼克的任务</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NOIP2003-%E6%8F%90%E9%AB%98%E7%BB%84-%E5%8A%A0%E5%88%86%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">10.</span> <span class="toc-text">[NOIP2003 提高组] 加分二叉树</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB"><span class="toc-number">11.</span> <span class="toc-text">编辑距离</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#luogu-P4933-%E5%A4%A7%E5%B8%88"><span class="toc-number">12.</span> <span class="toc-text">luogu P4933 大师</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/05/14/DP%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/" title="DP·从入门到递归入门"><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201707%2F04%2F20170704184913_GNYCE.thumb.700_0.jpeg&amp;refer=http%3A%2F%2Fb-ssl.duitang.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638696115&amp;t=a486b1dc327c953b973545deccf5835a" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DP·从入门到递归入门"/></a><div class="content"><a class="title" href="/2022/05/14/DP%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/" title="DP·从入门到递归入门">DP·从入门到递归入门</a><time datetime="2022-05-14T02:23:30.000Z" title="发表于 2022-05-14 10:23:30">2022-05-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/06/%E6%B5%85%E5%AD%A6%E4%B8%80%E4%B8%8BSQL/" title="浅学一下SQL"><img src="/img/sql.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="浅学一下SQL"/></a><div class="content"><a class="title" href="/2022/05/06/%E6%B5%85%E5%AD%A6%E4%B8%80%E4%B8%8BSQL/" title="浅学一下SQL">浅学一下SQL</a><time datetime="2022-05-06T02:36:09.000Z" title="发表于 2022-05-06 10:36:09">2022-05-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/06/%E6%B5%85%E5%AD%A6%E4%B8%80%E4%B8%8BJavaScript/" title="浅学一下JavaScript"><img src="/img/js.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="浅学一下JavaScript"/></a><div class="content"><a class="title" href="/2022/05/06/%E6%B5%85%E5%AD%A6%E4%B8%80%E4%B8%8BJavaScript/" title="浅学一下JavaScript">浅学一下JavaScript</a><time datetime="2022-05-06T02:33:19.000Z" title="发表于 2022-05-06 10:33:19">2022-05-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/28/%E3%80%8A%E8%AE%BA%E5%AE%9E%E8%B7%B5%E8%AE%BA%E3%80%8B/" title="浅论《实践论》"><img src="/img/sjl.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="浅论《实践论》"/></a><div class="content"><a class="title" href="/2022/04/28/%E3%80%8A%E8%AE%BA%E5%AE%9E%E8%B7%B5%E8%AE%BA%E3%80%8B/" title="浅论《实践论》">浅论《实践论》</a><time datetime="2022-04-28T03:19:57.000Z" title="发表于 2022-04-28 11:19:57">2022-04-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/12/MatLab%E5%85%89%E9%80%9F%E5%85%A5%E9%97%A8%EF%BC%88doge/" title="MatLab光速入门（doge"><img src="/img/matlab.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MatLab光速入门（doge"/></a><div class="content"><a class="title" href="/2022/04/12/MatLab%E5%85%89%E9%80%9F%E5%85%A5%E9%97%A8%EF%BC%88doge/" title="MatLab光速入门（doge">MatLab光速入门（doge</a><time datetime="2022-04-12T13:25:06.000Z" title="发表于 2022-04-12 21:25:06">2022-04-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By AndrewLee</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    loader: {
+      source: {
+        '[tex]/amsCd': '[tex]/amscd'
+      }
+    },
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        addClass: [200,() => {
+          document.querySelectorAll('mjx-container:not([display=\'true\']').forEach( node => {
+            const target = node.parentNode
+            if (!target.classList.contains('has-jax')) {
+              target.classList.add('mathjax-overflow')
+            }
+          })
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script src="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/js/mouse_snow.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
