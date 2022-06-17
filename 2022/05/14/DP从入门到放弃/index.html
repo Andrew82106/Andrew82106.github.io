@@ -1,0 +1,423 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DP·从入门到递归入门 | AndrewLee</title><meta name="keywords" content="oi"><meta name="author" content="AndrewLee"><meta name="copyright" content="AndrewLee"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="最最基础的线性DP数字三角形 给出下面的数字金字塔，求一条从最高点到底部任意处结束的路径，使得这条路径经过的数字的和最大。每一步可以向左下或者右下走输入金字塔，输出最大的和  经典DP，当年的IOI赛题 方程：$f[x][y]&#x3D;max(f[x+1][y],f[x+1][y+1])+a[x][y]$ [NOIP1996 提高组] 挖地雷 题目描述   在一个地图上有N个地窖(N≤20)，每个地窖中埋">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DP·从入门到递归入门">
+<meta property="og:url" content="http://example.com/2022/05/14/DP%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/index.html">
+<meta property="og:site_name" content="AndrewLee">
+<meta property="og:description" content="最最基础的线性DP数字三角形 给出下面的数字金字塔，求一条从最高点到底部任意处结束的路径，使得这条路径经过的数字的和最大。每一步可以向左下或者右下走输入金字塔，输出最大的和  经典DP，当年的IOI赛题 方程：$f[x][y]&#x3D;max(f[x+1][y],f[x+1][y+1])+a[x][y]$ [NOIP1996 提高组] 挖地雷 题目描述   在一个地图上有N个地窖(N≤20)，每个地窖中埋">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic_source%2F1f%2F78%2Fce%2F1f78cee1a949eb88f2880f0def761734.jpg&refer=http%3A%2F%2Fup.enterdesk.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638695731&t=d11724b849951ab98f2460997a237878">
+<meta property="article:published_time" content="2022-05-14T02:23:30.000Z">
+<meta property="article:modified_time" content="2022-06-16T15:40:54.201Z">
+<meta property="article:author" content="AndrewLee">
+<meta property="article:tag" content="oi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic_source%2F1f%2F78%2Fce%2F1f78cee1a949eb88f2880f0def761734.jpg&refer=http%3A%2F%2Fup.enterdesk.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638695731&t=d11724b849951ab98f2460997a237878"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/05/14/DP%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'DP·从入门到递归入门',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-16 23:40:54'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/tit.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">48</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">22</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> others</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic_source%2F1f%2F78%2Fce%2F1f78cee1a949eb88f2880f0def761734.jpg&amp;refer=http%3A%2F%2Fup.enterdesk.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638695731&amp;t=d11724b849951ab98f2460997a237878')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">AndrewLee</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> others</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">DP·从入门到递归入门</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-05-14T02:23:30.000Z" title="发表于 2022-05-14 10:23:30">2022-05-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-16T15:40:54.201Z" title="更新于 2022-06-16 23:40:54">2022-06-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/IT/">IT</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">7.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>27分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="DP·从入门到递归入门"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="最最基础的线性DP"><a href="#最最基础的线性DP" class="headerlink" title="最最基础的线性DP"></a>最最基础的线性DP</h1><h2 id="数字三角形"><a href="#数字三角形" class="headerlink" title="数字三角形"></a>数字三角形</h2><blockquote>
+<p>给出下面的数字金字塔，求一条从最高点到底部任意处结束的路径，使得这条路径经过的数字的和最大。每一步可以向左下或者右下走<br><img src="https://img-blog.csdnimg.cn/28a9c2259a1840e39a0ded14ddd9ae3f.png" alt="在这里插入图片描述"><br>输入金字塔，输出最大的和</p>
+</blockquote>
+<p>经典DP，<del>当年的IOI赛题</del></p>
+<p>方程：$f[x][y]=max(f[x+1][y],f[x+1][y+1])+a[x][y]$</p>
+<h2 id="NOIP1996-提高组-挖地雷"><a href="#NOIP1996-提高组-挖地雷" class="headerlink" title="[NOIP1996 提高组] 挖地雷"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2196">[NOIP1996 提高组] 挖地雷</a></h2><blockquote>
+<p>题目描述</p>
+</blockquote>
+<blockquote>
+<p>在一个地图上有N个地窖(N≤20)，每个地窖中埋有一定数量的地雷。同时，给出地窖之间的连接路径。当地窖及其连接的数据给出之后，某人可以从任一处开始挖地雷，然后可以沿着指出的连接往下挖（仅能选择一条路径），当无连接时挖地雷工作结束。设计一个挖地雷的方案，使某人能挖到最多的地雷。</p>
+</blockquote>
+<blockquote>
+<p>输入格式:<br>有若干行。第1行只有一个数字，表示地窖的个数N。第2行有N个数，分别表示每个地窖中的地雷个数。第3行至第N+1行表示地窖之间的连接情况<br>第3行有n−1个数（0或1），表示第一个地窖至第2个、第3个、…、第n个地窖有否路径连接。<br>第4行有n−2个数，表示第二个地窖至第3个、第4个、…、第n个地窖有否路径连接。<br>… …<br>第n+1行有1个数，表示第n−1个地窖至第n个地窖有否路径连接。（为0表示没有路径，为1表示有路径）。<br>输出格式:<br>第一行表示挖得最多地雷时的挖地雷的顺序，各地窖序号间以一个空格分隔，不得有多余的空格。<br>第二行只有一个数，表示能挖到的最多地雷数。</p>
+</blockquote>
+<p>线性DP，方程：$dp[i]$指以i结尾的最长方案数，则</p>
+<p>$dp[i]=dp[j]+w[i],j\in {1,2,3,4…n}$</p>
+<h2 id="最大食物链"><a href="#最大食物链" class="headerlink" title="最大食物链"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4017">最大食物链</a></h2><blockquote>
+<p>输入格式<br>第一行，两个正整数 n、m，表示生物种类 n和吃与被吃的关系数 m。<br>接下来 m 行，每行两个正整数，表示被吃的生物A和吃A的生物B。<br>输出格式<br>一行一个整数，为最大食物链数量模上 80112002的结果。</p>
+</blockquote>
+<p>树形DP：设f[u]为以u结尾的食物链的长度</p>
+<p>方程：$f[u]=\sum f[v]$</p>
+<h2 id="背包问题"><a href="#背包问题" class="headerlink" title="背包问题"></a>背包问题</h2><h3 id="NOIP2005-普及组-采药"><a href="#NOIP2005-普及组-采药" class="headerlink" title="[NOIP2005 普及组] 采药"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1048">[NOIP2005 普及组] 采药</a></h3><blockquote>
+<p>辰辰是个天资聪颖的孩子，他的梦想是成为世界上最伟大的医师。为此，他想拜附近最有威望的医师为师。医师为了判断他的资质，给他出了一个难题。医师把他带到一个到处都是草药的山洞里对他说：“孩子，这个山洞里有一些不同的草药，采每一株都需要一些时间，每一株也有它自身的价值。我会给你一段时间，在这段时间里，你可以采到一些草药。如果你是一个聪明的孩子，你应该可以让采到的草药的总价值最大。”<br>如果你是辰辰，你能完成这个任务吗？</p>
+</blockquote>
+<p>01背包，方程： $f[i][j]=max(f[i-1][j-v[i]]+w[i],f[i-1][j])$</p>
+<h3 id="P1616-疯狂的采药"><a href="#P1616-疯狂的采药" class="headerlink" title="P1616 疯狂的采药"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1616">P1616 疯狂的采药</a></h3><blockquote>
+<p>LiYuxiang 是个天资聪颖的孩子，他的梦想是成为世界上最伟大的医师。为此，他想拜附近最有威望的医师为师。医师为了判断他的资质，给他出了一个难题。医师把他带到一个到处都是草药的山洞里对他说：“孩子，这个山洞里有一些不同种类的草药，采每一种都需要一些时间，每一种也有它自身的价值。我会给你一段时间，在这段时间里，你可以采到一些草药。如果你是一个聪明的孩子，你应该可以让采到的草药的总价值最大。”<br>如果你是 LiYuxiang，你能完成这个任务吗？<br>此题和原题的不同点：<br>A:每种草药可以无限制地疯狂采摘。<br>B:药的种类眼花缭乱，采药时间好长好长啊！师傅等得菊花都谢了！</p>
+</blockquote>
+<p>完全背包，方程：</p>
+<p>$f[i][j]=max(f[i-1][j],f[i-1][j-v[i]]+w[i],f[i-1][j-2v[i]]+2w[i]..)$</p>
+<p>$f[i][j-v[i]]=max(f[i-1][j-v[i]],f[i-1][j-2v[i]]+w[i],f[i-1][j-3v[i]]+2w[i]..)$</p>
+<p>故综合上式：</p>
+<p>$f[i][j]=max(f[i-1][j],f[i][j-v[i]]+w[i])$</p>
+<h3 id="5-倍经验日"><a href="#5-倍经验日" class="headerlink" title="5 倍经验日"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1802">5 倍经验日</a></h3><blockquote>
+<p>现在 absi2011 拿出了 x 个迷你装药物（嗑药打人可耻…），准备开始与那些人打了。<br>由于迷你装药物每个只能用一次，所以 absi2011 要谨慎的使用这些药。悲剧的是，用药量没达到最少打败该人所需的属性药药量，则打这个人必输。例如他用 2 个药去打别人，别人却表明 3 个药才能打过，那么相当于你输了并且这两个属性药浪费了。<br>现在有 n 个好友，给定失败时可获得的经验、胜利时可获得的经验，打败他至少需要的药量。<br>要求求出最大经验 s，输出 5s。</p>
+</blockquote>
+<p>01背包，方程：</p>
+<p>$f[i][j]=max(f[i-1][j]+lose[i],f[i-1][j-use[i]]+win[i])\ (j-use[i]&gt;=0)$<br>$f[i][j]=f[i-1][j]+lose[i]\ (j-use[i]&lt;0)$</p>
+<h2 id="LIS和LCS相关"><a href="#LIS和LCS相关" class="headerlink" title="LIS和LCS相关"></a>LIS和LCS相关</h2><h3 id="NOIP1999-普及组-导弹拦截"><a href="#NOIP1999-普及组-导弹拦截" class="headerlink" title="[NOIP1999 普及组] 导弹拦截"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1020">[NOIP1999 普及组] 导弹拦截</a></h3><blockquote>
+<p>某国为了防御敌国的导弹袭击，发展出一种导弹拦截系统。但是这种导弹拦截系统有一个缺陷：虽然它的第一发炮弹能够到达任意的高度，但是以后每一发炮弹都不能高于前一发的高度。某天，雷达捕捉到敌国的导弹来袭。由于该系统还在试用阶段，所以只有一套系统，因此有可能不能拦截所有的导弹。<br>输入导弹依次飞来的高度（雷达给出的高度数据是≤50000的正整数），计算这套系统最多能拦截多少导弹，如果要拦截所有导弹最少要配备多少套这种导弹拦截系统。</p>
+</blockquote>
+<p>第一问求一个最长不上升子序列，第二问求一个最长上升子序列</p>
+<p>以最长不上升子序列为例，设f[i]为以第i个数为结尾的最长不上升子序列长度，则：$f[i]=f[j]+1$，简单递推可得到n方的算法</p>
+<p>但是有nlogn的算法：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/itlqs/p/5743114.html">https://www.cnblogs.com/itlqs/p/5743114.html</a></p>
+<p><img src="https://img-blog.csdnimg.cn/3d4ca45b094a43aa896ca82285c5e08f.png" alt="在这里插入图片描述"><br>也可以用数据结构优化也可以达到nlogn的复杂度：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43907802/article/details/96433490">https://blog.csdn.net/weixin_43907802/article/details/96433490</a></p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> x<span class="token punctuation">,</span>cnt<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token function">clean</span><span class="token punctuation">(</span>f<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">clean</span><span class="token punctuation">(</span>f1<span class="token punctuation">,</span><span class="token number">0x3f</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>x<span class="token punctuation">)</span><span class="token operator">!=</span><span class="token constant">EOF</span><span class="token punctuation">)</span>
+		a<span class="token punctuation">[</span><span class="token operator">++</span>cnt<span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">;</span>
+	f<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span>a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>f1<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span>a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+	<span class="token keyword">int</span> loc<span class="token punctuation">,</span>len<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>loc1<span class="token punctuation">,</span>len1<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+	<span class="token function">loop</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>cnt<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+		loc <span class="token operator">=</span> <span class="token function">upper_bound</span><span class="token punctuation">(</span>f<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>f<span class="token operator">+</span>len<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token generic-function"><span class="token function">greater</span> <span class="token generic class-name"><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span></span></span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span> f<span class="token punctuation">;</span>
+		loc1 <span class="token operator">=</span> <span class="token function">lower_bound</span><span class="token punctuation">(</span>f1<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>f1<span class="token operator">+</span>len1<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span> f1<span class="token punctuation">;</span>
+		f<span class="token punctuation">[</span>loc<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>f<span class="token punctuation">[</span>loc<span class="token punctuation">]</span><span class="token punctuation">,</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		f1<span class="token punctuation">[</span>loc1<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">min</span><span class="token punctuation">(</span>f1<span class="token punctuation">[</span>loc1<span class="token punctuation">]</span><span class="token punctuation">,</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		len <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>len<span class="token punctuation">,</span>loc<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		len1 <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>len1<span class="token punctuation">,</span>loc1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n%d"</span><span class="token punctuation">,</span>len<span class="token punctuation">,</span>len1<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>要注意upper_bound和lower_bound的区别</p>
+<p>这个题其实就涉及一堆问题：最长下降子序列，最长不上升子序列，最长不下降子序列，最长上升子序列。其实都是一样的。</p>
+<h3 id="LCS（最长公共子序列）"><a href="#LCS（最长公共子序列）" class="headerlink" title="LCS（最长公共子序列）"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1439">LCS（最长公共子序列）</a></h3><blockquote>
+<p>给出 1,2,…,n1,2,\ldots,n1,2,…,n 的两个排列 P1P_1P1​ 和 P2P_2P2​ ，求它们的最长公共子序列。</p>
+</blockquote>
+<p>LCS，设f[i][j]为A串以第i个结尾，B串以第j个结尾的最长LCS，方程：</p>
+<p>$f[i][j]=max(f[i-1][j-1]+1,f[i][j]) \ A[i]=B[j]$</p>
+<p>$f[i][j]=max(f[i-1][j],f[i][j-1]) \ A[i]\neq B[j]$</p>
+<h3 id="友好城市"><a href="#友好城市" class="headerlink" title="友好城市"></a><a target="_blank" rel="noopener" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1263">友好城市</a></h3><blockquote>
+<p>Palmia国有一条横贯东西的大河，河有笔直的南北两岸，岸上各有位置各不相同的N个城市。北岸的每个城市有且仅有一个友好城市在南岸，而且不同城市的友好城市不相同。<br>每对友好城市都向政府申请在河上开辟一条直线航道连接两个城市，但是由于河上雾太大，政府决定避免任意两条航道交叉，以避免事故。编程帮助政府做出一些批准和拒绝申请的决定，使得在保证任意两条航线不相交的情况下，被批准的申请尽量多。</p>
+</blockquote>
+<p>LIS变式：对北岸（或南岸）的城市从小到大排序，再求南岸（或北岸）的城市位置的最长不下降序列长度即可。</p>
+<h3 id="木棍加工"><a href="#木棍加工" class="headerlink" title="木棍加工"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1233">木棍加工</a></h3><blockquote>
+<p>一堆木头棍子共有n根，每根棍子的长度和宽度都是已知的。棍子可以被一台机器一个接一个地加工。机器处理一根棍子之前需要准备时间。准备时间是这样定义的：<br>第一根棍子的准备时间为1分钟；<br>如果刚处理完长度为L，宽度为W的棍子，那么如果下一个棍子长度为Li，宽度为Wi，并且满足L&gt;＝Li，W&gt;＝Wi，这个棍子就不需要准备时间，否则需要1分钟的准备时间；<br>计算处理完n根棍子所需要的最短准备时间。比如，你有5根棍子，长度和宽度分别为(4, 9)，(5, 2)，(2, 1)，(3, 5)，(1, 4)，最短准备时间为2（按(4, 9)、(3, 5)、(1, 4)、(5, 2)、(2, 1)的次序进行加工）。</p>
+</blockquote>
+<p>LIS问题的小修改。</p>
+<p>先对宽度降序排序，如果宽度一样则按照长度降序排序，于是就有前面的木棍宽度一定大于后面的木棍，而前面的木棍宽度可能小于后面的木棍。</p>
+<p>此时的最优解一定是不上升子序列的最少个数。</p>
+<p>而根据<a target="_blank" rel="noopener" href="https://blog.csdn.net/Node_Su/article/details/66041750?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2~default~ESLANDING~default-1-66041750-blog-104361984.pc_relevant_eslanding_v1&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~ESLANDING~default-1-66041750-blog-104361984.pc_relevant_eslanding_v1&utm_relevant_index=2">Dilworth定理</a>，不上升子序列的最少个数就是最长上升子序列的长度</p>
+<p>因此就求最长上升子序列的长度就可以了。</p>
+<h3 id="NOIP2004-提高组-合唱队形"><a href="#NOIP2004-提高组-合唱队形" class="headerlink" title="[NOIP2004 提高组] 合唱队形"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1091">[NOIP2004 提高组] 合唱队形</a></h3><blockquote>
+<p>n 位同学站成一排，音乐老师要请其中的 n−k 位同学出列，使得剩下的 k 位同学排成合唱队形。<br>合唱队形是指这样的一种队形：设 k 位同学从左到右依次编号为 1,2, … ,k，他们的身高分别为 t1,t2​, … ,tk，则他们的身高满足t1&lt;⋯&lt;ti​&gt;ti+1​&gt; … &gt;tk(1≤i≤k)<br>你的任务是，已知所有 n 位同学的身高，计算最少需要几位同学出列，可以使得剩下的同学排成合唱队形。</p>
+</blockquote>
+<p>求两个东西：求从左到右的LIS和从右到左的LIS</p>
+<p>然后对每一个位置i，可以求出以i为最高点需要出列的人数。然后就最后取个min就可以了</p>
+<h2 id="尼克的任务"><a href="#尼克的任务" class="headerlink" title="尼克的任务"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1280">尼克的任务</a></h2><blockquote>
+<p>尼克每天上班之前都连接上英特网，接收他的上司发来的邮件，这些邮件包含了尼克主管的部门当天要完成的全部任务，每个任务由一个开始时刻与一个持续时间构成。<br>尼克的一个工作日为 n 分钟，从第 1 分钟开始到第 n 分钟结束。当尼克到达单位后他就开始干活，公司一共有 k 个任务需要完成。如果在同一时刻有多个任务需要完成，尼克可以任选其中的一个来做，而其余的则由他的同事完成，反之如果只有一个任务，则该任务必需由尼克去完成，假如某些任务开始时刻尼克正在工作，则这些任务也由尼克的同事完成。如果某任务于第 p 分钟开始，持续时间为 t 分钟，则该任务将在第 (p+t−1) 分钟结束。<br>写一个程序计算尼克应该如何选取任务，才能获得最大的空暇时间。</p>
+</blockquote>
+<p>设f[i]为到达第i个时刻的最大空暇时间，则</p>
+<p>（本时刻无任务）$f[i]=f[i+1]+1$</p>
+<p>（本时刻有任务）$f[i]=max(f[i],f[i+a[sum])$</p>
+<h2 id="编辑距离"><a href="#编辑距离" class="headerlink" title="编辑距离"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2758">编辑距离</a></h2><blockquote>
+<p>设 A 和 B 是两个字符串。我们要用最少的字符操作次数，将字符串 A 转换为字符串 B。这里所说的字符操作共有三种：<br>删除一个字符；<br>插入一个字符；<br>将一个字符改为另一个字符。<br>A,B 均只包含小写字母。</p>
+</blockquote>
+<p>方程:设$f[i][j]$为A串的前i个字符变为B串的前j个字符的最少操作数</p>
+<p>增加：$f[i][j]=f[i-1][j]+1$<br>删除：$f[i][j]=f[i][j-1]+1$<br>修改：$f[i][j]=f[i-1][j-1]+(A[i]==B[j])?0:1$</p>
+<p>综上：</p>
+<p>$f[i][j]=min(f[i-1][j]+1,f[i][j-1]+1,f[i-1][j-1]+(A[i]==B[j])?0:1)$</p>
+<p>这道题想了挺久。无论使用闫氏DP法还是用之前欧阳讲的“最后一步倒推”，关键都是在于理解<strong>最后一步</strong>的含义。这里的最后一步，无非就三种情况：</p>
+<ul>
+<li>如果是增加来的，那么<strong>增加之前</strong>一定是$f[i][j-1]$，因为A的前i和B的前j-1已经一致了，那么要让A的前i和B的前j一致，则必须要在$f[i][j-1]$中所代表的A串的末尾再加上B[j]这个字符</li>
+<li>如果是删除来的，那么<strong>删除之前</strong>一定是$f[i-1][j]$</li>
+<li>如果是修改来的，那么<strong>修改之前</strong>一定是$f[i-1][j-1]$</li>
+</ul>
+<p>因此以后在思考DP的时候回溯的时候，可以问问自己：回溯之前是什么状态？</p>
+<h2 id="luogu-P4933-大师"><a href="#luogu-P4933-大师" class="headerlink" title="luogu P4933 大师"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4933">luogu P4933 大师</a></h2><blockquote>
+<p>ljt12138 首先建了  个特斯拉电磁塔，这些电塔排成一排，从左到右依次标号为 1 到 n ，第 i 个电塔的高度为 h[i] 。<br>建筑大师需要从中选出一些电塔，然后这些电塔就会缩到地下去。这时候，如果留在地上的电塔的高度，从左向右构成了一个等差数列，那么这个选择方案就会被认为是美观的。<br>建筑大师需要求出，一共有多少种美观的选择方案，答案模 998244353。<br>注意，如果地上只留了一个或者两个电塔，那么这种方案也是美观的。地上没有电塔的方案被认为是不美观的。<br>同时也要注意，等差数列的公差也可以为负数。</p>
+</blockquote>
+<p>线性DP：设$f[i][j]$为以i为结尾的，公差为j的方案数，则有</p>
+<p>$f[i][j]=\sum (f[k][j]+1),(h[k]-h[i]=j)$</p>
+<p>因此不难想到一个$O(N^2V)$的算法，就是先找j，再找i，再找k</p>
+<p>但是其实可以发现，当i和k确定了后，j就确定了，因此可以直接枚举i和k，就可以转移，复杂度为$O(N^2)$</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token function">loop</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+	res<span class="token operator">++</span><span class="token punctuation">;</span>
+	<span class="token function">loop</span><span class="token punctuation">(</span>j<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+		f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>h<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">-</span>h<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span>v<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>h<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">-</span>h<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span>v<span class="token punctuation">]</span> <span class="token operator">+</span> f<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span>h<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">-</span>h<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span>v<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token punctuation">;</span><span class="token comment">//yuan lai de fang cheng xie cuo le</span>
+		res <span class="token operator">=</span> <span class="token punctuation">(</span>res <span class="token operator">+</span> f<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span>h<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">-</span>h<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span>v<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%lld"</span><span class="token punctuation">,</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="NOIP2012-普及组-摆花"><a href="#NOIP2012-普及组-摆花" class="headerlink" title="[NOIP2012 普及组] 摆花"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1077">[NOIP2012 普及组] 摆花</a></h2><blockquote>
+<p>小明的花店新开张，为了吸引顾客，他想在花店的门口摆上一排花，共 m盆。通过调查顾客的喜好，小明列出了顾客最喜欢的 n 种花，从 1 到 n 标号。为了在门口展出更多种花，规定第 i 种花不能超过 ai 盆，摆花时同一种花放在一起，且不同种类的花需按标号的从小到大的顺序依次摆列。<br>试编程计算，一共有多少种不同的摆花方案。</p>
+</blockquote>
+<p>线性DP：设f[i][j]为前i种花放入前j个位置中，则方程为</p>
+<p>$f[i][j]=\sum_{k=0}^{min(j,a[i])}f[i-1][j-k]$</p>
+<p>但是一个很迷的事情就是，一种花可不可以完全不放。按理来讲是不行的。但是代码里面又不一样了。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token function">loop</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>f<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token function">loop</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>n<span class="token punctuation">)</span>f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token function">loop</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+	<span class="token function">loop</span><span class="token punctuation">(</span>j<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>m<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+		<span class="token function">loop</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token function">min</span><span class="token punctuation">(</span>j<span class="token punctuation">,</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token comment">//如果必须要放的话那应该从1开始遍历才对</span>
+			f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>f<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token operator">-</span>k<span class="token punctuation">]</span> <span class="token operator">+</span> f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+		
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%lld\n"</span><span class="token punctuation">,</span>f<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">[</span>m<span class="token punctuation">]</span><span class="token operator">%</span>mod<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="「一本通-5-1-练习-1」括号配对"><a href="#「一本通-5-1-练习-1」括号配对" class="headerlink" title="「一本通 5.1 练习 1」括号配对"></a><a target="_blank" rel="noopener" href="https://loj.ac/p/10150">「一本通 5.1 练习 1」括号配对</a></h2><blockquote>
+<p>Hecy 又接了个新任务：BE 处理。BE 中有一类被称为 GBE。以下是 GBE 的定义：</p>
+<ul>
+<li>空表达式是 GBE</li>
+<li>如果表达式 A 是 GBE，则 [A] 与 (A) 都是 GBE</li>
+<li>如果 A 与 B 都是 GBE，那么 AB 是 GBE</li>
+</ul>
+<p>下面给出一个 BE，求至少添加多少字符能使这个 BE 成为 GBE。</p>
+</blockquote>
+<p>线性DP，设f[i][j]为区间[i,j]形成合法括号序列的最少添加字符数，考虑最后一步：</p>
+<ul>
+<li>可以将区间[i,j]分成两个部分，让两个部分成为GBE，然后把它们拼起来</li>
+<li>如果区间的左边的字符是[或者(，那么就可以考虑让区间[i+1,j]变成GBE然后在区间右边加一个]或者)</li>
+<li>如果区间的右边的字符是)或者]，那么就可以考虑让区间[i,j-1]变成GBE然后在区间左边加一个(或者[</li>
+<li>如果区间左右两边恰好是一堆括号，那么就只需要让中间的部分，即[i+1,j-1]为GBE也是可行的</li>
+</ul>
+<p>因此方程为：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">min</span><span class="token punctuation">(</span>f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span>f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token operator">+</span>f<span class="token punctuation">[</span>k<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">==</span><span class="token string">'['</span><span class="token operator">&amp;&amp;</span>s<span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">==</span><span class="token string">']'</span><span class="token punctuation">)</span><span class="token operator">||</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">==</span><span class="token string">'('</span><span class="token operator">&amp;&amp;</span>s<span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">==</span><span class="token string">')'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">min</span><span class="token punctuation">(</span>f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">(</span>len<span class="token operator">==</span><span class="token number">2</span><span class="token operator">?</span><span class="token number">0</span><span class="token operator">:</span>f<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">==</span><span class="token string">'('</span><span class="token operator">||</span>s<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">==</span><span class="token string">'['</span><span class="token punctuation">)</span>    f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">min</span><span class="token punctuation">(</span>f<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span>f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">==</span><span class="token string">']'</span><span class="token operator">||</span>s<span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">==</span><span class="token string">')'</span><span class="token punctuation">)</span>    f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">min</span><span class="token punctuation">(</span>f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span>f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="luogu-P5858-「SWTR-03」Golden-Sword"><a href="#luogu-P5858-「SWTR-03」Golden-Sword" class="headerlink" title="luogu P5858 「SWTR-03」Golden Sword"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5858">luogu P5858 「SWTR-03」Golden Sword</a></h2><blockquote>
+<p>小 E 不幸在一场战斗中失去了他的金宝剑。制造一把金宝剑需要 $n$ 种原料，编号为 $1$ 到 $n$，编号为 $i$ 的原料的坚固值为 $a_i$。<br>炼金是很讲究放入原料的顺序的，因此小 E 必须<strong>按照 $1$ 到 $n$ 的顺序</strong>依次将这些原料放入炼金锅。<br>但是，炼金锅的容量非常有限，它<strong>最多只能容纳 $w$ 个原料</strong>。所幸的是，<strong>每放入一个原料之前</strong>，小 E 可以从中取出一些原料，数量不能超过 $s$ 个。<br>我们定义第 $i$ 种原料的耐久度为：放入第 $i$ 种原料时锅内的原料总数（包括正在放入的原料） $\times\ a_i$，则宝剑的耐久度为<strong>所有原料</strong>的耐久度之和。<br>小 E 当然想让他的宝剑的耐久度尽可能得大，这样他就可以带着它进行更多的战斗，请求出耐久度的最大值。<br>注：这里的“放入第 $i$ 种原料时锅内的原料总数<strong>包括正在放入锅中的原料</strong>，详细信息请见样例。</p>
+</blockquote>
+<blockquote>
+<p>样例输入 #1</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">5 3 3
+1 3 2 4 5<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<blockquote>
+<p>样例输出 #1</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">40<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<blockquote>
+<p>「样例说明」<br><strong>对于样例 1</strong>，一种可行的<strong>最优</strong>方案为：<br>首先放进原料 1，此时锅内有 $1$ 种原料，耐久度为 $1\times a_1=1\times 1=1$。<br>再放进原料 2，此时锅内有 $2$ 种原料，耐久度为 $2\times a_2=2\times 3=6$。<br>再放进原料 3，此时锅内有 $3$ 种原料，耐久度为 $3\times a_3=3\times 2=6$。<br>取出原料 1，再放进原料 4，此时锅内有 $3$ 种原料，耐久度为 $3\times a_4=3\times 4=12$。<br>取出原料 4，再放进原料 5，此时锅内有 $3$ 种原料，耐久度为 $3\times a_5=3\times 5=15$。<br>最终答案为 $1+6+6+12+15=40$。  </p>
+</blockquote>
+<p>线性DP：设f[i][j]为前i个原料放入有j个物品的锅（<strong>包括当前这个物品</strong>）的最大耐久度，则：</p>
+<p>$f[i][j]​=max(f[i−1][k​]+ai​×j)$<br>其中$j−1≤k≤min⁡(m,j+s−1)$</p>
+<p>不过对于这道题，上面的方法有着$O(n^2w)$的复杂度，显然是过不了的。不过不难发现上面方程中max那一堆可以使用单调队列优化，因此复杂度降低一个w，就可以过了</p>
+<p>至于单调队列是咋搞的，<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1886">看这个</a></p>
+<h1 id="区间DP"><a href="#区间DP" class="headerlink" title="区间DP"></a>区间DP</h1><p>区间DP的核心就是在各个决策中找到一个连续的区间。只要有这个区间，那么就可以考虑一下区间DP</p>
+<h2 id="NOIP2003-提高组-加分二叉树"><a href="#NOIP2003-提高组-加分二叉树" class="headerlink" title="[NOIP2003 提高组] 加分二叉树"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1040">[NOIP2003 提高组] 加分二叉树</a></h2><blockquote>
+<p>设一个 n 个节点的二叉树 tree 的中序遍历为(1,2,3,…,n)\，其中数字 1,2,3,…,n为节点编号。每个节点都有一个分数（均为正整数），记第 i 个节点的分数为 di​，tree及它的每个子树都有一个加分，任一棵子树 subtree（也包含 tree 本身）的加分计算方法如下：<br>subtree 的左子树的加分 × subtree 的右子树的加分 + subtree 的根的分数。<br>若某个子树为空，规定其加分为 1，叶子的加分就是叶节点本身的分数。不考虑它的空子树。<br>试求一棵符合中序遍历为 (1,2,3,…,n)且加分最高的二叉树 tree。要求输出:<br>tree 的最高加分。<br>tree 的前序遍历。</p>
+</blockquote>
+<p>复习一下前中后序遍历先：</p>
+<p><img src="https://img-blog.csdnimg.cn/0a99f51a6f1240608c41d0f62299ab0b.png#pic_center" alt="在这里插入图片描述"><br>因此本题中，根据前序遍历的特性可设f[l][r]为区间[l,r]构成的子树的最大分数，有方程：</p>
+<p>$f[l][r]=max(f[l][k-1]*f[k+1][r]+f[k][k])，f[k][k]=Score[k]$</p>
+<h2 id="NOI1995-石子合并"><a href="#NOI1995-石子合并" class="headerlink" title="[NOI1995] 石子合并"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1880">[NOI1995] 石子合并</a></h2><blockquote>
+<p>在一个圆形操场的四周摆放 $N$ 堆石子，现要将石子有次序地合并成一堆，规定每次只能选相邻的2堆合并成新的一堆，并将新的一堆的石子数，记为该次合并的得分。<br>试设计出一个算法,计算出将 $N$ 堆石子合并成 $1$ 堆的最小得分和最大得分。</p>
+</blockquote>
+<p>区间DP：</p>
+<p>定义状态f[i][j]，表示i到j合并后的最大得分，则有状态转移方程：</p>
+<p>$f[i][j] = max(f[i][k] + f[k+1][j] + d(i,j))$</p>
+<p>其中，$1&lt;=i&lt;=&lt;=k&lt;j&lt;=N$</p>
+<h2 id="NOIP2006-提高组-能量项链"><a href="#NOIP2006-提高组-能量项链" class="headerlink" title="[NOIP2006 提高组] 能量项链"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1063">[NOIP2006 提高组] 能量项链</a></h2><blockquote>
+<p>在 Mars 星球上，每个 Mars 人都随身佩带着一串能量项链。在项链上有 $N$ 颗能量珠。能量珠是一颗有头标记与尾标记的珠子，这些标记对应着某个正整数。并且，对于相邻的两颗珠子，前一颗珠子的尾标记一定等于后一颗珠子的头标记。因为只有这样，通过吸盘（吸盘是 Mars 人吸收能量的一种器官）的作用，这两颗珠子才能聚合成一颗珠子，同时释放出可以被吸盘吸收的能量。如果前一颗能量珠的头标记为 $m$，尾标记为 $r$，后一颗能量珠的头标记为 $r$，尾标记为 $n$，则聚合后释放的能量为 $m \times r \times n$（Mars 单位），新产生的珠子的头标记为 $m$，尾标记为 $n$。<br>需要时，Mars 人就用吸盘夹住相邻的两颗珠子，通过聚合得到能量，直到项链上只剩下一颗珠子为止。显然，不同的聚合顺序得到的总能量是不同的，请你设计一个聚合顺序，使一串项链释放出的总能量最大。<br>例如：设 $N=4$，$4$ 颗珠子的头标记与尾标记依次为 $(2,3)(3,5)(5,10)(10,2)$。我们用记号 $\oplus$ 表示两颗珠子的聚合操作，$(j \oplus k)$ 表示第 $j,k$ 两颗珠子聚合后所释放的能量。则第 $4$ 、 $1$ 两颗珠子聚合后释放的能量为：<br>$(4 \oplus 1)=10 \times 2 \times 3=60$。<br>这一串项链可以得到最优值的一个聚合顺序所释放的总能量为：<br>$((4 \oplus 1) \oplus 2) \oplus 3)=10 \times 2 \times 3+10 \times 3 \times 5+10 \times 5 \times 10=710$。</p>
+</blockquote>
+<p>定义状态f[l][r]表示以a[l]开头a[r]结尾的数串的最大和，则有状态转移方程：</p>
+<p>$f[l][r]=max(f[l][r],f[l][k]+f[k][r]+a[l]*a[k]*a[r])$,k为i,j之间任一节点</p>
+<h2 id="luoguP1220-关路灯"><a href="#luoguP1220-关路灯" class="headerlink" title="luoguP1220 关路灯"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1220">luoguP1220 关路灯</a></h2><blockquote>
+<p>某一村庄在一条路线上安装了 $n$ 盏路灯，每盏灯的功率有大有小（即同一段时间内消耗的电量有多有少）。老张就住在这条路中间某一路灯旁，他有一项工作就是每天早上天亮时一盏一盏地关掉这些路灯。<br>为了给村里节省电费，老张记录下了每盏路灯的位置和功率，他每次关灯时也都是尽快地去关，但是老张不知道怎样去关灯才能够最节省电。他每天都是在天亮时首先关掉自己所处位置的路灯，然后可以向左也可以向右去关灯。开始他以为先算一下左边路灯的总功率再算一下右边路灯的总功率，然后选择先关掉功率大的一边，再回过头来关掉另一边的路灯，而事实并非如此，因为在关的过程中适当地调头有可能会更省一些。<br>现在已知老张走的速度为 $1m/s$，每个路灯的位置（是一个整数，即距路线起点的距离，单位：$m$）、功率（$W$），老张关灯所用的时间很短而可以忽略不计。<br>请你为老张编一程序来安排关灯的顺序，使从老张开始关灯时刻算起所有灯消耗电最少（灯关掉后便不再消耗电了）。</p>
+</blockquote>
+<p>区间DP：</p>
+<p>设f[i][j][0]为关闭区间[i,j]的路灯且最后一个关掉的路灯为区间的左端点的最小功率，f[i][j][1]为关闭区间[i,j]的路灯且最后一个关掉的路灯为区间的右端点的最小功率，则有方程：</p>
+<p>$f[i][j][0]=min(f[i+1][j][0]+(pos[i+1]-pos[i])*exsum(i+1,j),f[i+1][j][1]+(pos[j]-pos[i])*exsum(i+1,j))$</p>
+<p>$f[i][j][1]=min(f[i][j-1][0]+(pos[j]-pos[i])*exsum(i,j-1),f[i][j-1][1]+(pos[j]-pos[j-1])*exsum(i,j-1))$</p>
+<p>其中$exsum(i,j)$为区间$[1,i-1]$和$[j+1,n]$的电灯的功率和，$pos[i]$为第i个电灯的位置</p>
+<h2 id="NOIP2007-提高组-矩阵取数游戏"><a href="#NOIP2007-提高组-矩阵取数游戏" class="headerlink" title="[NOIP2007 提高组] 矩阵取数游戏"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1005">[NOIP2007 提高组] 矩阵取数游戏</a></h2><blockquote>
+<p>帅帅经常跟同学玩一个矩阵取数游戏：对于一个给定的 $n \times m$ 的矩阵，矩阵中的每个元素 $a_{i,j}$ 均为非负整数。游戏规则如下：</p>
+<ol>
+<li>每次取数时须从每行各取走一个元素，共 $n$ 个。经过 $m$ 次后取完矩阵内所有元素；</li>
+<li>每次取走的各个元素只能是该元素所在行的行首或行尾；</li>
+<li>每次取数都有一个得分值，为每行取数的得分之和，每行取数的得分 = 被取走的元素值 $\times 2^i$，其中 $i$ 表示第 $i$ 次取数（从 $1$ 开始编号）；</li>
+<li>游戏结束总得分为 $m$ 次取数得分之和。</li>
+</ol>
+<p>帅帅想请你帮忙写一个程序，对于任意矩阵，可以求出取数后的最大得分。</p>
+</blockquote>
+<p>区间DP：设f[i][j]为选的只剩下区间[i,j]的最大和，则有方程：</p>
+<p>$f[i][j]=max(f[i-1][j] + a[i-1]*2^{m-(j-i+1)},f[i][j+1] + a[j+1]*2^{m-(j-i+1)})$</p>
+<p>不过这个题由于答案会爆long long，因此要么使用__int128要么就写高精度。(<del>而我这么懒，怎么可能写高精度呢</del>)</p>
+<h2 id="USACO16OPEN-248-G"><a href="#USACO16OPEN-248-G" class="headerlink" title="[USACO16OPEN]248 G"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3146">[USACO16OPEN]248 G</a></h2><blockquote>
+<p>给定一个1*n的地图，在里面玩2048，每次可以合并相邻两个（数值范围1-40），问序列中出现的最大数字的值最大是多少。注意合并后的数值并非加倍而是+1，例如2与2合并后的数值为3。<br>样例：n=4,地图为1 1 1 2，则：<br>1 [1 1] 2–&gt; 1 [2 2]–&gt; 1 3，答案为3</p>
+</blockquote>
+<p>题目不难，但是踩了几个坑。区间DP：设f[i][j]为 <strong>完全合并区间[i,j]</strong> 后该区间得到的最大值，则有</p>
+<p>$f[i][j]=max(f[i][k]+1,f[i][j]),(f[i][k]=f[k+1][j])$</p>
+<p>一开始头铁写的这个方程：$f[i][j]=max(f[i][j],f[i+1][j],f[i][j-1])（f[i+1][j]=a[i],f[i][j-1]=a[j]）$，后面发现问题，错在：区间[i,j]不仅仅可以从比它小一个数的区间更新过来，而是可以从它的任意两个子区间更新过来。可能是被样例误导了。</p>
+<p>然后实现的时候，直接<code>loop(i,1,n)loop(j,i+1,n)</code>，然后全部WA掉。错在枚举顺序：这个方程中要从小区间更新大区间，而不是只需要枚举完每一个区间就行。</p>
+<h2 id="CQOI2007-涂色"><a href="#CQOI2007-涂色" class="headerlink" title="[CQOI2007]涂色"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4170">[CQOI2007]涂色</a></h2><blockquote>
+<p>假设你有一条长度为 5 的木板，初始时没有涂过任何颜色。你希望把它的 5 个单位长度分别涂上红、绿、蓝、绿、红色，用一个长度为 5 的字符串表示这个目标：RGBGR。<br>每次你可以把一段连续的木板涂成一个给定的颜色，后涂的颜色覆盖先涂的颜色。例如第一次把木板涂成 RRRRR，第二次涂成 RGGGR，第三次涂成 RGBGR，达到目标。用尽量少的涂色次数达到目标。</p>
+</blockquote>
+<p>区间DP：设f[i][j]为区间[i,j]涂完需要的最少次数，则有方程</p>
+<p>$f[i][j]=min(f[i+1][j],f[i][j-1]),s[i]==s[j]$<br>$f[i][j]=min(f[i][k]+f[k+1][j]),s[i]\neq s[j]$</p>
+<p>这题自己没想出来，看题解做出来的。状态表示猜都猜得到，必然是f[i][j]，但是转移的时候完全不知道怎么转移。主要是没有理解到：</p>
+<ul>
+<li>区间[i,j]端点颜色相同，则意味着从[i+1,j]或者[i,j-1]涂色涂到[i,j]根本不需要额外的花费，可以直接一笔画完整个区间</li>
+<li>如果区间[i,j]端点颜色不相同，则说明区间[i,j]不能够从[i+1,j]或者[i,j-1]这两个子区间没有额外花费的转移来，因此只能分成f[i][k]和f[k+1][j]两个子区间来转移，且这两个子区间的涂色次数是通过相加的方式来合并的（可以搞组数据手模一下）</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">AndrewLee</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/05/14/DP%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">http://example.com/2022/05/14/DP%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">AndrewLee</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/oi/">oi</a></div><div class="post_share"><div class="social-share" data-image="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic_source%2F1f%2F78%2Fce%2F1f78cee1a949eb88f2880f0def761734.jpg&amp;refer=http%3A%2F%2Fup.enterdesk.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638695731&amp;t=d11724b849951ab98f2460997a237878" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/05/19/C%C2%B7%E6%8C%87%E9%92%88/"><img class="prev-cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg9.51tietu.net%2Fpic%2F2019-091409%2F11crxji4ujd11crxji4ujd.jpg&amp;refer=http%3A%2F%2Fimg9.51tietu.net&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638696115&amp;t=d52a0526f7dc716ee2b41c4e4a252d1d" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">C·指针</div></div></a></div><div class="next-post pull-right"><a href="/2022/05/06/%E6%B5%85%E5%AD%A6%E4%B8%80%E4%B8%8BSQL/"><img class="next-cover" src="/img/sql.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">浅学一下SQL</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/03/26/重拾图论/" title="重拾图论"><img class="cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2017-10-19%2F59e85568dcb46.jpg%3Fdown&refer=http%3A%2F%2Fpic1.win4000.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638695731&t=751aef03ff04665aafa66556eb677f73" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">重拾图论</div></div></a></div><div><a href="/2022/03/15/重拾数据结构/" title="重拾数据结构"><img class="cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201707%2F04%2F20170704184913_GNYCE.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638696115&t=a486b1dc327c953b973545deccf5835a" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-15</div><div class="title">重拾数据结构</div></div></a></div><div><a href="/2019/09/06/01分数规划的原理分析/" title="01分数规划的原理分析"><img class="cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2F911%2F100G5120150%2F15100G20150-8-1200.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638695731&t=99236346a3f7f0be2fa9fb241bd94d66" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-09-06</div><div class="title">01分数规划的原理分析</div></div></a></div><div><a href="/2022/05/19/C·指针/" title="C·指针"><img class="cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg9.51tietu.net%2Fpic%2F2019-091409%2F11crxji4ujd11crxji4ujd.jpg&refer=http%3A%2F%2Fimg9.51tietu.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638696115&t=d52a0526f7dc716ee2b41c4e4a252d1d" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-19</div><div class="title">C·指针</div></div></a></div><div><a href="/2022/03/26/C-STL/" title="C++ STL"><img class="cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2017-10-19%2F59e85568dcb46.jpg%3Fdown&refer=http%3A%2F%2Fpic1.win4000.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638695731&t=751aef03ff04665aafa66556eb677f73" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">C++ STL</div></div></a></div><div><a href="/2022/03/20/差分约束-2/" title="差分约束——2"><img class="cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic_source%2F1f%2F78%2Fce%2F1f78cee1a949eb88f2880f0def761734.jpg&refer=http%3A%2F%2Fup.enterdesk.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638695731&t=d11724b849951ab98f2460997a237878" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-20</div><div class="title">差分约束——2</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/tit.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">AndrewLee</div><div class="author-info__description">Gubba nub nub doo rahkah</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">48</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">22</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Andrew82106" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin=281512383&amp;website=www.oicqzone.com" target="_blank" title="QQ"><i class="fab fa-qq"></i></a><a class="social-icon" href="http://180.76.162.227:5000/" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%80%E6%9C%80%E5%9F%BA%E7%A1%80%E7%9A%84%E7%BA%BF%E6%80%A7DP"><span class="toc-number">1.</span> <span class="toc-text">最最基础的线性DP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E4%B8%89%E8%A7%92%E5%BD%A2"><span class="toc-number">1.1.</span> <span class="toc-text">数字三角形</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NOIP1996-%E6%8F%90%E9%AB%98%E7%BB%84-%E6%8C%96%E5%9C%B0%E9%9B%B7"><span class="toc-number">1.2.</span> <span class="toc-text">[NOIP1996 提高组] 挖地雷</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E9%A3%9F%E7%89%A9%E9%93%BE"><span class="toc-number">1.3.</span> <span class="toc-text">最大食物链</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="toc-number">1.4.</span> <span class="toc-text">背包问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#NOIP2005-%E6%99%AE%E5%8F%8A%E7%BB%84-%E9%87%87%E8%8D%AF"><span class="toc-number">1.4.1.</span> <span class="toc-text">[NOIP2005 普及组] 采药</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P1616-%E7%96%AF%E7%8B%82%E7%9A%84%E9%87%87%E8%8D%AF"><span class="toc-number">1.4.2.</span> <span class="toc-text">P1616 疯狂的采药</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%80%8D%E7%BB%8F%E9%AA%8C%E6%97%A5"><span class="toc-number">1.4.3.</span> <span class="toc-text">5 倍经验日</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LIS%E5%92%8CLCS%E7%9B%B8%E5%85%B3"><span class="toc-number">1.5.</span> <span class="toc-text">LIS和LCS相关</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#NOIP1999-%E6%99%AE%E5%8F%8A%E7%BB%84-%E5%AF%BC%E5%BC%B9%E6%8B%A6%E6%88%AA"><span class="toc-number">1.5.1.</span> <span class="toc-text">[NOIP1999 普及组] 导弹拦截</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LCS%EF%BC%88%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97%EF%BC%89"><span class="toc-number">1.5.2.</span> <span class="toc-text">LCS（最长公共子序列）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8B%E5%A5%BD%E5%9F%8E%E5%B8%82"><span class="toc-number">1.5.3.</span> <span class="toc-text">友好城市</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%A8%E6%A3%8D%E5%8A%A0%E5%B7%A5"><span class="toc-number">1.5.4.</span> <span class="toc-text">木棍加工</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NOIP2004-%E6%8F%90%E9%AB%98%E7%BB%84-%E5%90%88%E5%94%B1%E9%98%9F%E5%BD%A2"><span class="toc-number">1.5.5.</span> <span class="toc-text">[NOIP2004 提高组] 合唱队形</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%BC%E5%85%8B%E7%9A%84%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.6.</span> <span class="toc-text">尼克的任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB"><span class="toc-number">1.7.</span> <span class="toc-text">编辑距离</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#luogu-P4933-%E5%A4%A7%E5%B8%88"><span class="toc-number">1.8.</span> <span class="toc-text">luogu P4933 大师</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NOIP2012-%E6%99%AE%E5%8F%8A%E7%BB%84-%E6%91%86%E8%8A%B1"><span class="toc-number">1.9.</span> <span class="toc-text">[NOIP2012 普及组] 摆花</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%8C%E4%B8%80%E6%9C%AC%E9%80%9A-5-1-%E7%BB%83%E4%B9%A0-1%E3%80%8D%E6%8B%AC%E5%8F%B7%E9%85%8D%E5%AF%B9"><span class="toc-number">1.10.</span> <span class="toc-text">「一本通 5.1 练习 1」括号配对</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#luogu-P5858-%E3%80%8CSWTR-03%E3%80%8DGolden-Sword"><span class="toc-number">1.11.</span> <span class="toc-text">luogu P5858 「SWTR-03」Golden Sword</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8C%BA%E9%97%B4DP"><span class="toc-number">2.</span> <span class="toc-text">区间DP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#NOIP2003-%E6%8F%90%E9%AB%98%E7%BB%84-%E5%8A%A0%E5%88%86%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">2.1.</span> <span class="toc-text">[NOIP2003 提高组] 加分二叉树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NOI1995-%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6"><span class="toc-number">2.2.</span> <span class="toc-text">[NOI1995] 石子合并</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NOIP2006-%E6%8F%90%E9%AB%98%E7%BB%84-%E8%83%BD%E9%87%8F%E9%A1%B9%E9%93%BE"><span class="toc-number">2.3.</span> <span class="toc-text">[NOIP2006 提高组] 能量项链</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#luoguP1220-%E5%85%B3%E8%B7%AF%E7%81%AF"><span class="toc-number">2.4.</span> <span class="toc-text">luoguP1220 关路灯</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NOIP2007-%E6%8F%90%E9%AB%98%E7%BB%84-%E7%9F%A9%E9%98%B5%E5%8F%96%E6%95%B0%E6%B8%B8%E6%88%8F"><span class="toc-number">2.5.</span> <span class="toc-text">[NOIP2007 提高组] 矩阵取数游戏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#USACO16OPEN-248-G"><span class="toc-number">2.6.</span> <span class="toc-text">[USACO16OPEN]248 G</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CQOI2007-%E6%B6%82%E8%89%B2"><span class="toc-number">2.7.</span> <span class="toc-text">[CQOI2007]涂色</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/05/25/differential%20equation/" title="differential equation"><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201707%2F04%2F20170704184913_GNYCE.thumb.700_0.jpeg&amp;refer=http%3A%2F%2Fb-ssl.duitang.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638696115&amp;t=a486b1dc327c953b973545deccf5835a" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="differential equation"/></a><div class="content"><a class="title" href="/2022/05/25/differential%20equation/" title="differential equation">differential equation</a><time datetime="2022-05-25T08:13:09.000Z" title="发表于 2022-05-25 16:13:09">2022-05-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/19/C%C2%B7%E6%8C%87%E9%92%88/" title="C·指针"><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg9.51tietu.net%2Fpic%2F2019-091409%2F11crxji4ujd11crxji4ujd.jpg&amp;refer=http%3A%2F%2Fimg9.51tietu.net&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638696115&amp;t=d52a0526f7dc716ee2b41c4e4a252d1d" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C·指针"/></a><div class="content"><a class="title" href="/2022/05/19/C%C2%B7%E6%8C%87%E9%92%88/" title="C·指针">C·指针</a><time datetime="2022-05-19T13:52:02.000Z" title="发表于 2022-05-19 21:52:02">2022-05-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/14/DP%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/" title="DP·从入门到递归入门"><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic_source%2F1f%2F78%2Fce%2F1f78cee1a949eb88f2880f0def761734.jpg&amp;refer=http%3A%2F%2Fup.enterdesk.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638695731&amp;t=d11724b849951ab98f2460997a237878" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DP·从入门到递归入门"/></a><div class="content"><a class="title" href="/2022/05/14/DP%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/" title="DP·从入门到递归入门">DP·从入门到递归入门</a><time datetime="2022-05-14T02:23:30.000Z" title="发表于 2022-05-14 10:23:30">2022-05-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/06/%E6%B5%85%E5%AD%A6%E4%B8%80%E4%B8%8BSQL/" title="浅学一下SQL"><img src="/img/sql.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="浅学一下SQL"/></a><div class="content"><a class="title" href="/2022/05/06/%E6%B5%85%E5%AD%A6%E4%B8%80%E4%B8%8BSQL/" title="浅学一下SQL">浅学一下SQL</a><time datetime="2022-05-06T02:36:09.000Z" title="发表于 2022-05-06 10:36:09">2022-05-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/06/%E6%B5%85%E5%AD%A6%E4%B8%80%E4%B8%8BJavaScript/" title="浅学一下JavaScript"><img src="/img/js.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="浅学一下JavaScript"/></a><div class="content"><a class="title" href="/2022/05/06/%E6%B5%85%E5%AD%A6%E4%B8%80%E4%B8%8BJavaScript/" title="浅学一下JavaScript">浅学一下JavaScript</a><time datetime="2022-05-06T02:33:19.000Z" title="发表于 2022-05-06 10:33:19">2022-05-06</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By AndrewLee</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    loader: {
+      source: {
+        '[tex]/amsCd': '[tex]/amscd'
+      }
+    },
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        addClass: [200,() => {
+          document.querySelectorAll('mjx-container:not([display=\'true\']').forEach( node => {
+            const target = node.parentNode
+            if (!target.classList.contains('has-jax')) {
+              target.classList.add('mathjax-overflow')
+            }
+          })
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script src="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/js/mouse_snow.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
