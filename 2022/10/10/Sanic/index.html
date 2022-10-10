@@ -1,0 +1,380 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Socket 编程 | AndrewLee</title><meta name="keywords" content="开发,计算机网络"><meta name="author" content="AndrewLee"><meta name="copyright" content="AndrewLee"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="服务器端代码#include &lt;stdio.h&gt; #include &lt;string.h&gt; #include &lt;unistd.h&gt; #include &lt;stdlib.h&gt; #include &lt;netdb.h&gt; #include &lt;iostream&gt; #include &lt;fstream&gt; #include &lt;sys&#x2F;types.h&gt; #include &amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Socket 编程">
+<meta property="og:url" content="http://example.com/2022/10/10/Sanic/index.html">
+<meta property="og:site_name" content="AndrewLee">
+<meta property="og:description" content="服务器端代码#include &lt;stdio.h&gt; #include &lt;string.h&gt; #include &lt;unistd.h&gt; #include &lt;stdlib.h&gt; #include &lt;netdb.h&gt; #include &lt;iostream&gt; #include &lt;fstream&gt; #include &lt;sys&#x2F;types.h&gt; #include &amp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg9.51tietu.net%2Fpic%2F2019-091409%2F11crxji4ujd11crxji4ujd.jpg&refer=http%3A%2F%2Fimg9.51tietu.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638696115&t=d52a0526f7dc716ee2b41c4e4a252d1d">
+<meta property="article:published_time" content="2022-10-10T03:46:14.000Z">
+<meta property="article:modified_time" content="2022-10-10T17:15:37.458Z">
+<meta property="article:author" content="AndrewLee">
+<meta property="article:tag" content="开发">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg9.51tietu.net%2Fpic%2F2019-091409%2F11crxji4ujd11crxji4ujd.jpg&refer=http%3A%2F%2Fimg9.51tietu.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638696115&t=d52a0526f7dc716ee2b41c4e4a252d1d"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/10/10/Sanic/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Socket 编程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-10-11 01:15:37'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/tit.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">53</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">32</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">22</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> others</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg9.51tietu.net%2Fpic%2F2019-091409%2F11crxji4ujd11crxji4ujd.jpg&amp;refer=http%3A%2F%2Fimg9.51tietu.net&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638696115&amp;t=d52a0526f7dc716ee2b41c4e4a252d1d')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">AndrewLee</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> others</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Socket 编程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-10-10T03:46:14.000Z" title="发表于 2022-10-10 11:46:14">2022-10-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-10-10T17:15:37.458Z" title="更新于 2022-10-11 01:15:37">2022-10-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/IT/">IT</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Socket 编程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="服务器端代码"><a href="#服务器端代码" class="headerlink" title="服务器端代码"></a>服务器端代码</h1><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;netdb.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;fstream></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sys/types.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sys/socket.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;arpa/inet.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;time.h></span> </span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ll</span> <span class="token expression"><span class="token keyword">long</span> <span class="token keyword">long</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">loop</span><span class="token expression"><span class="token punctuation">(</span>i<span class="token punctuation">,</span>start<span class="token punctuation">,</span>end<span class="token punctuation">)</span> <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span>start<span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>end<span class="token punctuation">;</span><span class="token operator">++</span>i<span class="token punctuation">)</span></span></span>
+<span class="token comment">/*bool checkIfFileExsit(char *FILENAME)&#123;
+  fstream _file;
+  _file.open(FILENAME,ios::in);
+  return (_file?0:1);
+&#125;*/</span>
+
+<span class="token keyword">void</span> <span class="token function">SaveData</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>buffer<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+  <span class="token keyword">char</span> FileName<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"Datalog.txt"</span><span class="token punctuation">;</span>
+  ofstream srcFile<span class="token punctuation">;</span>
+  <span class="token function">freopen</span><span class="token punctuation">(</span>FileName<span class="token punctuation">,</span> <span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token constant">stdout</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//以文本模式打开in.txt备读</span>
+  time_t current_time<span class="token punctuation">;</span>
+  current_time <span class="token operator">=</span> <span class="token function">time</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> len <span class="token operator">=</span> <span class="token function">strlen</span><span class="token punctuation">(</span>buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  cout <span class="token operator">&lt;&lt;</span> <span class="token string">"\n&lt;DataLog:"</span> <span class="token operator">&lt;&lt;</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>current_time <span class="token operator">&lt;&lt;</span> <span class="token string">">:"</span><span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+  <span class="token function">loop</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span>len<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> cout <span class="token operator">&lt;&lt;</span>buffer<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token function">fclose</span><span class="token punctuation">(</span><span class="token constant">stdout</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"INFO::Starting server\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>argc <span class="token operator">!=</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"ERROR::Using:./server port\nExample:./server 5005\n\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token comment">// 第1步：创建服务端的socket。</span>
+    <span class="token keyword">int</span> listenfd<span class="token punctuation">;</span>  <span class="token comment">// socket 就是一个数字罢了</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>listenfd <span class="token operator">=</span> <span class="token function">socket</span><span class="token punctuation">(</span>AF_INET<span class="token punctuation">,</span> SOCK_STREAM<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+      <span class="token function">perror</span><span class="token punctuation">(</span><span class="token string">"socket"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"INFO::Building Socket Successfully\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 第2步：把服务端用于通信的地址和端口绑定到socket上。</span>
+    <span class="token keyword">struct</span> <span class="token class-name">sockaddr_in</span> servaddr<span class="token punctuation">;</span> <span class="token comment">// 服务端地址信息的数据结构。</span>
+    <span class="token function">memset</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>servaddr<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>servaddr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    servaddr<span class="token punctuation">.</span>sin_family <span class="token operator">=</span> AF_INET<span class="token punctuation">;</span>                <span class="token comment">// 协议族，在socket编程中只能是AF_INET。</span>
+    servaddr<span class="token punctuation">.</span>sin_addr<span class="token punctuation">.</span>s_addr <span class="token operator">=</span> <span class="token function">htonl</span><span class="token punctuation">(</span>INADDR_ANY<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 任意ip地址。</span>
+    <span class="token comment">//servaddr.sin_addr.s_addr = inet_addr("192.168.190.134"); // 指定ip地址。</span>
+    servaddr<span class="token punctuation">.</span>sin_port <span class="token operator">=</span> <span class="token function">htons</span><span class="token punctuation">(</span><span class="token function">atoi</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 指定通信端口。</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">bind</span><span class="token punctuation">(</span>listenfd<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">sockaddr</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>servaddr<span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>servaddr<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+      <span class="token function">perror</span><span class="token punctuation">(</span><span class="token string">"bind"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">close</span><span class="token punctuation">(</span>listenfd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span class="token comment">//这里绑定一波通信端口</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"INFO::Bind Socket To Port Successfully\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 第3步：把socket设置为监听模式。</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">listen</span><span class="token punctuation">(</span>listenfd<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+      <span class="token function">perror</span><span class="token punctuation">(</span><span class="token string">"listen"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">close</span><span class="token punctuation">(</span>listenfd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token comment">// 第4步：接受客户端的连接。</span>
+  <span class="token keyword">int</span> clientfd<span class="token punctuation">;</span>                             <span class="token comment">// 客户端的socket。</span>
+  <span class="token keyword">int</span> socklen <span class="token operator">=</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">sockaddr_in</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// struct sockaddr_in的大小</span>
+  <span class="token keyword">struct</span> <span class="token class-name">sockaddr_in</span> clientaddr<span class="token punctuation">;</span>            <span class="token comment">// 客户端的地址信息。</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"INFO::Load Socket On Successfully || IP:%s\nwaiting for requests...\n"</span><span class="token punctuation">,</span> <span class="token function">inet_ntoa</span><span class="token punctuation">(</span>servaddr<span class="token punctuation">.</span>sin_addr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  clientfd <span class="token operator">=</span> <span class="token function">accept</span><span class="token punctuation">(</span>listenfd<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">sockaddr</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>clientaddr<span class="token punctuation">,</span> <span class="token punctuation">(</span>socklen_t <span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>socklen<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"INFO::客户端（%s）已连接。\n"</span><span class="token punctuation">,</span> <span class="token function">inet_ntoa</span><span class="token punctuation">(</span>clientaddr<span class="token punctuation">.</span>sin_addr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// 第5步：与客户端通信，接收客户端发过来的报文后，回复ok。</span>
+  <span class="token keyword">char</span> buffer<span class="token punctuation">[</span><span class="token number">1024</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> iret<span class="token punctuation">;</span>
+    <span class="token function">memset</span><span class="token punctuation">(</span>buffer<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>buffer<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>iret <span class="token operator">=</span> <span class="token function">recv</span><span class="token punctuation">(</span>clientfd<span class="token punctuation">,</span> buffer<span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>buffer<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span> <span class="token comment">// 接收客户端的请求报文。</span>
+      <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"iret=%d\n"</span><span class="token punctuation">,</span> iret<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Input Message:%s\n"</span><span class="token punctuation">,</span> buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">SaveData</span><span class="token punctuation">(</span>buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">sprintf</span><span class="token punctuation">(</span>buffer<span class="token punctuation">,</span><span class="token string">"Finish Saving"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>iret <span class="token operator">=</span> <span class="token function">send</span><span class="token punctuation">(</span>clientfd<span class="token punctuation">,</span> buffer<span class="token punctuation">,</span> <span class="token function">strlen</span><span class="token punctuation">(</span>buffer<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span> <span class="token comment">// 向客户端发送响应结果。</span>
+      <span class="token function">perror</span><span class="token punctuation">(</span><span class="token string">"send"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Output Message:%s\n"</span><span class="token punctuation">,</span> buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token comment">// 第6步：关闭socket，释放资源。</span>
+  <span class="token function">close</span><span class="token punctuation">(</span>listenfd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">close</span><span class="token punctuation">(</span>clientfd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="客户端代码"><a href="#客户端代码" class="headerlink" title="客户端代码"></a>客户端代码</h1><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;netdb.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sys/types.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sys/socket.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;arpa/inet.h></span></span>
+
+
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span><span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>argc<span class="token operator">!=</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Using:./client ip port\nExample:./client 127.0.0.1 5005\n\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+ 
+  <span class="token comment">// 第1步：创建客户端的socket。</span>
+  <span class="token keyword">int</span> sockfd<span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token punctuation">(</span>sockfd <span class="token operator">=</span> <span class="token function">socket</span><span class="token punctuation">(</span>AF_INET<span class="token punctuation">,</span>SOCK_STREAM<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> 
+    <span class="token function">perror</span><span class="token punctuation">(</span><span class="token string">"socket"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> 
+  <span class="token punctuation">&#125;</span>
+ 
+  <span class="token comment">// 第2步：向服务器发起连接请求。</span>
+  <span class="token keyword">struct</span> <span class="token class-name">hostent</span><span class="token operator">*</span> h<span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token punctuation">(</span>h <span class="token operator">=</span> <span class="token function">gethostbyname</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token punctuation">)</span><span class="token punctuation">&#123;</span>   <span class="token comment">// 指定服务端的ip地址。</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"gethostbyname failed.\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token function">close</span><span class="token punctuation">(</span>sockfd<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> 
+  <span class="token punctuation">&#125;</span>
+  <span class="token keyword">struct</span> <span class="token class-name">sockaddr_in</span> servaddr<span class="token punctuation">;</span>
+  <span class="token function">memset</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>servaddr<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>servaddr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  servaddr<span class="token punctuation">.</span>sin_family <span class="token operator">=</span> AF_INET<span class="token punctuation">;</span>
+  servaddr<span class="token punctuation">.</span>sin_port <span class="token operator">=</span> <span class="token function">htons</span><span class="token punctuation">(</span><span class="token function">atoi</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 指定服务端的通信端口。</span>
+  <span class="token function">memcpy</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>servaddr<span class="token punctuation">.</span>sin_addr<span class="token punctuation">,</span>h<span class="token operator">-></span>h_addr<span class="token punctuation">,</span>h<span class="token operator">-></span>h_length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">connect</span><span class="token punctuation">(</span>sockfd<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">sockaddr</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>servaddr<span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>servaddr<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 向服务端发起连接清求。</span>
+    <span class="token function">perror</span><span class="token punctuation">(</span><span class="token string">"connect"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token function">close</span><span class="token punctuation">(</span>sockfd<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> 
+  <span class="token punctuation">&#125;</span>
+ 
+  <span class="token keyword">char</span> buffer<span class="token punctuation">[</span><span class="token number">1024</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+ 
+  <span class="token comment">// 第3步：与服务端通信，发送一个报文后等待回复，然后再发下一个报文。</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> ii<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>ii<span class="token operator">&lt;</span><span class="token number">20</span><span class="token punctuation">;</span>ii<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">0.1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> iret<span class="token punctuation">;</span>
+    <span class="token function">memset</span><span class="token punctuation">(</span>buffer<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>buffer<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//sprintf(buffer,"这是第%d个message: 编号%03d。",ii+1,ii+1);</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>j<span class="token operator">&lt;=</span>ii<span class="token punctuation">;</span><span class="token operator">++</span>j<span class="token punctuation">)</span> buffer<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span>j<span class="token operator">%</span><span class="token number">3</span><span class="token operator">?</span><span class="token string">'k'</span><span class="token operator">:</span><span class="token string">'a'</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s\n"</span><span class="token punctuation">,</span> buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token punctuation">(</span>iret<span class="token operator">=</span><span class="token function">send</span><span class="token punctuation">(</span>sockfd<span class="token punctuation">,</span>buffer<span class="token punctuation">,</span><span class="token function">strlen</span><span class="token punctuation">(</span>buffer<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&lt;=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span> <span class="token comment">// 向服务端发送请求报文。</span>
+      <span class="token function">perror</span><span class="token punctuation">(</span><span class="token string">"send"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+      <span class="token keyword">break</span><span class="token punctuation">;</span> 
+    <span class="token punctuation">&#125;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"发送：%s\n"</span><span class="token punctuation">,</span>buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">memset</span><span class="token punctuation">(</span>buffer<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>buffer<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token punctuation">(</span>iret<span class="token operator">=</span><span class="token function">recv</span><span class="token punctuation">(</span>sockfd<span class="token punctuation">,</span>buffer<span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>buffer<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&lt;=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span> <span class="token comment">// 接收服务端的回应报文。</span>
+       <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"iret=%d\n"</span><span class="token punctuation">,</span>iret<span class="token punctuation">)</span><span class="token punctuation">;</span>
+       <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"接收：%s\n"</span><span class="token punctuation">,</span>buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+ 
+  <span class="token comment">// 第4步：关闭socket，释放资源。</span>
+  <span class="token function">close</span><span class="token punctuation">(</span>sockfd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="服务器端重启动代码"><a href="#服务器端重启动代码" class="headerlink" title="服务器端重启动代码"></a>服务器端重启动代码</h1><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;netdb.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sys/types.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sys/socket.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;arpa/inet.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ll</span> <span class="token expression"><span class="token keyword">long</span> <span class="token keyword">long</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">loop</span><span class="token expression"><span class="token punctuation">(</span>i<span class="token punctuation">,</span>start<span class="token punctuation">,</span>end<span class="token punctuation">)</span> <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span>start<span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>end<span class="token punctuation">;</span><span class="token operator">++</span>i<span class="token punctuation">)</span></span></span>
+ll <span class="token function">transform</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">,</span> <span class="token keyword">int</span> length<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    ll x <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token keyword">int</span> p<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>p<span class="token operator">&lt;</span>length<span class="token operator">&amp;&amp;</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token operator">&lt;</span><span class="token string">'0'</span><span class="token operator">||</span>argv<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token operator">></span><span class="token string">'9'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>p<span class="token operator">++</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>p<span class="token operator">&lt;</span>length<span class="token operator">&amp;&amp;</span>argv<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token operator">>=</span><span class="token string">'0'</span><span class="token operator">&amp;&amp;</span>argv<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token operator">&lt;=</span><span class="token string">'9'</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>x<span class="token operator">=</span><span class="token punctuation">(</span>x<span class="token operator">&lt;&lt;</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token punctuation">(</span>x<span class="token operator">&lt;&lt;</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token operator">+</span>argv<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token operator">-</span><span class="token string">'0'</span><span class="token punctuation">;</span>p<span class="token operator">++</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> x<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d %s\n"</span><span class="token punctuation">,</span>argc<span class="token punctuation">,</span> argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> T <span class="token operator">=</span> <span class="token function">transform</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token function">strlen</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span>T<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>T<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">int</span> x <span class="token operator">=</span> <span class="token function">system</span><span class="token punctuation">(</span><span class="token string">"./server 5005"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>x <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"SUC!\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"ERROR HAPPEND\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">AndrewLee</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/10/10/Sanic/">http://example.com/2022/10/10/Sanic/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">AndrewLee</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%BC%80%E5%8F%91/">开发</a><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></div><div class="post_share"><div class="social-share" data-image="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg9.51tietu.net%2Fpic%2F2019-091409%2F11crxji4ujd11crxji4ujd.jpg&amp;refer=http%3A%2F%2Fimg9.51tietu.net&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638696115&amp;t=d52a0526f7dc716ee2b41c4e4a252d1d" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/10/05/Python-asyncio/"><img class="next-cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2018-11-06%2F5be1579bc7da3.jpg%3Fdown&amp;refer=http%3A%2F%2Fpic1.win4000.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638695731&amp;t=4532ee56537217508d6298ed431ff2eb" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">浅学一下 Python Asyncio</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/10/05/Python-asyncio/" title="浅学一下 Python Asyncio"><img class="cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2018-11-06%2F5be1579bc7da3.jpg%3Fdown&refer=http%3A%2F%2Fpic1.win4000.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638695731&t=4532ee56537217508d6298ed431ff2eb" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-05</div><div class="title">浅学一下 Python Asyncio</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/tit.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">AndrewLee</div><div class="author-info__description">Gubba nub nub doo rahkah</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">53</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">32</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">22</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Andrew82106" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin=281512383&amp;website=www.oicqzone.com" target="_blank" title="QQ"><i class="fab fa-qq"></i></a><a class="social-icon" href="http://180.76.162.227:5000/" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E4%BB%A3%E7%A0%81"><span class="toc-number">1.</span> <span class="toc-text">服务器端代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BB%A3%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">客户端代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E9%87%8D%E5%90%AF%E5%8A%A8%E4%BB%A3%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text">服务器端重启动代码</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/10/10/Sanic/" title="Socket 编程"><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg9.51tietu.net%2Fpic%2F2019-091409%2F11crxji4ujd11crxji4ujd.jpg&amp;refer=http%3A%2F%2Fimg9.51tietu.net&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638696115&amp;t=d52a0526f7dc716ee2b41c4e4a252d1d" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Socket 编程"/></a><div class="content"><a class="title" href="/2022/10/10/Sanic/" title="Socket 编程">Socket 编程</a><time datetime="2022-10-10T03:46:14.000Z" title="发表于 2022-10-10 11:46:14">2022-10-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/05/Python-asyncio/" title="浅学一下 Python Asyncio"><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2018-11-06%2F5be1579bc7da3.jpg%3Fdown&amp;refer=http%3A%2F%2Fpic1.win4000.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638695731&amp;t=4532ee56537217508d6298ed431ff2eb" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="浅学一下 Python Asyncio"/></a><div class="content"><a class="title" href="/2022/10/05/Python-asyncio/" title="浅学一下 Python Asyncio">浅学一下 Python Asyncio</a><time datetime="2022-10-05T15:36:53.000Z" title="发表于 2022-10-05 23:36:53">2022-10-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/17/Docker-Basic-Commands/" title="Docker Basic Commands"><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2017-10-19%2F59e85568dcb46.jpg%3Fdown&amp;refer=http%3A%2F%2Fpic1.win4000.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638695731&amp;t=751aef03ff04665aafa66556eb677f73" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Docker Basic Commands"/></a><div class="content"><a class="title" href="/2022/09/17/Docker-Basic-Commands/" title="Docker Basic Commands">Docker Basic Commands</a><time datetime="2022-09-17T02:39:55.000Z" title="发表于 2022-09-17 10:39:55">2022-09-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/13/CPP-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" title="CPP面向对象"><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2018-11-06%2F5be1579bc7da3.jpg%3Fdown&amp;refer=http%3A%2F%2Fpic1.win4000.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638695731&amp;t=4532ee56537217508d6298ed431ff2eb" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CPP面向对象"/></a><div class="content"><a class="title" href="/2022/09/13/CPP-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" title="CPP面向对象">CPP面向对象</a><time datetime="2022-09-13T12:00:28.000Z" title="发表于 2022-09-13 20:00:28">2022-09-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/28/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" title="数据可视化"><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201707%2F04%2F20170704184913_GNYCE.thumb.700_0.jpeg&amp;refer=http%3A%2F%2Fb-ssl.duitang.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1638696115&amp;t=a486b1dc327c953b973545deccf5835a" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据可视化"/></a><div class="content"><a class="title" href="/2022/07/28/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" title="数据可视化">数据可视化</a><time datetime="2022-07-28T01:01:58.000Z" title="发表于 2022-07-28 09:01:58">2022-07-28</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By AndrewLee</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    loader: {
+      source: {
+        '[tex]/amsCd': '[tex]/amscd'
+      }
+    },
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        addClass: [200,() => {
+          document.querySelectorAll('mjx-container:not([display=\'true\']').forEach( node => {
+            const target = node.parentNode
+            if (!target.classList.contains('has-jax')) {
+              target.classList.add('mathjax-overflow')
+            }
+          })
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script src="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/js/mouse_snow.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
